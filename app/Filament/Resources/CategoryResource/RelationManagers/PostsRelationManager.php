@@ -6,6 +6,7 @@ use Closure;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Select;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Table;
@@ -43,6 +44,9 @@ class PostsRelationManager extends RelationManager
                     Forms\Components\RichEditor::make('content')
                         ->fileAttachmentsDirectory('postImage')
                         ->required(),
+                    Select::make('tags')
+                        ->multiple()
+                        ->relationship('tags', 'title'),
                     Forms\Components\Toggle::make('active'),
                     Forms\Components\DateTimePicker::make('published_at'),
                 ]),

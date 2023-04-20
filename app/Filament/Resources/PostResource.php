@@ -9,6 +9,7 @@ use Closure;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Select;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -59,6 +60,9 @@ class PostResource extends Resource
                     Forms\Components\Select::make('category_id')
                         ->relationship('category', 'title')
                         ->required(),
+                    Select::make('tags')
+                        ->multiple()
+                        ->relationship('tags', 'title')
                 ])->columnSpan(4)
             ])->columns(12);
     }
@@ -81,7 +85,6 @@ class PostResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -92,7 +95,7 @@ class PostResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\TagsRelationManager::class
         ];
     }
     
