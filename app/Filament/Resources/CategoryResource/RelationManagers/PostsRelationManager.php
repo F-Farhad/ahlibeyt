@@ -38,20 +38,15 @@ class PostsRelationManager extends RelationManager
                             ->required()
                             ->maxLength(2048),
                     ]),
-
+                    Forms\Components\FileUpload::make('thumbnail')
+                    ->directory('postImage'),
                     Forms\Components\RichEditor::make('content')
                         ->fileAttachmentsDirectory('postImage')
                         ->required(),
                     Forms\Components\Toggle::make('active'),
                     Forms\Components\DateTimePicker::make('published_at'),
-                ])->columnSpan(8),
-
-                Card::make()
-                ->schema([
-                    Forms\Components\FileUpload::make('thumbnail')
-                    ->directory('postImage'),
-                ])->columnSpan(4)
-            ])->columns(12);
+                ]),
+            ]);
     }
 
     public static function table(Table $table): Table
