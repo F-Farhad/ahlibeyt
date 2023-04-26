@@ -12,8 +12,11 @@ class CreatePost extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        $data['user_id'] = auth()->id();
-    
+
+        if($data['block']){
+            $data['content'] = json_encode($data['block']);
+        }
+
         return $data;
     }
 }

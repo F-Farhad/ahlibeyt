@@ -30,6 +30,7 @@ class TagsRelationManager extends RelationManager
                     }),
                 Forms\Components\TextInput::make('slug')
                     ->required()
+                    ->unique()
                     ->maxLength(2048),
             ]);
     }

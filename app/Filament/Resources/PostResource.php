@@ -7,14 +7,15 @@ use App\Filament\Resources\PostResource\RelationManagers;
 use App\Models\Post;
 use Closure;
 use Filament\Forms;
+use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Livewire\TemporaryUploadedFile;
 
@@ -35,36 +36,61 @@ class PostResource extends Resource
                     Grid::make()
                     ->schema([
                         Forms\Components\TextInput::make('title')
-                            ->required()
-                            ->maxLength(2048)
-                            ->reactive()
-                            ->afterStateUpdated(function (Closure $set, $state) {
-                                $set('slug', \Illuminate\Support\Str::slug($state));
-                            }),
-                            Forms\Components\TextInput::make('slug')
-                            ->required()
-                            ->maxLength(2048),
+                        ->required()
+                        ->maxLength(2048)
+                        ->reactive()
+                        ->afterStateUpdated(function (Closure $set, $state) {
+                            $set('slug', \Illuminate\Support\Str::slug($state));
+                        }),
+                        Forms\Components\TextInput::make('slug')
+                        ->required()
+                        ->maxLength(2048),
                     ]),
-
-                    Forms\Components\RichEditor::make('content')
-                        ->fileAttachmentsDirectory('postImage')
-                        ->required(),
-                    Forms\Components\Toggle::make('active'),
-                    Forms\Components\DateTimePicker::make('published_at'),
-                ])->columnSpan(8),
+                ]),
 
                 Card::make()
                 ->schema([
                     Forms\Components\FileUpload::make('thumbnail')
-                    ->directory('postImage'),
-                    Forms\Components\Select::make('category_id')
+                    ->directory('content\thumbnail'),
+                ]),
+
+                Card::make()
+                ->schema([
+                    Builder::make('block')
+                    ->blocks([
+                        Builder\Block::make('content')
+                        ->icon('heroicon-o-document-text')
+                        ->schema([
+                            \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('content')
+                            ->fileAttachmentsDirectory('content\imagesContent')
+                        ]),
+                        Builder\Block::make('audio')
+                        ->icon('heroicon-o-microphone')
+                        ->schema([
+                            Forms\Components\TextInput::make('title'),
+                            FileUpload::make('audio')
+                            ->directory('content\audioFiles')
+                        ])
+                    ])
+                    ->collapsible()
+                    ->collapsed()
+                ]),
+
+                Card::make()
+                ->schema([
+                    Grid::make()
+                    ->schema([
+                        Forms\Components\Select::make('category_id')
                         ->relationship('category', 'title')
                         ->required(),
-                    Select::make('tags')
+                        Select::make('tags')
                         ->multiple()
-                        ->relationship('tags', 'title')
-                ])->columnSpan(4)
-            ])->columns(12);
+                        ->relationship('tags', 'title'),
+                        Forms\Components\Toggle::make('active'),
+                        Forms\Components\DateTimePicker::make('published_at'),
+                    ]),
+                ])
+            ]);
     }
 
     public static function table(Table $table): Table
@@ -104,7 +130,6 @@ class PostResource extends Resource
         return [
             'index' => Pages\ListPosts::route('/'),
             'create' => Pages\CreatePost::route('/create'),
-            'view' => Pages\ViewPost::route('/{record}'),
             'edit' => Pages\EditPost::route('/{record}/edit'),
         ];
     }    

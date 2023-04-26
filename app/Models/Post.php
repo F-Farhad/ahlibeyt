@@ -10,6 +10,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Post extends Model
 {
     use HasFactory;
+
+    protected $casts = [
+        'content' => 'array',
+    ];
+
     protected $fillable = [
         'title',
         'slug',
@@ -23,10 +28,6 @@ class Post extends Model
 
     public function category():BelongsTo{
         return $this->belongsTo(Category::class);
-    }
-
-    public function user():BelongsTo{
-        return $this->belongsTo(User::class);
     }
 
     public function tags():BelongsToMany{

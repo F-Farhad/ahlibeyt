@@ -17,11 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('title', 2048);
             $table->string('slug', 2048);
-            $table->string('thumbnail', 2048);
-            $table->longText('content');
+            $table->string('thumbnail', 2048)->nullable();
+            $table->json('content');
             $table->boolean('active')->default(false);
             $table->datetime('published_at')->nullable();
-            $table->foreignIdFor(User::class, 'user_id');
             $table->foreignIdFor(Category::class, 'category_id');
             $table->timestamps();
         });
