@@ -73,18 +73,20 @@ class PostResource extends Resource
                         ])
                     ])
                     ->collapsible()
-                    ->collapsed()
                 ]),
 
                 Card::make()
                 ->schema([
                     Grid::make()
                     ->schema([
-                        Forms\Components\Select::make('category_id')
+                        Select::make('category_id')
                         ->relationship('category', 'title')
+                        ->searchable()
+                        ->preload()
                         ->required(),
                         Select::make('tags')
                         ->multiple()
+                        ->preload()
                         ->relationship('tags', 'title'),
                         Forms\Components\Toggle::make('active'),
                         Forms\Components\DateTimePicker::make('published_at'),

@@ -11,7 +11,9 @@ use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\Builder;
+use Filament\Forms\Components\FileUpload;
+use Filament\Tables\Actions\EditAction;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PostsRelationManager extends RelationManager
@@ -24,32 +26,71 @@ class PostsRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Card::make()
-                ->schema([
-                    Grid::make()
-                    ->schema([
-                        Forms\Components\TextInput::make('title')
-                            ->required()
-                            ->maxLength(2048)
-                            ->reactive()
-                            ->afterStateUpdated(function (Closure $set, $state) {
-                                $set('slug', \Illuminate\Support\Str::slug($state));
-                            }),
-                            Forms\Components\TextInput::make('slug')
-                            ->required()
-                            ->maxLength(2048),
-                    ]),
-                    Forms\Components\FileUpload::make('thumbnail')
-                    ->directory('postImage'),
-                    Forms\Components\RichEditor::make('content')
-                        ->fileAttachmentsDirectory('postImage')
-                        ->required(),
-                    Select::make('tags')
-                        ->multiple()
-                        ->relationship('tags', 'title'),
-                    Forms\Components\Toggle::make('active'),
-                    Forms\Components\DateTimePicker::make('published_at'),
-                ]),
+                // Card::make()
+                // ->schema([
+                //     Grid::make()
+                //     ->schema([
+                //         Forms\Components\TextInput::make('title')
+                //         ->required()
+                //         ->maxLength(2048)
+                //         ->reactive()
+                //         ->afterStateUpdated(function (Closure $set, $state) {
+                //             $set('slug', \Illuminate\Support\Str::slug($state));
+                //         }),
+                //         Forms\Components\TextInput::make('slug')
+                //         ->required()
+                //         ->maxLength(2048),
+                //     ]),
+                // ]),
+
+                // Card::make()
+                // ->schema([
+                //     Forms\Components\FileUpload::make('thumbnail')
+                //     ->directory('content\thumbnail'),
+                // ]),
+
+                // Card::make()
+                // ->schema([
+                //     Builder::make('block')
+                //     ->blocks([
+                //         Builder\Block::make('content')
+                //         ->icon('heroicon-o-document-text')
+                //         ->schema([
+                //             \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('content')
+                //             ->fileAttachmentsDirectory('content\imagesContent')
+                //             ->json()
+                //         ]),
+                //         Builder\Block::make('audio')
+                //         ->icon('heroicon-o-microphone')
+                //         ->schema([
+                //             Forms\Components\TextInput::make('title'),
+                //             FileUpload::make('audio')
+                //             ->directory('content\audioFiles')
+                //         ])
+                //     ])
+                //     ->collapsible()
+                //     ->collapsed()
+                // ]),
+
+                // Card::make()
+                // ->schema([
+                //     Grid::make()
+                //     ->schema([
+                //         Select::make('category_id')
+                //         ->relationship('category', 'title')
+                //         ->searchable()
+                //         ->preload()
+                //         ->required(),
+                //         Select::make('tags')
+                //         ->multiple()
+                //         ->preload()
+                //         ->relationship('tags', 'title'),
+                //         Forms\Components\Toggle::make('active'),
+                //         Forms\Components\DateTimePicker::make('published_at'),
+                //     ]),
+                // ]),
+
+               
             ]);
     }
 
@@ -80,5 +121,5 @@ class PostsRelationManager extends RelationManager
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
-    }    
+    } 
 }
