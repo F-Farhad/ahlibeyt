@@ -46,7 +46,7 @@ class Post extends Model
         if(str_starts_with($this->thumbnail, 'http')){
             return $this->thumbnail;
         }
-            return '/store/' . $this->thumbnail;
+            return '/storage/' . $this->thumbnail;
     }
 
 }

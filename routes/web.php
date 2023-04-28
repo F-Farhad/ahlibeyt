@@ -19,4 +19,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::namespace('App\Http\Controllers\Post')->group(function(){
     Route::get('/', IndexController::class)->name('home');
+    Route::get('/{post:slug}', ShowController::class)->name('post.show');
 });

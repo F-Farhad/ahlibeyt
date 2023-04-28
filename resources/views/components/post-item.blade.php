@@ -18,6 +18,6 @@
         <a href="#" class="pb-6">
             {!! $post->short_content !!}
         </a>
-        <a href="#" class="uppercase text-gray-800 hover:text-black">Continue Reading <i class="fas fa-arrow-right"></i></a>
+        <a href="{{route('post.show', $post)}}" class="uppercase text-gray-800 hover:text-black">Continue Reading <i class="fas fa-arrow-right"></i></a>
     </div>
 </article>

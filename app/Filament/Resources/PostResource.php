@@ -53,16 +53,19 @@ class PostResource extends Resource
                 ->schema([
                     Forms\Components\FileUpload::make('thumbnail')
                     ->directory('content\thumbnail'),
-                    RichEditor::make('short_content')
+                    // RichEditor::make('short_content')
+                    // ->required()
+                    // ->disableToolbarButtons([
+                    //     'attachFiles',
+                    //     'codeBlock',
+                    //     'link',
+                    //     'blockquote',
+                    //     'orderedList',
+                    //     'bulletList'
+                    // ])
+                    \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('short_content')
+                    ->simple()
                     ->required()
-                    ->disableToolbarButtons([
-                        'attachFiles',
-                        'codeBlock',
-                        'link',
-                        'blockquote',
-                        'orderedList',
-                        'bulletList'
-                    ])
                 ]),
 
                 Card::make()
