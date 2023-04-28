@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Doctrine\DBAL\Types\JsonType;
+use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,12 +15,14 @@ class Post extends Model
 
     protected $casts = [
         'content' => 'array',
+        'published_at' => 'datetime',
     ];
 
     protected $fillable = [
         'title',
         'slug',
         'thumbnail',
+        'short_content',
         'content',
         'active',
         'published_at',
@@ -33,4 +37,9 @@ class Post extends Model
     public function tags():BelongsToMany{
         return $this->belongsToMany(Tag::class);
     }
+
+    public function getFormattedDate(){
+        return $this->published_at->format('F jS Y');
+    }
+
 }

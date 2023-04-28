@@ -11,6 +11,7 @@ use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -52,6 +53,16 @@ class PostResource extends Resource
                 ->schema([
                     Forms\Components\FileUpload::make('thumbnail')
                     ->directory('content\thumbnail'),
+                    RichEditor::make('short_content')
+                    ->required()
+                    ->disableToolbarButtons([
+                        'attachFiles',
+                        'codeBlock',
+                        'link',
+                        'blockquote',
+                        'orderedList',
+                        'bulletList'
+                    ])
                 ]),
 
                 Card::make()
