@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title', 2048);
             $table->string('slug', 2048);
             $table->string('thumbnail', 2048)->nullable();
-            $table->json('content');
+            $table->json('content')->nullable();
             $table->boolean('active')->default(false);
             $table->datetime('published_at')->nullable();
             $table->foreignIdFor(Category::class, 'category_id');

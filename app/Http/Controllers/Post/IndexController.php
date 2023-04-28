@@ -18,7 +18,7 @@ class IndexController extends Controller
                     ->where('active', '=', 1)
                     ->whereDate('published_at', '<', Carbon::now())
                     ->orderBy('published_at', 'desc')
-                    ->paginate();
+                    ->paginate(1);
         return view('home', compact('posts'));
     }
 }
