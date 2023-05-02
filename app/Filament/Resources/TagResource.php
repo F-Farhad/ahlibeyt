@@ -35,7 +35,7 @@ class TagResource extends Resource
                     }),
                 Forms\Components\TextInput::make('slug')
                     ->required()
-                    ->unique()
+                    ->unique(ignoreRecord: true)
                     ->maxLength(2048),
             ]);
     }
