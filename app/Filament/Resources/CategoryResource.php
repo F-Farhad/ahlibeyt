@@ -21,6 +21,8 @@ class CategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
+    protected static ?string $recordTitleAttribute = 'title';
+
     protected static ?string $navigationGroup = 'Контент';
 
     public static function form(Form $form): Form
@@ -45,8 +47,8 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('updated_at')
+                Tables\Columns\TextColumn::make('title')->searchable(),
+                Tables\Columns\TextColumn::make('updated_at')->sortable()
                     ->dateTime(),
             ])
             ->filters([

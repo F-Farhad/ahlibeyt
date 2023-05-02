@@ -17,6 +17,9 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Filters\TernaryFilter;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Livewire\TemporaryUploadedFile;
 
@@ -25,6 +28,8 @@ class PostResource extends Resource
     protected static ?string $model = Post::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-clipboard-list';
+
+    protected static ?string $recordTitleAttribute = 'title';
 
     protected static ?string $navigationGroup = 'Контент';
 
@@ -104,18 +109,25 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title'),
+                Tables\Columns\TextColumn::make('title')
+                    ->searchable(),
                 Tables\Columns\ImageColumn::make('thumbnail'),
                 Tables\Columns\IconColumn::make('active')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('published_at')
+                    ->sortable()
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('category.title'),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->sortable()
                     ->dateTime(),
-            ])
+            ])->defaultSort('published_at', 'desc')
             ->filters([
-                //
+                TernaryFilter::make('active')
+                    ->placeholder('-')
+                    ->trueLabel('Published')
+                    ->falseLabel('Unpublished'),
+                SelectFilter::make('Category')->relationship('category', 'title')
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -124,6 +136,8 @@ class PostResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
+
+
     
     public static function getRelations(): array
     {
