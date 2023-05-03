@@ -11,17 +11,16 @@ use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
-use Filament\Forms\Components\RichEditor;
+
 use Filament\Forms\Components\Select;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Filament\Tables\Filters\Filter;
+
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Livewire\TemporaryUploadedFile;
+
 
 class PostResource extends Resource
 {
@@ -29,9 +28,7 @@ class PostResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-clipboard-list';
 
-    protected static ?string $recordTitleAttribute = 'title';
-
-    protected static ?string $navigationGroup = 'Контент';
+    protected static ?string $recordTitleAttribute = 'title';       //global search
 
     public static function form(Form $form): Form
     {
@@ -47,21 +44,25 @@ class PostResource extends Resource
                         ->reactive()
                         ->afterStateUpdated(function (Closure $set, $state) {
                             $set('slug', \Illuminate\Support\Str::slug($state));
-                        }),
+                        })
+                        ->label(__('filament.title')),
                         Forms\Components\TextInput::make('slug')
                         ->required()
                         ->unique(ignoreRecord: true)
-                        ->maxLength(2048),
+                        ->maxLength(2048)
+                        ->label(__('filament.slug')),
                     ]),
                 ]),
 
                 Card::make()
                 ->schema([
                     Forms\Components\FileUpload::make('thumbnail')
-                    ->directory('content\thumbnail'),
+                    ->directory('content\thumbnail')
+                    ->label(__('filament.thumbnail')),
                     \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('short_content')
                     ->simple()
                     ->required()
+                    ->label(__('filament.short_content')),
                 ]),
 
                 Card::make()
@@ -73,16 +74,22 @@ class PostResource extends Resource
                         ->schema([
                             \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('content')
                             ->fileAttachmentsDirectory('content\imagesContent')
-                        ]),
+                            ->label(__('filament.content'))
+                        ])
+                        ->label(__('filament.content')),
                         Builder\Block::make('audio')
                         ->icon('heroicon-o-microphone')
                         ->schema([
-                            Forms\Components\TextInput::make('title'),
+                            Forms\Components\TextInput::make('title')
+                            ->label(__('filament.title')),
                             FileUpload::make('audio')
                             ->directory('content\audioFiles')
+                            ->label(__('filament.audio')),
                         ])
+                        ->label(__('filament.audio')),
                     ])
                     ->collapsible()
+                    ->label(__('filament.block'))
                 ]),
 
                 Card::make()
@@ -90,16 +97,20 @@ class PostResource extends Resource
                     Grid::make()
                     ->schema([
                         Select::make('category_id')
-                        ->relationship('category', 'title')
-                        ->searchable()
-                        ->preload()
-                        ->required(),
+                            ->relationship('category', 'title')
+                            ->searchable()
+                            ->preload()
+                            ->required()
+                            ->label(__('filament.category')),
                         Select::make('tags')
-                        ->multiple()
-                        ->preload()
-                        ->relationship('tags', 'title'),
-                        Forms\Components\Toggle::make('active'),
-                        Forms\Components\DateTimePicker::make('published_at'),
+                            ->multiple()
+                            ->preload()
+                            ->relationship('tags', 'title')
+                            ->label(__('filament.tags')),
+                        Forms\Components\Toggle::make('active')
+                            ->label(__('filament.active')),
+                        Forms\Components\DateTimePicker::make('published_at')
+                            ->label(__('filament.published_at')),
                     ]),
                 ])
             ]);
@@ -110,30 +121,39 @@ class PostResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
-                    ->searchable(),
-                Tables\Columns\ImageColumn::make('thumbnail'),
+                    ->searchable()
+                    ->label(__('filament.title')),
+                Tables\Columns\ImageColumn::make('thumbnail')
+                    ->label(__('filament.thumbnail')),
                 Tables\Columns\IconColumn::make('active')
-                    ->boolean(),
+                    ->boolean()
+                    ->label(__('filament.active')),
                 Tables\Columns\TextColumn::make('published_at')
                     ->sortable()
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('category.title'),
+                    ->dateTime('d-m-Y')
+                    ->label(__('filament.published_at')),
+                Tables\Columns\TextColumn::make('category.title')
+                    ->label(__('filament.category')),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->sortable()
-                    ->dateTime(),
+                    ->since()
+                    ->label(__('filament.updated_at')),
             ])->defaultSort('published_at', 'desc')
             ->filters([
                 TernaryFilter::make('active')
                     ->placeholder('-')
-                    ->trueLabel('Published')
-                    ->falseLabel('Unpublished'),
-                SelectFilter::make('Category')->relationship('category', 'title')
+                    ->trueLabel(__('filament.published'))
+                    ->falseLabel(__('filament.UnPublished'))
+                    ->label(__('filament.active')),
+                SelectFilter::make('Category')
+                    ->relationship('category', 'title')
+                    ->label(__('filament.category'))
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
+                // Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 
@@ -153,5 +173,30 @@ class PostResource extends Resource
             'create' => Pages\CreatePost::route('/create'),
             'edit' => Pages\EditPost::route('/{record}/edit'),
         ];
-    }    
+    }
+
+    /**
+     * Change category name
+     */
+    public static function getModelLabel(): string
+    {
+        return __('filament.create_post');
+    }
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.posts');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('filament.posts');
+    }
+    
+    /**
+     * adding in navigation group
+     */
+    protected static function getNavigationGroup(): ?string
+    {
+        return __('filament.navigationGroupContent');
+    }
 }

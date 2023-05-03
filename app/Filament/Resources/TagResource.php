@@ -20,8 +20,6 @@ class TagResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-hashtag';
 
-    protected static ?string $navigationGroup = 'Контент';
-
     public static function form(Form $form): Form
     {
         return $form
@@ -32,11 +30,13 @@ class TagResource extends Resource
                     ->reactive()
                     ->afterStateUpdated(function (Closure $set, $state) {
                         $set('slug', \Illuminate\Support\Str::slug($state));
-                    }),
+                    })
+                    ->label(__('filament.title')),
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->unique(ignoreRecord: true)
-                    ->maxLength(2048),
+                    ->maxLength(2048)
+                    ->label(__('filament.slug')),
             ]);
     }
 
@@ -44,8 +44,11 @@ class TagResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title'),
+                Tables\Columns\TextColumn::make('title')
+                    ->label(__('filament.title')),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__('filament.updated_at')),
+                
             ])
             ->filters([
                 //
@@ -65,4 +68,29 @@ class TagResource extends Resource
             'index' => Pages\ManageTags::route('/'),
         ];
     }    
+
+    /**
+     * Change tags name
+     */
+    public static function getModelLabel(): string
+    {
+        return __('filament.tag');
+    }
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.tags');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('filament.tags');
+    }
+
+    /**
+     * adding in navigation group
+     */
+    protected static function getNavigationGroup(): ?string
+    {
+        return __('filament.navigationGroupContent');
+    }
 }

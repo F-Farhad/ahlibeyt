@@ -21,9 +21,7 @@ class CategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
-    protected static ?string $recordTitleAttribute = 'title';
-
-    protected static ?string $navigationGroup = 'Контент';
+    protected static ?string $recordTitleAttribute = 'title';           //global search
 
     public static function form(Form $form): Form
     {
@@ -33,13 +31,15 @@ class CategoryResource extends Resource
                     ->required()
                     ->maxLength(2048)
                     ->reactive()
+                    ->label(__('filament.title'))
                     ->afterStateUpdated(function (Closure $set, $state) {
                         $set('slug', \Illuminate\Support\Str::slug($state));
                     }),
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->unique(ignoreRecord: true)
-                    ->maxLength(2048),
+                    ->maxLength(2048)
+                    ->label(__('filament.slug')),
             ]);
     }
 
@@ -47,19 +47,22 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title')->searchable(),
-                Tables\Columns\TextColumn::make('updated_at')->sortable()
-                    ->dateTime(),
+                Tables\Columns\TextColumn::make('title')
+                    ->searchable()
+                    ->label(__('filament.title')),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->sortable()
+                    ->dateTime()
+                    ->label(__('filament.updated_at')),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
+                // Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
     
@@ -77,5 +80,30 @@ class CategoryResource extends Resource
             'create' => Pages\CreateCategory::route('/create'),
             'edit' => Pages\EditCategory::route('/{record}/edit'),
         ];
-    }    
+    } 
+    
+    /**
+     * Change category name
+     */
+    public static function getModelLabel(): string
+    {
+        return __('filament.create_category');
+    }
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.categories');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('filament.categories');
+    }
+
+    /**
+     * adding in navigation group
+     */
+    protected static function getNavigationGroup(): ?string
+    {
+        return __('filament.navigationGroupContent');
+    }
 }

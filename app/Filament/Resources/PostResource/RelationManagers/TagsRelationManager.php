@@ -27,11 +27,13 @@ class TagsRelationManager extends RelationManager
                     ->reactive()
                     ->afterStateUpdated(function (Closure $set, $state) {
                         $set('slug', \Illuminate\Support\Str::slug($state));
-                    }),
+                    })
+                    ->label(__('filament.title')),
                 Forms\Components\TextInput::make('slug')
                     ->required()
-                    ->unique()
-                    ->maxLength(2048),
+                    ->unique(ignoreRecord: true)
+                    ->maxLength(2048)
+                    ->label(__('filament.slug')),
             ]);
     }
 
@@ -39,8 +41,11 @@ class TagsRelationManager extends RelationManager
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title'),
+                Tables\Columns\TextColumn::make('title')
+                    ->label(__('filament.title')),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__('filament.updated_at')),
+                
             ])
             ->filters([
                 //
@@ -55,5 +60,18 @@ class TagsRelationManager extends RelationManager
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
-    }    
+    } 
+
+    /**
+     * Change tags name
+     */
+    public static function getModelLabel(): string
+    {
+        return __('filament.tag');
+    }
+    
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.tags');
+    }
 }
