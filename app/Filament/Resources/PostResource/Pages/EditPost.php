@@ -25,7 +25,6 @@ class EditPost extends EditRecord
 
     protected function mutateFormDataBeforeFill(array $data): array
     {
-    
         $data['block'] = json_decode($data['content'], true);
         return $data;
     }

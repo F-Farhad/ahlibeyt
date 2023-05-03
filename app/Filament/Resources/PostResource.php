@@ -153,7 +153,7 @@ class PostResource extends Resource
                 
             ])
             ->bulkActions([
-                // Tables\Actions\DeleteBulkAction::make(),
+                Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 
