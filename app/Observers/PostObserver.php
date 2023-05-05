@@ -26,22 +26,32 @@ class PostObserver
 
         if($post->isDirty('content') && !is_null($post->getOriginal('content'))){
             $postNewData = json_decode($post->content, true);
-            dump($postNewData);
+            // dump($postNewData);
 
             $postOldData = json_decode($post->getOriginal('content'), true);
-            dd($postOldData);
+            // dd($postOldData);
 
-            // foreach($postOldData as $keyOld => $postOldDataValue){
-            //     if($postOldData[$keyOld]['type'] == 'image'){
-            //         if(!array_key_exists($keyOld, $postNewData)){
-            //             Storage::disk('public')->delete($postOldDataValue['data']['image']);
-            //         }elseif($postNewData[$keyOld]['data']['image'] != $postOldData[$keyOld]['data']['image']){
-            //             Storage::disk('public')->delete($postOldDataValue['data']['image']);
-            //         }
-            //     }
+            foreach($postOldData as $postOldDataValue){
+                $deleteFiles = true;
+                if($postOldDataValue['type'] == 'image'){
+                    foreach($postNewData as $postNewDataValue){
+                        if($postNewDataValue['type'] == 'image'){
+                            if($postOldDataValue['data']['image'] == $postNewDataValue['data']['image']){
+                                $deleteFiles = false;
+                            }
+                        }
+                    }
+                }
+                if($deleteFiles && isset($postOldDataValue['data']['image'])){
+                    Storage::disk('public')->delete($postOldDataValue['data']['image']);
+                }
+            }
+
+            // if(!array_key_exists($keyOld, $postNewData)){
+            //     Storage::disk('public')->delete($postOldDataValue['data']['image']);
+            // }elseif($postNewData[$keyOld]['data']['image'] != $postOldData[$keyOld]['data']['image']){
+            //     Storage::disk('public')->delete($postOldDataValue['data']['image']);
             // }
-
-            $arrayForDelete = array_diff($postOldData, $postNewData);
             
 
         }
