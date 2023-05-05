@@ -58,6 +58,7 @@ class PostResource extends Resource
                 ->schema([
                     Forms\Components\FileUpload::make('thumbnail')
                     ->directory('content\thumbnail')
+                    ->image()
                     ->label(__('filament.thumbnail')),
                     \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('short_content')
                     ->simple()
@@ -73,20 +74,33 @@ class PostResource extends Resource
                         ->icon('heroicon-o-document-text')
                         ->schema([
                             \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('content')
+                            ->profile('ahlibeyt')
                             ->fileAttachmentsDirectory('content\imagesContent')
                             ->label(__('filament.content'))
-                        ])
-                        ->label(__('filament.content')),
+                        ])->label(__('filament.content')),
+
                         Builder\Block::make('audio')
                         ->icon('heroicon-o-microphone')
                         ->schema([
                             Forms\Components\TextInput::make('title')
-                            ->label(__('filament.title')),
+                            ->label(__('filament.title_block_description')),
                             FileUpload::make('audio')
                             ->directory('content\audioFiles')
                             ->label(__('filament.audio')),
-                        ])
-                        ->label(__('filament.audio')),
+                        ])->label(__('filament.audio')),
+                        
+                        Builder\Block::make('image')
+                        ->icon('heroicon-o-photograph')
+                        ->schema([
+                            \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('image_description')
+                                ->simple()
+                                ->label(__('filament.image_block_description')),
+                            FileUpload::make('image')
+                            ->directory('content\imageContent')
+                            ->image()
+                            ->required()
+                            ->label(__('filament.thumbnail')),
+                        ])->label(__('filament.thumbnail')),
                     ])
                     ->collapsible()
                     ->label(__('filament.block'))

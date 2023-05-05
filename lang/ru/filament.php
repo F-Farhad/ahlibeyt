@@ -18,7 +18,9 @@ return [
     'short_content' => 'Введение',
     'block' => 'Блок',
     'content' => 'Контент',
+    'title_block_description' => 'Заголовок',
     'audio' => 'Аудио',
+    'image_block_description' => 'Описание картинки',
 
     'navigationGroupContent' => 'Контент',
     'slug' => 'Уникальный идентификатор',

@@ -29,6 +29,13 @@
                         @endforeach
                     @endif
                 </div>
+                <div class="flex flex-row flex-wrap">
+                    @foreach($post->tags as $tag)
+                    <div class="mr-1">
+                        {{$tag->title}}
+                    </div>
+                    @endforeach
+                </div>
             </div>
         </article>
 

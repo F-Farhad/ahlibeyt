@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use Doctrine\DBAL\Types\JsonType;
-use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

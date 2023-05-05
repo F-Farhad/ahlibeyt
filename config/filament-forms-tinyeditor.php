@@ -29,6 +29,12 @@ return [
             'toolbar' => 'template',
             'upload_directory' => null,
         ],
+
+        'ahlibeyt' => [
+            'plugins' => 'advlist autoresize directionality emoticons fullscreen hr link lists media table wordcount',
+            'toolbar' => 'undo redo removeformat | formatselect fontsizeselect | bold italic | rtl ltr | alignjustify alignright aligncenter alignleft | numlist bullist | forecolor backcolor | blockquote table toc hr | link media codesample emoticons | wordcount fullscreen',
+            'upload_directory' => null,
+        ],
         /*
         |--------------------------------------------------------------------------
         | Custom Configs
