@@ -68,6 +68,18 @@ class PostObserver
         if (!is_null($post->thumbnail)) {
             Storage::disk('public')->delete($post->thumbnail);
         }
+
+        if(!is_null($post->content)){
+            $postDataContent = json_decode($post->content, true);
+
+            foreach($postDataContent as $postDataContentValue){
+                if($postDataContentValue['type'] == 'image'){
+                    Storage::disk('public')->delete($postDataContentValue['data']['image']);
+                }elseif($postDataContentValue['type'] == 'audio'){
+                    Storage::disk('public')->delete($postDataContentValue['data']['audio']);
+                }
+            }
+        }
     }
 
     /**

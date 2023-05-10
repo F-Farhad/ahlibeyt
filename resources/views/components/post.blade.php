@@ -24,7 +24,10 @@
                                 {!! $content['data']['title'] !!}
                                 <audio controls>
                                     <source src="/storage/{!!$content['data']['audio']!!}" type="audio/mpeg">
-                                  </audio>
+                                </audio>
+                            @elseif($content['type'] == 'image')
+                                {!! $content['data']['image_description'] !!}
+                                <img src=" /storage/{!! $content['data']['image'] !!}" >
                             @endif
                         @endforeach
                     @endif
