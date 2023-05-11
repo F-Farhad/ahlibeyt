@@ -21,3 +21,7 @@ Route::namespace('App\Http\Controllers\Post')->group(function(){
     Route::get('/', IndexController::class)->name('home');
     Route::get('/{post:slug}', ShowController::class)->name('post.show');
 });
+
+Route::namespace('App\Http\Controllers\Category')->group(function(){
+    Route::get('/category/{category:slug}', ShowController::class)->name('category.show');
+});

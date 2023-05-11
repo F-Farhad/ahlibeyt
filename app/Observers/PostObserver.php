@@ -25,7 +25,7 @@ class PostObserver
             Storage::disk('public')->delete($post->getOriginal('thumbnail'));
         }
 
-        //deleting the image content and audio files if it was changed
+        //deleting the image's content and audio files if it was changed
         if($post->isDirty('content') && !is_null($post->getOriginal('content'))){
             $postNewData = json_decode($post->content, true);
             $postOldData = json_decode($post->getOriginal('content'), true);
