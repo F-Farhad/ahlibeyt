@@ -78,6 +78,7 @@ class PostsRelationManager extends RelationManager
                             ->label(__('filament.title')),
                             FileUpload::make('audio')
                             ->directory('content\audioFiles')
+                            ->acceptedFileTypes(['audio/*'])
                             ->label(__('filament.audio')),
                     ])
                     ->label(__('filament.audio')),
