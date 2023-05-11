@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -37,7 +38,7 @@ class Post extends Model
     }
 
     public function getFormattedDate(){
-        return $this->published_at->format('F jS Y');
+        return Carbon::parse($this->published_at);
     }
 
     public function getThumbnail(){

@@ -8,11 +8,11 @@
             <a href="{{route('category.show', $post->category)}}" class="text-blue-700 text-sm font-bold uppercase pb-4">
                 {{$post->category->title}}
             </a>
-        <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">
+        <a href="#" class="text-3xl font-bold hover:text-gray-700">
             {{$post->title}}
         </a>
-        <p href="#" class="text-sm pb-3">
-            Published on {{$post->getFormattedDate()}}
+        <p class="text-sm pb-4">
+            {{$post->getFormattedDate()->translatedFormat('F j, Y')}}
             {{-- By <a href="#" class="font-semibold hover:text-gray-800">David Grzyb</a>,  --}}
         </p>
         <a href="#" class="pb-6">
