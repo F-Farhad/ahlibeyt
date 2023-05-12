@@ -3,7 +3,7 @@
     <a href="#" class="hover:opacity-75">
         <img src="{{$post->getThumbnail()}}">
     </a>
-{{-- @dd($post->category) --}}
+
     <div class="bg-white flex flex-col justify-start p-6">
             <a href="{{route('category.show', $post->category)}}" class="text-blue-700 text-sm font-bold uppercase pb-4">
                 {{$post->category->title}}
@@ -12,8 +12,7 @@
             {{$post->title}}
         </a>
         <p class="text-sm pb-4">
-            {{$post->getFormattedDate()->translatedFormat('F j, Y')}}
-            {{-- By <a href="#" class="font-semibold hover:text-gray-800">David Grzyb</a>,  --}}
+            Опубликовано {{$post->getFormattedDate()->day .' '. $post->getFormattedDate()->getTranslatedMonthName('Do MMMM') . ' ' . $post->getFormattedDate()->year;}}
         </p>
         <a href="#" class="pb-6">
             {!! $post->short_content !!}
