@@ -9,4 +9,5 @@
         {{$posts->onEachSide(1)->links()}}
 
     </section>
+
 </x-app-layouts>
