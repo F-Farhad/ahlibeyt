@@ -7,6 +7,7 @@ use App\Filament\Resources\WidgetResource\RelationManagers;
 use App\Models\Widget;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\RichEditor;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -18,7 +19,7 @@ class WidgetResource extends Resource
 {
     protected static ?string $model = Widget::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-template';
 
     public static function form(Form $form): Form
     {
@@ -26,10 +27,10 @@ class WidgetResource extends Resource
             ->schema([
                 Card::make()
                 ->schema([
-                Forms\Components\TextInput::make('key')
+                    Forms\Components\TextInput::make('key')
                         ->required()
-                        ->unique(ignoreRecord: true),
-                        // ->label(__('filament.content'))
+                        ->unique(ignoreRecord: true)
+                        ->label(__('filament.key')),
                     Forms\Components\TextInput::make('title')
                         ->required()
                         ->maxLength(2048)
@@ -40,7 +41,6 @@ class WidgetResource extends Resource
                     //     ->label(__('filament.thumbnail')),
                     \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('content')
                         ->profile('ahlibeyt')
-                        ->fileAttachmentsDirectory('content\imagesContent')
                         ->label(__('filament.content')),
                     Forms\Components\Toggle::make('active'),
                 ])
@@ -51,19 +51,23 @@ class WidgetResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('key'),
-                Tables\Columns\TextColumn::make('title'),
+                Tables\Columns\TextColumn::make('key')
+                    ->label(__('filament.key')),
+                Tables\Columns\TextColumn::make('title')
+                    ->label(__('filament.title')),
                 // Tables\Columns\TextColumn::make('thumbnail'),
                 Tables\Columns\IconColumn::make('active')
-                    ->boolean(),
+                    ->boolean()
+                    ->label(__('filament.active')),
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime('d-m-Y'),
+                    ->dateTime('d-m-Y')
+                    ->label(__('filament.updated_at')),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -92,5 +96,22 @@ class WidgetResource extends Resource
     protected static function getNavigationGroup(): ?string
     {
         return __('filament.navigationGroupContent');
+    }
+
+    /**
+     * Change widget name
+     */
+    public static function getModelLabel(): string
+    {
+        return __('filament.create_widget');
+    }
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.widgets');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('filament.widgets');
     }
 }

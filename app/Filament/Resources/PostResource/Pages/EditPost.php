@@ -28,4 +28,9 @@ class EditPost extends EditRecord
         $data['block'] = json_decode($data['content'], true);
         return $data;
     }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }

@@ -81,6 +81,14 @@ class CategoryResource extends Resource
             'edit' => Pages\EditCategory::route('/{record}/edit'),
         ];
     } 
+
+    /**
+     * adding in navigation group
+     */
+    protected static function getNavigationGroup(): ?string
+    {
+        return __('filament.navigationGroupContent');
+    }
     
     /**
      * Change category name
@@ -99,11 +107,4 @@ class CategoryResource extends Resource
         return __('filament.categories');
     }
 
-    /**
-     * adding in navigation group
-     */
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.navigationGroupContent');
-    }
 }
