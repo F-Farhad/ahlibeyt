@@ -29,6 +29,7 @@ return [
     'key' => 'Ключ',
     'create_widget' => 'Виджет',
     'widgets' => 'Виджеты',
+    'about-us' => 'О нас',
 
 
     'navigationGroupContent' => 'Контент',

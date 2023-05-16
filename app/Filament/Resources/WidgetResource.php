@@ -8,6 +8,7 @@ use App\Models\Widget;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -27,7 +28,10 @@ class WidgetResource extends Resource
             ->schema([
                 Card::make()
                 ->schema([
-                    Forms\Components\TextInput::make('key')
+                    Select::make('key')
+                        ->options([
+                            'about-us' => __('filament.about-us'),
+                        ])
                         ->required()
                         ->unique(ignoreRecord: true)
                         ->label(__('filament.key')),

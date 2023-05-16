@@ -7,23 +7,21 @@
     <title>Tailwind Blog Template</title>
     <meta name="author" content="">
     <meta name="description" content="">
-
-    <!-- Tailwind -->
-    {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"> --}}
     
-    <style>
+    {{-- <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
 
         .font-family-karla {
             font-family: karla;
         }
-    </style>
+    </style> --}}
 
     <!-- AlpineJS -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
     @vite('resources/css/app.css')
+    @livewireStyles
 </head>
 <body class="bg-white font-family-karla">
 
@@ -101,7 +99,7 @@
     </div>
 
     <footer class="w-full border-t bg-white pb-12">
-        <div
+        {{-- <div
             class="relative w-full flex items-center invisible md:visible md:pb-12"
             x-data="getCarouselData()"
         >
@@ -118,7 +116,7 @@
                 x-on:click="increment()">
                 &#8594;
             </button>
-        </div>
+        </div> --}}
         <div class="w-full container mx-auto flex flex-col items-center">
             <div class="flex flex-col md:flex-row text-center md:text-left md:justify-between py-6">
                 <a href="#" class="uppercase px-3">About Us</a>
@@ -130,7 +128,7 @@
         </div>
     </footer>
 
-    <script>
+    {{-- <script>
         function getCarouselData() {
             return {
                 currentIndex: 0,
@@ -153,7 +151,7 @@
                 },
             }
         }
-    </script>
-
+    </script> --}}
+    @livewireScripts
 </body>
 </html>

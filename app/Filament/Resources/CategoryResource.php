@@ -54,6 +54,8 @@ class CategoryResource extends Resource
                     ->sortable()
                     ->dateTime()
                     ->label(__('filament.updated_at')),
+                Tables\Columns\TextColumn::make('posts_count')->counts('posts')
+                    ->label(__('filament.posts')),
             ])
             ->filters([
                 //

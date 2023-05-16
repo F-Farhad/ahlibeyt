@@ -50,7 +50,7 @@
                                 <i class="fas fa-arrow-left pr-1"></i> 
                                 Предыдущий
                             </p>
-                            <p class="pt-2">{{\Illuminate\Support\Str::words($prev->title, 5) }}</p>
+                            <p class="pt-2">{{\Illuminate\Support\Str::words($prev->title, 2) }}</p>
                         </a>
                     @endif
                 </div>
@@ -61,7 +61,7 @@
                                 Следующий 
                                 <i class="fas fa-arrow-right pl-1"></i>
                             </p>
-                            <p class="pt-2">{{\Illuminate\Support\Str::words($next->title, 5) }}</p>
+                            <p class="pt-2">{{\Illuminate\Support\Str::words($next->title, 2) }}</p>
                         </a>
                     @endif
                 </div>

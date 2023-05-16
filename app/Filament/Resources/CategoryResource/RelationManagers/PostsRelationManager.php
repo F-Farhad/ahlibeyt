@@ -27,12 +27,12 @@ class PostsRelationManager extends RelationManager
     public static function form(Form $form): Form
     {
         return $form
-        ->schema([
-            Card::make()
             ->schema([
-                Grid::make()
+                Card::make()
                 ->schema([
-                    TextInput::make('title')
+                    Grid::make()
+                    ->schema([
+                        TextInput::make('title')
                         ->required()
                         ->maxLength(2048)
                         ->reactive()
@@ -40,76 +40,84 @@ class PostsRelationManager extends RelationManager
                             $set('slug', \Illuminate\Support\Str::slug($state));
                         })
                         ->label(__('filament.title')),
-                    TextInput::make('slug')
+                        TextInput::make('slug')
                         ->required()
                         ->unique(ignoreRecord: true)
                         ->maxLength(2048)
                         ->label(__('filament.slug')),
+                    ]),
                 ]),
-            ]),
 
-            Card::make()
-            ->schema([
-                FileUpload::make('thumbnail')
+                Card::make()
+                ->schema([
+                    FileUpload::make('thumbnail')
                     ->directory('content\thumbnail')
+                    ->image()
                     ->label(__('filament.thumbnail')),
-                \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('short_content')
+                    \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('short_content')
                     ->simple()
                     ->required()
                     ->label(__('filament.short_content')),
-            ]),
-
-            Card::make()
-            ->schema([
-                Builder::make('block')
-                ->blocks([
-                    Builder\Block::make('content')
-                    ->icon('heroicon-o-document-text')
-                    ->schema([
-                        \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('content')
-                        ->fileAttachmentsDirectory('content\imagesContent')
-                        ->label(__('filament.content'))
-                    ])
-                    ->label(__('filament.content')),
-                    Builder\Block::make('audio')
-                    ->icon('heroicon-o-microphone')
-                    ->schema([
-                        TextInput::make('title')
-                            ->label(__('filament.title')),
-                            FileUpload::make('audio')
-                            ->directory('content\audioFiles')
-                            ->acceptedFileTypes(['audio/*'])
-                            ->label(__('filament.audio')),
-                    ])
-                    ->label(__('filament.audio')),
-                ])
-                ->collapsible()
-                ->label(__('filament.block'))
-            ]),
-
-            Card::make()
-            ->schema([
-                Grid::make()
-                ->schema([
-                    Select::make('category_id')
-                        ->relationship('category', 'title')
-                        ->searchable()
-                        ->preload()
-                        ->required()
-                        ->label(__('filament.category')),
-                    Select::make('tags')
-                        ->multiple()
-                        ->preload()
-                        ->relationship('tags', 'title')
-                        ->label(__('filament.tags')),
-                    Toggle::make('active')
-                        ->label(__('filament.active')),
-                    DateTimePicker::make('published_at')
-                        ->label(__('filament.published_at')),
                 ]),
-            ])
-        ]);
-        }
+
+                Card::make()
+                ->schema([
+                    Builder::make('block')
+                    ->blocks([
+                        Builder\Block::make('content')
+                        ->icon('heroicon-o-document-text')
+                        ->schema([
+                            \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('content')
+                                ->profile('ahlibeyt')
+                                ->fileAttachmentsDirectory('content\imagesContent')
+                                ->label(__('filament.content'))
+                        ])->label(__('filament.content')),
+
+                        Builder\Block::make('audio')
+                        ->icon('heroicon-o-microphone')
+                        ->schema([
+                            TextInput::make('title')
+                                ->label(__('filament.title_block_description')),
+                            FileUpload::make('audio')
+                                ->directory('content\audioFiles')
+                                ->acceptedFileTypes(['audio/*'])
+                                ->label(__('filament.audio')),
+                        ])->label(__('filament.audio')),
+                        
+                        Builder\Block::make('image')
+                            ->icon('heroicon-o-photograph')
+                            ->schema([
+                            \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('image_description')
+                                ->simple()
+                                ->label(__('filament.image_block_description')),
+                            FileUpload::make('image')
+                                ->directory('content\imageContent')
+                                ->image()
+                                ->required()
+                                ->label(__('filament.thumbnail')),
+                        ])->label(__('filament.thumbnail')),
+                    ])
+                    ->collapsible()
+                    ->label(__('filament.block'))
+                ]),
+
+                Card::make()
+                ->schema([
+                    Grid::make()
+                    ->schema([
+                        Select::make('tags')
+                            ->multiple()
+                            ->preload()
+                            ->relationship('tags', 'title')
+                            ->label(__('filament.tags')),
+                        DateTimePicker::make('published_at')
+                            ->label(__('filament.published_at')),
+                    ]),
+                    Toggle::make('active')
+                            ->label(__('filament.active')),
+                ])
+            ]);
+    }
 
 
 
