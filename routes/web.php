@@ -21,7 +21,7 @@ Route::namespace('App\Http\Controllers\Widget')->group(function(){
 });
 
 Route::namespace('App\Http\Controllers\Post')->group(function(){
-    Route::get('/', IndexController::class)->name('home');
+    Route::get('/', IndexController::class)->name('post.index');
     Route::get('/{post:slug}', ShowController::class)->name('post.show');
 });
 
