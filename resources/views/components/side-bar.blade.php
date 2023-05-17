@@ -9,13 +9,13 @@
             {!! \App\Models\Widget::getContent('short-about-us') !!}
         </p>
         <a href="{{route('about-us')}}" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4">
-            Get to know us
+            {{__('ahlibeyt.get_to_known_us')}}
         </a>
     </div>
 
     <div class="w-full bg-white shadow flex flex-col my-4 p-6">
     
-        <h3 class="text-xl font-semibold mb-2">Все категории</h3>
+        <h3 class="text-xl font-semibold mb-2">{{__('ahlibeyt.all_category')}}</h3>
         @foreach ($categories as $category)
         <a href="{{route('category.show', $category)}}" 
                 class="text-semibold block py-2 px-3 rounded hover:bg-gray-400 hover:text-white 

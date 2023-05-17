@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind Blog Template</title>
+    <title>{{$metaTitle ?: 'Ahlibeyt'}}</title>
     <meta name="author" content="">
-    <meta name="description" content="">
+    <meta name="description" content="{{$metaDescription}}">
     
     {{-- <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
@@ -22,7 +22,7 @@
     @vite('resources/css/app.css')
     @livewireStyles
 </head>
-<body class="bg-white font-family-karla">
+<body class="bg-gray-50 font-family-karla">
 
     <!-- Top Bar Nav -->
     <nav class="w-full py-4 bg-blue-800 shadow">

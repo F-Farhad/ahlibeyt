@@ -1,4 +1,4 @@
-<x-app-layouts>
+<x-app-layouts :meta-title="$post->title" :meta-description="Str::words(strip_tags($post->short_content), 40)">
     <!-- Post Section -->
         <section class="w-full md:w-2/3 flex flex-col items-center px-3">
     
