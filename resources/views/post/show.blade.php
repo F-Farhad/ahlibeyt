@@ -9,7 +9,6 @@
                     <a href="{{route('category.show', $post->category)}}" class="text-blue-700 text-sm font-bold uppercase pb-4">{{$post->category->title}}</a>
                     <h1 class="text-3xl font-bold">{{$post->title}}</h1>
                     <p class="text-sm pb-4 ">
-                        {{-- {{$post->getFormattedDate()->translatedFormat('F j, Y')}} --}}
                         Опубликовано {{$post->getFormattedDate()->day .' '. $post->getFormattedDate()->getTranslatedMonthName('Do MMMM') . ' ' . $post->getFormattedDate()->year;}}
                     </p>
                     <div>

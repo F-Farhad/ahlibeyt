@@ -39,10 +39,10 @@ class WidgetResource extends Resource
                         ->required()
                         ->maxLength(2048)
                         ->label(__('filament.title')),
-                    // Forms\Components\FileUpload::make('thumbnail')
-                    //     ->directory('widget\image')
-                    //     ->image()
-                    //     ->label(__('filament.thumbnail')),
+                    Forms\Components\FileUpload::make('thumbnail')
+                        ->directory('content\widgetImage')
+                        ->image()
+                        ->label(__('filament.thumbnail')),
                     \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('content')
                         ->profile('ahlibeyt')
                         ->label(__('filament.content')),
@@ -59,7 +59,8 @@ class WidgetResource extends Resource
                     ->label(__('filament.key')),
                 Tables\Columns\TextColumn::make('title')
                     ->label(__('filament.title')),
-                // Tables\Columns\TextColumn::make('thumbnail'),
+                Tables\Columns\ImageColumn::make('thumbnail')
+                    ->label(__('filament.thumbnail')),
                 Tables\Columns\IconColumn::make('active')
                     ->boolean()
                     ->label(__('filament.active')),
