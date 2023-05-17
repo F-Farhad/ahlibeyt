@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -86,6 +85,8 @@
                 <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Politics</a>
                 <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Culture</a>
                 <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Sports</a>
+
+                <a href="{{route('about-us')}}" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">{{ __('ahlibeyt.about-us')}}</a>
             </div>
         </div>
     </nav>
@@ -95,7 +96,6 @@
 
     {{ $slot }}
         
-    <x-side-bar />
     </div>
 
     <footer class="w-full border-t bg-white pb-12">

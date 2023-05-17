@@ -90,4 +90,6 @@
                 </div>
             </div> --}}
         </section>
+
+        <x-side-bar />
     </x-app-layouts>

@@ -10,4 +10,6 @@
 
     </section>
 
+    <x-side-bar />
+
 </x-app-layouts>

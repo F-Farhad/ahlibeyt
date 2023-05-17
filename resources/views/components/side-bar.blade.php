@@ -3,10 +3,10 @@
 
     <div class="w-full bg-white shadow flex flex-col my-4 p-6">
         <p class="text-xl font-semibold pb-5">
-            {!! \App\Models\Widget::getTitle('about-us') !!}
+            {!! \App\Models\Widget::getTitle('short-about-us') !!}
         </p>
         <p class="pb-2">
-            {!! \App\Models\Widget::getContent('about-us') !!}
+            {!! \App\Models\Widget::getContent('short-about-us') !!}
         </p>
         <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4">
             Get to know us

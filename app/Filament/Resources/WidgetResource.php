@@ -30,7 +30,8 @@ class WidgetResource extends Resource
                 ->schema([
                     Select::make('key')
                         ->options([
-                            'about-us' => __('filament.about-us'),
+                            'short-about-us' => __('filament.short-about-us'),
+                            'page-about-us' => __('filament.page-about-us'),
                         ])
                         ->required()
                         ->unique(ignoreRecord: true)

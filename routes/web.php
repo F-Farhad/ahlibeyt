@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Route::namespace('App\Http\Controllers\Widget')->group(function(){
+    Route::get('/about-us', PageAboutUsController::class)->name('about-us');
+});
 
 Route::namespace('App\Http\Controllers\Post')->group(function(){
     Route::get('/', IndexController::class)->name('home');
@@ -29,3 +32,4 @@ Route::namespace('App\Http\Controllers\Category')->group(function(){
 Route::namespace('App\Http\Controllers\Tag')->group(function(){
     Route::get('/tag/{tag:slug}', ShowController::class)->name('tag.show');
 });
+
