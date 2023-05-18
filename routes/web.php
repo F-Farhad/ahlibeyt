@@ -31,6 +31,7 @@ Route::namespace('App\Http\Controllers\Category')->group(function(){
 });
 
 Route::namespace('App\Http\Controllers\Tag')->group(function(){
-    Route::get('/tag/{tag:slug}', ShowController::class)->name('tag.show');
+    Route::get('/tag/{tag:slug}', IndexController::class)->name('tag.index');
+    Route::get('/tag/{tag:slug}/{post:slug}', ShowController::class)->name('tag.show.post');
 });
 
