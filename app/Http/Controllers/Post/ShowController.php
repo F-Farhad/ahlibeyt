@@ -19,17 +19,19 @@ class ShowController extends Controller
             throw new NotFoundHttpException();
         }
 
-        $next = Post::where('active', 1)
+        $next = Post::query()
+                    ->where('active', '=', 1)
                     ->whereDate('published_at', '<=', Carbon::now())
-                    ->whereDate('published_at', '<', $post->published_at)
-                    ->orderBy('published_at', 'desc')
+                    ->orderBy('created_at', 'desc')
+                    ->where('created_at', '<', $post->created_at)
                     ->limit(1)
                     ->first();
 
-        $prev = Post::where('active', 1)
+        $prev = Post::query()
+                    ->where('active', 1)
                     ->whereDate('published_at', '<=', Carbon::now())
-                    ->whereDate('published_at', '>', $post->published_at)
-                    ->orderBy('published_at', 'asc')
+                    ->orderBy('created_at', 'asc')
+                    ->where('created_at', '>', $post->created_at)
                     ->limit(1)
                     ->first();
 

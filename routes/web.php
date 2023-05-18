@@ -26,7 +26,8 @@ Route::namespace('App\Http\Controllers\Post')->group(function(){
 });
 
 Route::namespace('App\Http\Controllers\Category')->group(function(){
-    Route::get('/category/{category:slug}', ShowController::class)->name('category.show');
+    Route::get('/category/{category:slug}', IndexController::class)->name('category.index');
+    Route::get('/category/{category:slug}/{post:slug}', ShowController::class)->name('category.show.post');
 });
 
 Route::namespace('App\Http\Controllers\Tag')->group(function(){
