@@ -25,13 +25,15 @@ Route::namespace('App\Http\Controllers\Post')->group(function(){
     Route::get('/{post:slug}', ShowController::class)->name('post.show');
 });
 
-Route::namespace('App\Http\Controllers\Category')->group(function(){
-    Route::get('/category/{category:slug}', IndexController::class)->name('category.index');
-    Route::get('/category/{category:slug}/{post:slug}', ShowController::class)->name('category.show.post');
+Route::namespace('App\Http\Controllers\Category')->prefix('category')->group(function(){
+    Route::get('{category:slug}', IndexController::class)->name('category.index');
+    Route::get('{category:slug}/{post:slug}', ShowController::class)->name('category.show.post');
 });
 
-Route::namespace('App\Http\Controllers\Tag')->group(function(){
-    Route::get('/tag/{tag:slug}', IndexController::class)->name('tag.index');
-    Route::get('/tag/{tag:slug}/{post:slug}', ShowController::class)->name('tag.show.post');
+Route::namespace('App\Http\Controllers\Tag')->prefix('tag')->group(function(){
+    Route::get('{tag:slug}', IndexController::class)->name('tag.index');
+    Route::get('{tag:slug}/{post:slug}', ShowController::class)->name('tag.show.post');
 });
+
+
 

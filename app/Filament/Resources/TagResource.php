@@ -48,6 +48,8 @@ class TagResource extends Resource
                     ->label(__('filament.title')),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->label(__('filament.updated_at')),
+                Tables\Columns\TextColumn::make('posts_count')->counts('posts')
+                    ->label(__('filament.posts')),
                 
             ])
             ->filters([

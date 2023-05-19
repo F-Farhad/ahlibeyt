@@ -163,7 +163,10 @@ class PostResource extends Resource
                     ->label(__('filament.active')),
                 SelectFilter::make('Category')
                     ->relationship('category', 'title')
-                    ->label(__('filament.category'))
+                    ->label(__('filament.category')),
+                SelectFilter::make('Tag')
+                    ->relationship('tags', 'title')
+                    ->label(__('filament.tag'))
             ])
             ->actions([
                 

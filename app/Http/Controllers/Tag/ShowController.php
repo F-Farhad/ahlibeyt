@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Tag;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ShowController extends Controller
@@ -21,6 +19,8 @@ class ShowController extends Controller
             throw new NotFoundHttpException();
         }
 
+        
+
         $next = $tag->posts
                 ->where('active', '=', 1)
                 ->where('published_at', '<=', Carbon::now())
@@ -30,8 +30,10 @@ class ShowController extends Controller
         $prev = $tag->posts
                 ->where('active', '=', 1)
                 ->where('published_at', '<=', Carbon::now())
-                ->sortBy('created_at')
+                ->sortBy('created_at', SORT_NATURAL)
                 ->firstWhere('created_at', '>', $post->created_at);
+
+                dump($tag->posts, $tag->title, $next?->tags, $prev?->tags);
 
         return view('tag.show', compact('post', 'tag', 'next', 'prev'));
     }
