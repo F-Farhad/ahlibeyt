@@ -18,7 +18,7 @@ class IndexController extends Controller
         $posts = $category->posts()
                             ->where('active', '=', 1)
                             ->whereDate('published_at', '<=', Carbon::now())
-                            ->orderBy('created_at', 'desc')
+                            ->orderBy('published_at', 'desc')
                             ->paginate(10);
         return view('category.index', compact('posts', 'category'));
     }

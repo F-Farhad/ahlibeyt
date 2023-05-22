@@ -20,20 +20,20 @@ class ShowController extends Controller
         }
 
         $next = Post::query()
-                    ->where('active', '=', 1)
-                    ->whereDate('published_at', '<=', Carbon::now())
-                    ->orderBy('created_at', 'desc')
-                    ->where('created_at', '<', $post->created_at)
-                    ->limit(1)
-                    ->first();
+            ->where('active', true)
+            ->whereDate('published_at', '<=', Carbon::now())
+            ->where('published_at', '<', $post->published_at)
+            ->orderBy('published_at', 'desc')
+            ->limit(1)
+            ->first();
 
         $prev = Post::query()
-                    ->where('active', 1)
-                    ->whereDate('published_at', '<=', Carbon::now())
-                    ->orderBy('created_at', 'asc')
-                    ->where('created_at', '>', $post->created_at)
-                    ->limit(1)
-                    ->first();
+            ->where('active', true)
+            ->whereDate('published_at', '<=', Carbon::now())
+            ->where('published_at', '>', $post->published_at)
+            ->orderBy('published_at', 'asc')
+            ->limit(1)
+            ->first();
 
         return view('post.show', compact('post', 'next', 'prev'));
     }

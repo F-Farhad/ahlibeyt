@@ -125,6 +125,9 @@ class PostResource extends Resource
                         Forms\Components\Toggle::make('active')
                             ->label(__('filament.active')),
                         Forms\Components\DateTimePicker::make('published_at')
+                            ->unique(ignoreRecord: true)
+                            ->minutesStep(15)
+                            ->secondsStep(10)
                             ->label(__('filament.published_at')),
                     ]),
                 ])

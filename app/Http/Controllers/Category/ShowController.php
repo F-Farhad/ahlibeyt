@@ -23,14 +23,14 @@ class ShowController extends Controller
         $next = $category->posts
                 ->where('active', '=', 1)
                 ->where('published_at', '<=', Carbon::now())
-                ->sortByDesc('created_at')
-                ->firstWhere('created_at', '<', $post->created_at);
+                ->sortByDesc('published_at')
+                ->firstWhere('published_at', '<', $post->published_at);
                 
         $prev = $category->posts
                 ->where('active', '=', 1)
                 ->where('published_at', '<=', Carbon::now())
-                ->sortBy('created_at')
-                ->firstWhere('created_at', '>', $post->created_at);
+                ->sortBy('published_at')
+                ->firstWhere('published_at', '>', $post->published_at);
 
         return view('category.show', compact('post', 'category', 'next', 'prev'));
     }

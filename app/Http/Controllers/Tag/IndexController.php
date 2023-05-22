@@ -17,7 +17,7 @@ class IndexController extends Controller
         $posts = $tag->posts()
                             ->where('active', '=', 1)
                             ->whereDate('published_at', '<=', Carbon::now())
-                            ->orderBy('created_at', 'desc')
+                            ->orderBy('published_at', 'desc')
                             ->paginate(10);
         return view('tag.index', compact('posts', 'tag'));
     }
