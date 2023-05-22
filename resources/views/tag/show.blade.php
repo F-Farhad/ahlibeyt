@@ -32,9 +32,9 @@
                         @endif
                     </div>
                     <div class="flex flex-row flex-wrap">
-                        @foreach($post->tags as $tag)
+                        @foreach($post->tags as $tagItem)
                         <div class="mr-1 mt-1 hover:text-gray-700 pb-4">
-                            <a href="{{route('tag.index', $tag)}}">{{$tag->title}}</a>
+                            <a href="{{route('tag.index', $tagItem)}}">{{$tagItem->title}}</a>
                         </div>
                         @endforeach
                     </div>
