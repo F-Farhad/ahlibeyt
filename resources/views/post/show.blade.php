@@ -6,7 +6,7 @@
                 <!-- Article Image -->
                     <img src="{{$post->getThumbnail()}}">
                 <div class="bg-white flex flex-col justify-start p-6">
-                    <a href="{{route('category.index', $post->category)}}" class="text-blue-700 text-sm font-bold uppercase pb-4">{{$post->category->title}}</a>
+                    <a href="{{route('category.showAllPosts', $post->category)}}" class="text-blue-700 text-sm font-bold uppercase pb-4">{{$post->category->title}}</a>
                     <h1 class="text-3xl font-bold">{{$post->title}}</h1>
                     <p class="text-sm pb-4 ">
                         Опубликовано {{$post->getFormattedDate()->day .' '. $post->getFormattedDate()->getTranslatedMonthName('Do MMMM') . ' ' . $post->getFormattedDate()->year;}}
@@ -34,7 +34,7 @@
                     <div class="flex flex-row flex-wrap">
                         @foreach($post->tags as $tag)
                         <div class="mr-1 mt-1 hover:text-gray-700 pb-4">
-                            <a href="{{route('tag.index', $tag)}}">{{$tag->title}}</a>
+                            <a href="{{route('tag.showAllPosts', $tag)}}">{{$tag->title}}</a>
                         </div>
                         @endforeach
                     </div>

@@ -1,24 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Tag;
+namespace App\Http\Controllers\Category;
 
 use App\Http\Controllers\Controller;
-use App\Models\Tag;
+use App\Models\Category;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class IndexController extends Controller
+class ShowAllPostsCategoryController extends Controller
 {
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Tag $tag): View
+    public function __invoke(Category $category): View
     {
-        $posts = $tag->posts()
+        $posts = $category->posts()
                             ->where('active', '=', 1)
                             ->whereDate('published_at', '<=', Carbon::now())
                             ->orderBy('published_at', 'desc')
                             ->paginate(10);
-        return view('tag.index', compact('posts', 'tag'));
+        return view('category.showAllPosts', compact('posts', 'category'));
     }
 }

@@ -26,13 +26,13 @@ Route::namespace('App\Http\Controllers\Post')->group(function(){
 });
 
 Route::namespace('App\Http\Controllers\Category')->prefix('category')->group(function(){
-    Route::get('{category:slug}', IndexController::class)->name('category.index');
-    Route::get('{category:slug}/{post:slug}', ShowController::class)->name('category.show.post');
+    Route::get('{category:slug}', ShowAllPostsCategoryController::class)->name('category.showAllPosts');
+    Route::get('{category:slug}/{post:slug}', ShowPostCategoryController::class)->name('category.showPost');
 });
 
 Route::namespace('App\Http\Controllers\Tag')->prefix('tag')->group(function(){
-    Route::get('{tag:slug}', IndexController::class)->name('tag.index');
-    Route::get('{tag:slug}/{post:slug}', ShowController::class)->name('tag.show.post');
+    Route::get('{tag:slug}', ShowAllPostsTagController::class)->name('tag.showAllPosts');
+    Route::get('{tag:slug}/{post:slug}', ShowPostTagController::class)->name('tag.showPost');
 });
 
 

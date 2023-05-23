@@ -8,7 +8,7 @@ use App\Models\Tag;
 use Carbon\Carbon;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class ShowController extends Controller
+class ShowPostTagController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -31,6 +31,6 @@ class ShowController extends Controller
                 ->sortBy('published_at')
                 ->firstWhere('published_at', '>', $post->published_at);
 
-        return view('tag.show', compact('post', 'tag', 'next', 'prev'));
+        return view('tag.showPost', compact('post', 'tag', 'next', 'prev'));
     }
 }

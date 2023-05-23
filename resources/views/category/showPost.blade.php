@@ -6,7 +6,7 @@
                 <!-- Article Image -->
                     <img src="{{$post->getThumbnail()}}">
                 <div class="bg-white flex flex-col justify-start p-6">
-                    <a href="{{route('category.index', $post->category)}}" class="text-blue-700 text-sm font-bold uppercase pb-4">{{$post->category->title}}</a>
+                    <a href="{{route('category.showAllPosts', $post->category)}}" class="text-blue-700 text-sm font-bold uppercase pb-4">{{$post->category->title}}</a>
                     <h1 class="text-3xl font-bold">{{$post->title}}</h1>
                     <p class="text-sm pb-4 ">
                         Опубликовано {{$post->getFormattedDate()->day .' '. $post->getFormattedDate()->getTranslatedMonthName('Do MMMM') . ' ' . $post->getFormattedDate()->year;}}
@@ -34,7 +34,7 @@
                     <div class="flex flex-row flex-wrap">
                         @foreach($post->tags as $tag)
                         <div class="mr-1 mt-1 hover:text-gray-700 pb-4">
-                            <a href="{{route('tag.index', $tag)}}">{{$tag->title}}</a>
+                            <a href="{{route('tag.showAllPosts', $tag)}}">{{$tag->title}}</a>
                         </div>
                         @endforeach
                     </div>
@@ -44,7 +44,7 @@
             <div class="w-full flex pt-6">
                 <div class="w-1/2">
                     @if($prev)
-                        <a href="{{route('category.show.post', [$category, $prev])}}" class="block w-full bg-white shadow hover:shadow-md text-left p-6">
+                        <a href="{{route('category.showPost', [$category, $prev])}}" class="block w-full bg-white shadow hover:shadow-md text-left p-6">
                             <p class="text-lg text-blue-800 font-bold flex items-center">
                                 <i class="fas fa-arrow-left pr-1"></i> 
                                 Предыдущий
@@ -55,7 +55,7 @@
                 </div>
                 <div class="w-1/2">
                     @if($next)
-                        <a href="{{route('category.show.post', [$category, $next])}}" class="block w-full bg-white shadow hover:shadow-md text-right p-6">
+                        <a href="{{route('category.showPost', [$category, $next])}}" class="block w-full bg-white shadow hover:shadow-md text-right p-6">
                             <p class="text-lg text-blue-800 font-bold flex items-center justify-end">
                                 Следующий 
                                 <i class="fas fa-arrow-right pl-1"></i>

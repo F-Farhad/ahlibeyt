@@ -9,7 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class ShowController extends Controller
+class ShowPostCategoryController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -32,6 +32,6 @@ class ShowController extends Controller
                 ->sortBy('published_at')
                 ->firstWhere('published_at', '>', $post->published_at);
 
-        return view('category.show', compact('post', 'category', 'next', 'prev'));
+        return view('category.showPost', compact('post', 'category', 'next', 'prev'));
     }
 }
