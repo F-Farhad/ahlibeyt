@@ -4,7 +4,10 @@ return [
 
     //sidebar
     'about-us' => 'О нас',
-    'get_to_known_us' => 'Познакомьтесь с нами поближе',
+    'get_to_known_us' => 'Познакомимся поближе',
     'all_category' => 'Все категории',
+
+    'all-posts' => 'Все посты',
+    'main' => 'Главная',
 
 ];

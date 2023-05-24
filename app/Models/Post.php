@@ -27,6 +27,7 @@ class Post extends Model
         'published_at',
         'user_id',
         'category_id',
+        'view_count',
     ];
 
     public function category():BelongsTo{

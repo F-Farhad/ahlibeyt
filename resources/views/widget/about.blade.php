@@ -1,4 +1,4 @@
-<x-app-layouts :meta-title="'Ahlibeyt ' . $pageAboutUs->title" :meta-description="Str::words(strip_tags($pageAboutUs->content), 40)">
+<x-app-layouts meta-title="{{__('ahlibeyt.about-us')}}" :meta-description="Str::words(strip_tags($pageAboutUs->content), 20)">
     <!-- Post Section -->
         <section class="w-full flex flex-col items-center px-3">
     

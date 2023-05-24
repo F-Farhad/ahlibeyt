@@ -56,7 +56,7 @@
     <!-- Text Header -->
     <header class="w-full container mx-auto">
         <div class="flex flex-col items-center py-12">
-            <a class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl" href="{{route('post.index')}}">
+            <a class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl" href="{{route('main')}}">
                 Minimal Blog
             </a>
             <p class="text-lg text-gray-600">
@@ -79,13 +79,8 @@
         </div>
         <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
             <div class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Technology</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Automotive</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Finance</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Politics</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Culture</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Sports</a>
-
+                <a href="{{route('main')}}" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">{{ __('ahlibeyt.main')}}</a>
+                <a href="{{route('post.index')}}" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">{{ __('ahlibeyt.all-posts')}}</a>
                 <a href="{{route('about-us')}}" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">{{ __('ahlibeyt.about-us')}}</a>
             </div>
         </div>
@@ -99,24 +94,6 @@
     </div>
 
     <footer class="w-full border-t bg-white pb-12">
-        {{-- <div
-            class="relative w-full flex items-center invisible md:visible md:pb-12"
-            x-data="getCarouselData()"
-        >
-            <button
-                class="absolute bg-blue-800 hover:bg-blue-700 text-white text-2xl font-bold hover:shadow rounded-full w-16 h-16 ml-12"
-                x-on:click="decrement()">
-                &#8592;
-            </button>
-            <template x-for="image in images.slice(currentIndex, currentIndex + 6)" :key="images.indexOf(image)">
-                <img class="w-1/6 hover:opacity-75" :src="image">
-            </template>
-            <button
-                class="absolute right-0 bg-blue-800 hover:bg-blue-700 text-white text-2xl font-bold hover:shadow rounded-full w-16 h-16 mr-12"
-                x-on:click="increment()">
-                &#8594;
-            </button>
-        </div> --}}
         <div class="w-full container mx-auto flex flex-col items-center">
             <div class="flex flex-col md:flex-row text-center md:text-left md:justify-between py-6">
                 <a href="#" class="uppercase px-3">About Us</a>
@@ -128,30 +105,6 @@
         </div>
     </footer>
 
-    {{-- <script>
-        function getCarouselData() {
-            return {
-                currentIndex: 0,
-                images: [
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=1',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=2',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=3',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=4',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=5',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=6',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=7',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=8',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=9',
-                ],
-                increment() {
-                    this.currentIndex = this.currentIndex === this.images.length - 6 ? 0 : this.currentIndex + 1;
-                },
-                decrement() {
-                    this.currentIndex = this.currentIndex === this.images.length - 6 ? 0 : this.currentIndex - 1;
-                },
-            }
-        }
-    </script> --}}
     @livewireScripts
 </body>
 </html>

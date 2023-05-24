@@ -1,4 +1,4 @@
-<x-app-layouts meta-description="Ahlibeyt блог для мусульман СНГ">
+<x-app-layouts meta-title="Посты" meta-description="Все посты блога">
     <!-- Posts Section -->
     <section class="w-full md:w-2/3 flex flex-col items-center px-3">
 

@@ -16,11 +16,16 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+Route::namespace('App\Http\Controllers\Main')->group(function(){
+    Route::get('/', MainController::class)->name('main');
+});
+
 Route::namespace('App\Http\Controllers\Widget')->group(function(){
     Route::get('/about-us', PageAboutUsController::class)->name('about-us');
 });
 
-Route::namespace('App\Http\Controllers\Post')->group(function(){
+Route::namespace('App\Http\Controllers\Post')->prefix('post')->group(function(){
     Route::get('/', IndexController::class)->name('post.index');
     Route::get('/{post:slug}', ShowController::class)->name('post.show');
 });
