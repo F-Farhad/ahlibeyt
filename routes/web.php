@@ -21,6 +21,10 @@ Route::namespace('App\Http\Controllers\Main')->group(function(){
     Route::get('/', MainController::class)->name('main');
 });
 
+Route::namespace('App\Http\Controllers\Search')->group(function(){
+    Route::get('/search', GlobalSearchController::class)->name('search');
+});
+
 Route::namespace('App\Http\Controllers\Widget')->group(function(){
     Route::get('/about-us', PageAboutUsController::class)->name('about-us');
 });
