@@ -10,4 +10,9 @@ return [
     'all-posts' => 'Все посты',
     'main' => 'Главная',
 
+    //main page
+    'latestPost' => 'Последний пост',
+    'popularPosts' => 'Популярные посты',
+    'category' => 'Категория',
+
 ];

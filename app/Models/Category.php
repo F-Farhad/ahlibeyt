@@ -20,9 +20,11 @@ class Category extends Model
         return $this->hasMany(Post::class);
     }
 
-    public function publishedPosts():HasMany{
+    public function publishedPosts($latestPost):HasMany{
         return $this->hasMany(Post::class)
+                    ->where('id', '<>', $latestPost->id)
                     ->where('active', '=', 1)
-                    ->whereDate('published_at', '<=', Carbon::now());;
+                    ->whereDate('published_at', '<=', Carbon::now())
+                    ->latest('published_at');
     }
 }

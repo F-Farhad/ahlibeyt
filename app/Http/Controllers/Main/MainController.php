@@ -31,6 +31,7 @@ class MainController extends Controller
                         ->get();
         
         $popularCategories = Category::query()
+                        ->with(['posts'])
                         ->whereHas('posts', function (Builder $query) {
                             $query
                                 ->where('active', '=', true)
@@ -49,7 +50,6 @@ class MainController extends Controller
                         ])
                         ->limit(3)
                         ->get();
-                        // dd($popularCategories);
 
         return view('main.main', compact('latestPost', 'popularPosts', 'popularCategories'));
     }

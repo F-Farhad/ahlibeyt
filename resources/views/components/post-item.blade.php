@@ -2,7 +2,7 @@
     <div class="shadow-none">
         <!-- Article Image -->
         <a href="{{route('post.show', $post)}}" class="hover:opacity-75">
-            <img src="{{$post->getThumbnail()}}" alt="{{$post->title}}">
+            <img src="{{$post->getThumbnail()}}" alt="{{$post->title}}" >
         </a>
 
         <div class="bg-white flex flex-col justify-start p-6">

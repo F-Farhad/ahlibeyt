@@ -1,11 +1,11 @@
 <x-app-layouts meta-title="Ahlibeyt Blog" meta-description="Блог для сообщества мусульман стран СНГ">
-    <div class="container max-w-4xl mx-auto px-3">
+    <div class="container max-w-7xl mx-auto px-3">
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 bg-white shadow">
             <!-- Latest Post -->
             <div class="col-span-2">
                 <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pl-2 pb-1 border-b-2 border-blue-500 mb-3">
-                    Latest Post
+                    {{__('ahlibeyt.latestPost')}}
                 </h2>
 
                 @if ($latestPost)
@@ -14,14 +14,12 @@
             </div>
 
             <!--About us, Popular 3 post -->
-            <div class="">
+            <div>
                 <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pl-2 pb-1 border-b-2 border-blue-500 mb-3">
                     {!! \App\Models\Widget::getTitle('short-about-us') !!}
                 </h2>
-                <div class="pl-2 pr-2 pt-0">
-                    <p>
-                        {!! \App\Models\Widget::getContent('short-about-us') !!}
-                    </p>
+                <div class="pl-2 pr-2">
+                    {!! \App\Models\Widget::getContent('short-about-us') !!}
                 </div>
                 <a href="{{route('about-us')}}" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4 mb-3">
                     {{__('ahlibeyt.get_to_known_us')}}
@@ -29,7 +27,7 @@
 
                 
                 <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pl-2 pb-1 border-b-2 border-blue-500 mb-3">
-                    Popular Posts
+                    {{__('ahlibeyt.popularPosts')}}
                 </h2>
                 <div class="p-1">
                     @foreach($popularPosts as $post)
@@ -46,7 +44,7 @@
                                             {{$post->category->title}}
                                         </a>
                                 </div>
-                                <div class="text-xs">
+                                <div class="text-sm">
                                     <a href="{{route('post.show', $post)}}">
                                         {!! Str::words($post->short_content, 10) !!}
                                     </a>
@@ -62,17 +60,17 @@
 
         @foreach($popularCategories as $category)
             <div>
-                <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pb-1 border-b-2 border-blue-500 mb-3">
-                    Category "{{$category->title}}"
-                    <a href="{{route('category.showAllPosts', $category)}}">
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </h2>
+                <a href="{{route('category.showAllPosts', $category)}}">
+                    <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pb-1 border-b-2 border-blue-500 mb-3">
+                        {{__('ahlibeyt.category')}} "{{$category->title}}"
+                            <i class="fas fa-arrow-right"></i>
+                    </h2>
+                </a>
 
                 <div class="mb-6">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                        @foreach($category->publishedPosts()->limit(3)->get() as $post)
-                            <x-post-item :post="$post" :show-author="false" />
+                        @foreach($category->publishedPosts($latestPost)->limit(3)->get() as $post)
+                            <x-post-item :post="$post" />
                         @endforeach
                     </div>
                 </div>
