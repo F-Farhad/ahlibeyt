@@ -150,7 +150,7 @@ class PostsRelationManager extends RelationManager
             ->headerActions([
                 Tables\Actions\CreateAction::make()
                 ->mutateFormDataUsing(function (array $data): array {           //before creating
-                    $data['content'] = json_encode($data['block']);
+                    $data['content'] = json_encode($data['block'], JSON_UNESCAPED_UNICODE);
                     return $data;
                 }),
             ])
@@ -161,7 +161,7 @@ class PostsRelationManager extends RelationManager
                     return $data;
                 })
                 ->mutateFormDataUsing(function (array $data): array {           //before saving
-                    $data['content'] = json_encode($data['block']);
+                    $data['content'] = json_encode($data['block'], JSON_UNESCAPED_UNICODE);
                     return $data;
                 })
                 // Tables\Actions\DeleteAction::make(),

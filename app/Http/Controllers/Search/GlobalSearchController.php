@@ -18,21 +18,15 @@ class GlobalSearchController extends Controller
         $q = $request->get('q');
 
         $posts = Post::query()
-                    // ->where('active', '=', true)
-                    // ->where('published_at', '<=', Carbon::now())
-                    // ->latest('published_at')
+                    ->where('active', '=', true)
+                    ->where('published_at', '<=', Carbon::now())
+                    ->latest('published_at')
                     ->where(function($query) use ($q) {
-                        // $query->where('title', 'like', "%$q%")
-                        //       ->orWhere('short_content', 'like', "%$q%")
-                        $query->where("content->data->content", 'like', "%$q%");
-                        // $query->whereJsonContains("content", [['type' => 'content','data' => ['content' => "%$q%"]]]);
+                        $query->where('title', 'like', "%$q%")
+                              ->orWhere('short_content', 'like', "%$q%")
+                              ->orWhere("content", 'like',  "%$q%");
                     })
-                    ->paginate(10);  
-                    // ->dd();
-                    // $result = Table::where(“json_data->$id” ,$reqid)->get();
-                    //->whereJsonContains('to', [['emailAddress' => ['address' => 'test@example.com']]])
-                    // https://stackoverflow.com/questions/74202855/search-in-json-column-not-working-in-laravel
-                    // https://stackoverflow.com/questions/70324385/json-column-query-using-laravel-builder
+                    ->paginate(10);
 
         return view('search.search', compact('posts'));
     }

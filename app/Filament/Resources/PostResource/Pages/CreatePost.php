@@ -12,7 +12,7 @@ class CreatePost extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        $data['content'] = json_encode($data['block']);
+        $data['content'] = json_encode($data['block'], JSON_UNESCAPED_UNICODE);
         
         return $data;
     }

@@ -49,4 +49,8 @@ class Post extends Model
             return '/storage/' . $this->thumbnail;
     }
 
+    public static function getTextForMark($text){
+        dump($text);
+    }
+
 }
