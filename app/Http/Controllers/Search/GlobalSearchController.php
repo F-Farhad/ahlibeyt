@@ -15,16 +15,19 @@ class GlobalSearchController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $q = $request->get('q');
+        $data = $request->validate([
+            'search_expression' => 'required|string'
+        ]);
+
 
         $posts = Post::query()
                     ->where('active', '=', true)
                     ->where('published_at', '<=', Carbon::now())
                     ->latest('published_at')
-                    ->where(function($query) use ($q) {
-                        $query->where('title', 'like', "%$q%")
-                              ->orWhere('short_content', 'like', "%$q%")
-                              ->orWhere("content", 'like',  "%$q%");
+                    ->where(function($query) use ($data) {
+                        $query->where('title', 'like', "%$data[search_expression]%")
+                              ->orWhere('short_content', 'like', "%$data[search_expression]%")
+                              ->orWhere("content", 'like',  "%$data[search_expression]%");
                     })
                     ->paginate(10);
 

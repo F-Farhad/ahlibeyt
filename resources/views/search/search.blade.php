@@ -6,11 +6,11 @@
             <div>
                 <a href="{{route('post.show', $post)}}">
                     <h2 class="text-blue-500 font-bold text-lg sm:text-xl mb-2 ">
-                    {!! \App\Models\Post::getMarkedText($post->title, request()->get('q'))   !!}
+                    {!! \App\Models\Post::getMarkedText($post->title, request()->get('search_expression'))   !!}
                     </h2>
                 </a>
                 <div>
-                    {!! \App\Models\Post::getMarkedParagraph($post->short_content . $post->getContent(), request()->get('q')) !!}
+                    {!! \App\Models\Post::getMarkedParagraph($post->short_content . $post->getContent(), request()->get('search_expression')) !!}
                 </div>
             </div>
             <hr class="my-4">

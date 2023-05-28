@@ -83,8 +83,8 @@
                 <a href="{{route('post.index')}}" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">{{ __('ahlibeyt.all-posts')}}</a>
                 <a href="{{route('about-us')}}" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">{{ __('ahlibeyt.about-us')}}</a>
                 <form method="get" action="{{route('search')}}">
-                    <input name="q" value="{{request()->get('q')}}"
-                           class="block w-full rounded-md border-0 px-3.5 py-2 t0ext-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 font-medium"
+                    <input name="search_expression" value="{{request()->get('search_expression')}}"
+                           class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 font-medium"
                            placeholder="Type an hit enter to search anything"/>
                 </form>
             </div>
