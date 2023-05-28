@@ -43,14 +43,52 @@ class Post extends Model
     }
 
     public function getThumbnail(){
-        if(str_starts_with($this->thumbnail, 'http')){
-            return $this->thumbnail;
-        }
-            return '/storage/' . $this->thumbnail;
+        return '/storage/' . $this->thumbnail;
     }
 
-    public static function getTextForMark($text){
-        dump($text);
+    /**
+     * @var
+     * string content
+     * return text from json column
+     * */
+    public function getContent():string{
+        $content = '';
+        $arrBloks = json_decode($this->content, true);
+
+        foreach($arrBloks as $arrBlock){
+            if($arrBlock['type'] == 'content'){
+                $content.= $arrBlock['data']['content'];
+            }
+        }
+        return $content;
     }
+
+    /**
+     * returns paragraph with mark text
+     */
+    public static function getMarkedParagraph($text, $searchExpressive){
+        $positionExpressive = mb_stripos($text, $searchExpressive);                      //search begin position
+        $resultExpressive = mb_substr($text, $positionExpressive, 200);                  //get paragraph included search expressive
+        
+        
+        $resultExpressive = self::getMarkedText($resultExpressive, $searchExpressive);
+
+        return $resultExpressive;
+    }
+
+
+    /**
+     * the first argument takes a string, the second a substring to marked the text
+     */
+    public static function getMarkedText($text, $searchExpressive){
+
+        $replace = "<span class='bg-green-400 rounded'>" . $searchExpressive . "</span>";
+        $resultExpressive = preg_replace('#.*' . $searchExpressive . '.*?#iu', $replace, $text);
+
+        return $resultExpressive;
+    }
+
+
+
 
 }

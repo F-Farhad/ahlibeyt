@@ -6,14 +6,11 @@
             <div>
                 <a href="{{route('post.show', $post)}}">
                     <h2 class="text-blue-500 font-bold text-lg sm:text-xl mb-2 ">
-                        {!! str_replace(request()->get('q'), '<span class="bg-green-400 rounded">'.request()->get('q').'</span>', $post->title)!!}
+                    {!! \App\Models\Post::getMarkedText($post->title, request()->get('q'))   !!}
                     </h2>
                 </a>
                 <div>
-                    {!! str_replace(request()->get('q'), '<span class="bg-green-400 rounded">'.request()->get('q').'</span>', 
-                        \App\Models\Post::getTextForMark(json_decode($post->content, true))) 
-                    !!}
-                    {{-- {!! str_replace(request()->get('q'), '<span class="bg-green-400 rounded">'.request()->get('q').'</span>', $post->short_content) !!} --}}
+                    {!! \App\Models\Post::getMarkedParagraph($post->short_content . $post->getContent(), request()->get('q')) !!}
                 </div>
             </div>
             <hr class="my-4">
