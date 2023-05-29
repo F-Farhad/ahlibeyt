@@ -82,7 +82,7 @@ class Post extends Model
      */
     public static function getMarkedText($text, $searchExpressive){
 
-        $replace = "<span class='bg-green-400 rounded'>" . $searchExpressive . "</span>";
+        $replace = '<span class="bg-[#4ade80] rounded">' . $searchExpressive . '</span>';
         $resultExpressive = preg_replace('#.*' . $searchExpressive . '.*?#iu', $replace, $text);
 
         return $resultExpressive;
