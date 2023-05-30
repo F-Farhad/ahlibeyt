@@ -69,7 +69,7 @@ class Post extends Model
     public static function getMarkedParagraph($text, $searchExpressive){
         $searchExpressive = preg_replace('/\s+/', ' ', $searchExpressive);                //remove space
         $positionExpressive = mb_stripos($text, $searchExpressive);                      //search begin position
-        $resultExpressive =  mb_substr($text, $positionExpressive, 300) ;                  //get paragraph included search expressive
+        $resultExpressive =  mb_substr($text, $positionExpressive) ;                  //get paragraph included search expressive
         
         
         $resultExpressive = self::getMarkedText($resultExpressive, $searchExpressive);
@@ -83,15 +83,20 @@ class Post extends Model
      * '<span class="bg-[#4ade80] rounded">' - при поиске английских слов находит эту строку
      */
     public static function getMarkedText($text, $searchExpressive){
-        $searchExpressive = preg_replace('/\s+/', ' ', $searchExpressive);                //remove space
-        // dd($searchExpressive);
+        $searchExpressive = preg_replace('#\s+#', ' ', $searchExpressive);                //remove space
 
         $words = explode(' ', $searchExpressive);
 
+        //create replace array, don't mark single letter
         foreach($words as $key => $value){
-            $marked_words[$key] = '<span class="bg-[#4ade80] rounded">' . $value . '</span>';
+            if(\Illuminate\Support\Str::length($value) > 1){
+                $marked_words[$key] = '<span class="bg-green-400 rounded">' . $value . '</span>';
+            }else{
+                $marked_words[$key] = $value;
+            }
         }
 
+        //create array regex
         foreach($words as $key => $word){
             $words[$key] = "#$word#iu";
         }
