@@ -47,8 +47,6 @@ class Post extends Model
     }
 
     /**
-     * @var
-     * string content
      * return text from json column
      * */
     public function getContent():string{
@@ -65,11 +63,12 @@ class Post extends Model
 
     /**
      * returns paragraph with mark text
+     * now is not working
      */
     public static function getMarkedParagraph($text, $searchExpressive){
-        $searchExpressive = preg_replace('/\s+/', ' ', $searchExpressive);                //remove space
+        $searchExpressive = preg_replace('#\s+#', ' ', $searchExpressive);                //removing whitespace, tabulation
         $positionExpressive = mb_stripos($text, $searchExpressive);                      //search begin position
-        $resultExpressive =  mb_substr($text, $positionExpressive) ;                  //get paragraph included search expressive
+        $resultExpressive =  mb_substr($text, $positionExpressive);                  //get paragraph included search expressive
         
         
         $resultExpressive = self::getMarkedText($resultExpressive, $searchExpressive);
@@ -83,20 +82,22 @@ class Post extends Model
      * '<span class="bg-[#4ade80] rounded">' - при поиске английских слов находит эту строку
      */
     public static function getMarkedText($text, $searchExpressive){
-        $searchExpressive = preg_replace('#\s+#', ' ', $searchExpressive);                //remove space
+        $searchExpressive = preg_replace('#\s+#', ' ', $searchExpressive);                //removing whitespace, tabulation
 
         $words = explode(' ', $searchExpressive);
 
-        //create replace array, don't mark single letter
+        //remove all single letter
+        //If the callback function returns true, the current value from array is returned into the result array.
+        $words = array_filter($words, function ($v){
+            return \Illuminate\Support\Str::length($v) > 1;
+        });
+
+        //create marked words
         foreach($words as $key => $value){
-            if(\Illuminate\Support\Str::length($value) > 1){
                 $marked_words[$key] = '<span class="bg-green-400 rounded">' . $value . '</span>';
-            }else{
-                $marked_words[$key] = $value;
-            }
         }
 
-        //create array regex
+        //create regex array
         foreach($words as $key => $word){
             $words[$key] = "#$word#iu";
         }
