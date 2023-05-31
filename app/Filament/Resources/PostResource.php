@@ -20,7 +20,7 @@ use Filament\Tables;
 
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
-
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class PostResource extends Resource
 {
@@ -60,7 +60,7 @@ class PostResource extends Resource
                     ->directory('content\thumbnail')
                     ->image()
                     ->label(__('filament.thumbnail')),
-                    \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('short_content')
+                    TinyEditor::make('short_content')
                     ->simple()
                     ->required()
                     ->label(__('filament.short_content')),
@@ -73,7 +73,7 @@ class PostResource extends Resource
                         Builder\Block::make('content')
                         ->icon('heroicon-o-document-text')
                         ->schema([
-                            \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('content')
+                            TinyEditor::make('content')
                                 ->profile('ahlibeyt')
                                 ->fileAttachmentsDirectory('content\imagesContent')
                                 ->label(__('filament.content'))
@@ -93,8 +93,7 @@ class PostResource extends Resource
                         Builder\Block::make('image')
                             ->icon('heroicon-o-photograph')
                             ->schema([
-                            \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('image_description')
-                                ->simple()
+                            Forms\Components\TextInput::make('image_description')
                                 ->label(__('filament.image_block_description')),
                             FileUpload::make('image')
                                 ->directory('content\imageContent')

@@ -8,9 +8,9 @@
         <a href="{{route('category.showPost', [$category, $post])}}" class="text-3xl font-bold hover:text-gray-700">
             {{$post->title}}
         </a>
-        <p class="text-sm pb-4">
+        <div class="text-sm pb-4">
             Опубликовано {{$post->getFormattedDate()->day .' '. $post->getFormattedDate()->getTranslatedMonthName('Do MMMM') . ' ' . $post->getFormattedDate()->year;}}
-        </p>
+        </div>
         <a href="{{route('category.showPost', [$category, $post])}}" class="pb-6">
             {!! $post->short_content !!}
         </a>

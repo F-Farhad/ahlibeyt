@@ -17,6 +17,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Actions\EditAction;
 use Illuminate\Database\Eloquent\Model;
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class PostsRelationManager extends RelationManager
 {
@@ -51,10 +52,10 @@ class PostsRelationManager extends RelationManager
                 Card::make()
                 ->schema([
                     FileUpload::make('thumbnail')
-                    ->directory('content\thumbnail')
-                    ->image()
-                    ->label(__('filament.thumbnail')),
-                    \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('short_content')
+                        ->directory('content\thumbnail')
+                        ->image()
+                        ->label(__('filament.thumbnail')),
+                    TinyEditor::make('short_content')
                     ->simple()
                     ->required()
                     ->label(__('filament.short_content')),
@@ -67,7 +68,7 @@ class PostsRelationManager extends RelationManager
                         Builder\Block::make('content')
                         ->icon('heroicon-o-document-text')
                         ->schema([
-                            \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('content')
+                            TinyEditor::make('content')
                                 ->profile('ahlibeyt')
                                 ->fileAttachmentsDirectory('content\imagesContent')
                                 ->label(__('filament.content'))
@@ -87,8 +88,7 @@ class PostsRelationManager extends RelationManager
                         Builder\Block::make('image')
                             ->icon('heroicon-o-photograph')
                             ->schema([
-                            \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('image_description')
-                                ->simple()
+                            TextInput::make('image_description')
                                 ->label(__('filament.image_block_description')),
                             FileUpload::make('image')
                                 ->directory('content\imageContent')

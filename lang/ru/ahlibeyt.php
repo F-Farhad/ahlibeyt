@@ -7,7 +7,7 @@ return [
     'get_to_known_us' => 'Познакомимся поближе',
     'all_category' => 'Все категории',
 
-    'all-posts' => 'Все посты',
+    'all-posts' => 'Посты',
     'main' => 'Главная',
 
     //main page

@@ -1,3 +1,147 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+p {
+    margin: 3px 0px 3px 0px;
+}
+
+h2 {
+    @apply text-2xl font-semibold;
+}
+h3 {
+    @apply text-xl font-semibold mt-2;
+}
+h4 {
+    @apply text-lg font-semibold;
+}
+h5 {
+    @apply text-base font-semibold;
+}
+h6 {
+    @apply text-base font-semibold;
+}
+
+/* Num list */
+ol {
+    counter-reset: li; 
+    list-style: none; 
+    font-size: 14px;
+    padding: 0;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    
+}
+ol li {
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2.5em;
+    margin: .5em 0;
+    background: #f6eedb;
+    color: #444;
+    text-decoration: none;
+    border-radius: 1em;
+    /* transition: .3s ease-out; */
+}
+ol li:hover {background: #E9E4E0;}
+ol li:before {
+    content: counter(li);
+    counter-increment: li;
+    position: absolute;
+    left: -0.4em;
+    top: 40%;
+    margin-top: -1em;
+    background: #c5e4db;
+    height: 2.4em;
+    width: 2.4em;
+    line-height: 2em;
+    border: .3em solid white;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2em;
+    /* transition: all .3s ease-out; */
+}
+/* End num list */
+
+ /* Marked list */
+ul {
+    list-style: none;
+    border-left: 10px solid #ec7554;
+    padding: 0;
+    font-family: "Lucida Sans";
+}
+ul li {padding: .4em;}
+ul li:nth-child(odd) {background: #f6eedb;}
+ul li:nth-child(even) {background: white;}
+ /* End marked list */
+
+/* Blockquote */
+/* https://html5book.ru/krasivoe-oformlenie-citat-na-sayte/ */
+blockquote {
+    background: linear-gradient(135deg, #F6EEDB 50%, #F4FEF9 50%);
+    padding: 50px 30px;
+    text-align: center;
+    position: relative;
+    color: #49152C;
+    padding: 30px 50px;
+    font-family: 'Lato', sans-serif;
+    }
+blockquote p {
+    font-size: 22px;
+    /* @apply text-2xl; */
+    margin-top: 30px;
+}
+    blockquote p:before {
+    content: "\201C";
+    font-size: 90px;
+    color: #EA6844;
+    font-family: serif;
+    position: absolute;
+    top: 0;
+    /* left: 50%; */
+    transform: translateX(-50%);
+}
+blockquote p:after {
+        content: "\201C";
+        font-size: 90px;
+        color: #EA6844;
+        font-family: serif;
+        position: absolute;
+        /* : 0; */
+        /* right: 100%; */
+        /* transform: translateZ(100%); */
+}
+/* End blockquote */
+
+/* Link */
+p>a{
+    color:#bd1ead;
+    border-bottom: 1px solid;
+}
+p>a::before {
+    content: '[';
+    transform: translateX(20px);
+}
+p>a::after {
+    content: ']' !important;
+    transform: translateX(-20px);
+}
+
+p>a::before, p>a::after {
+    display: inline-block;
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.2s;
+}
+
+p>a:hover::before, p>a:hover::after, p>a:focus::before, p>a:focus::after {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    transform: translateX(0px);
+}
+
+p>a:hover{
+    /* transition: transform 0.3s, opacity 0.2s; */
+    opacity: 1;
+    border-bottom: none;
+}
+/* End Link */

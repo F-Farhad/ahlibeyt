@@ -29,10 +29,10 @@
         <div class="w-full container mx-auto flex flex-wrap items-center justify-between">
 
             <nav>
-                <ul class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">
-                    <li><a class="hover:text-gray-200 hover:underline px-4" href="#">Shop</a></li>
-                    <li><a class="hover:text-gray-200 hover:underline px-4" href="#">About</a></li>
-                </ul>
+                <div class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">
+                    <div><a class="hover:text-gray-200 hover:underline px-4" href="#">Shop</a></div>
+                    <div><a class="hover:text-gray-200 hover:underline px-4" href="#">About</a></div>
+                </div>
             </nav>
 
             <div class="flex items-center text-lg no-underline text-white pr-6">
@@ -59,9 +59,9 @@
             <a class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl" href="{{route('main')}}">
                 Minimal Blog
             </a>
-            <p class="text-lg text-gray-600">
+            <div class="text-lg text-gray-600">
                 Lorem Ipsum Dolor Sit Amet
-            </p>
+            </div>
         </div>
     </header>
 
@@ -70,7 +70,7 @@
         <div class="block sm:hidden">
             <a
                 href="#"
-                {{-- block --}}
+                {{-- bg-green-400 --}}
                 class=" md:hidden text-base font-bold uppercase text-center flex justify-center items-center"
                 @click="open = !open"
             >
@@ -85,7 +85,7 @@
                 <form method="get" action="{{route('search')}}">
                     <input name="search_expression" value="{{request()->get('search_expression')}}"
                            class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 font-medium"
-                           placeholder="Type an hit enter to search anything"/>
+                           placeholder="Поиск по сайту"/>
                 </form>
             </div>
         </div>
