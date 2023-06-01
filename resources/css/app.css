@@ -26,7 +26,6 @@ h6 {
 ol {
     counter-reset: li; 
     list-style: none; 
-    font-size: 14px;
     padding: 0;
     text-shadow: 0 1px 0 rgba(255,255,255,.5);
     
@@ -39,8 +38,9 @@ ol li {
     background: #f6eedb;
     color: #444;
     text-decoration: none;
-    border-radius: 1em;
-    /* transition: .3s ease-out; */
+    @apply rounded-md;
+    border-top-left-radius: 2.5em;
+    border-bottom-left-radius: 2.5em;
 }
 ol li:hover {background: #E9E4E0;}
 ol li:before {
@@ -58,7 +58,6 @@ ol li:before {
     text-align: center;
     font-weight: bold;
     border-radius: 2em;
-    /* transition: all .3s ease-out; */
 }
 /* End num list */
 
@@ -67,23 +66,27 @@ ul {
     list-style: none;
     border-left: 10px solid #ec7554;
     padding: 0;
-    font-family: "Lucida Sans";
 }
-ul li {padding: .4em;}
+ul li {
+    @apply rounded-md;
+    padding: .4em;
+    text-decoration: none;
+}
 ul li:nth-child(odd) {background: #f6eedb;}
 ul li:nth-child(even) {background: white;}
- /* End marked list */
+ul li:hover {background: #E9E4E0;}
+/* End marked list */
 
 /* Blockquote */
 /* https://html5book.ru/krasivoe-oformlenie-citat-na-sayte/ */
 blockquote {
     background: linear-gradient(135deg, #F6EEDB 50%, #F4FEF9 50%);
-    padding: 50px 30px;
+    /* padding: 50px 30px; */
     text-align: center;
     position: relative;
     color: #49152C;
     padding: 30px 50px;
-    font-family: 'Lato', sans-serif;
+    @apply rounded-md m-3;
     }
 blockquote p {
     font-size: 22px;
@@ -97,7 +100,6 @@ blockquote p {
     font-family: serif;
     position: absolute;
     top: 0;
-    /* left: 50%; */
     transform: translateX(-50%);
 }
 blockquote p:after {
@@ -106,42 +108,87 @@ blockquote p:after {
         color: #EA6844;
         font-family: serif;
         position: absolute;
-        /* : 0; */
-        /* right: 100%; */
-        /* transform: translateZ(100%); */
 }
 /* End blockquote */
 
+p>iframe{
+    @apply mt-2 mb-2;
+    max-width: 80vw;
+}
+
+pre{
+    white-space: pre-wrap;
+    @apply bg-[#f6eedb] p-3 rounded-md m-3;
+
+}
+
 /* Link */
-p>a{
+p>a, ol li>a, ul li>a{
     color:#bd1ead;
     border-bottom: 1px solid;
 }
-p>a::before {
+p>a::before, ol li>a::before, ul li>a::before{
     content: '[';
     transform: translateX(20px);
 }
-p>a::after {
+p>a::after, ol li>a::after, ul li>a::after{
     content: ']' !important;
     transform: translateX(-20px);
 }
 
-p>a::before, p>a::after {
+p>a::before, p>a::after, ol li>a::before, ol li>a::after, ul li>a::before, ul li>a::after{
     display: inline-block;
     opacity: 0;
     transition: transform 0.3s, opacity 0.2s;
 }
 
-p>a:hover::before, p>a:hover::after, p>a:focus::before, p>a:focus::after {
+p>a:hover::before, p>a:hover::after, p>a:focus::before, p>a:focus::after,
+ol li>a:hover::before, ol li>a:hover::after, ol li>a:focus::before, ol li>a:focus::after,
+ul li>a:hover::before, ul li>a:hover::after, ul li>a:focus::before, ul li>a:focus::after{
     opacity: 1;
     -webkit-transform: translateX(0px);
     -moz-transform: translateX(0px);
     transform: translateX(0px);
 }
 
-p>a:hover{
-    /* transition: transform 0.3s, opacity 0.2s; */
+p>a:hover, ol li>a:hover, ul li>a:hover{
     opacity: 1;
     border-bottom: none;
 }
 /* End Link */
+
+
+/* Table */
+
+table {
+	width: 100%;
+	border: none;
+    @apply mb-4;
+}
+table tbody tr th {
+	font-weight: bold;
+	text-align: left;
+	border: none;
+	background: #d8d8d8;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+    @apply text-base;
+}
+table tbody tr td {
+	text-align: left;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	vertical-align: top;
+    @apply text-base;
+}
+table thead tr th:first-child, table tbody tr td:first-child {
+	border-left: none;
+}
+table thead tr th:last-child, table tbody tr td:last-child {
+	border-right: none;
+}
+table tbody tr:nth-child(even){
+	background: #f6eedb;
+}
+
+/* End table */

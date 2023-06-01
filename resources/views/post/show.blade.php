@@ -20,21 +20,25 @@
                                 @if($content['type'] == 'content')
                                     {!! $content['data']['content'] !!}
                                 @elseif($content['type'] == 'audio')
-                                    {!! $content['data']['title'] !!}
+                                <div class="mb-3">
+                                    <h3 class="mb-1 text-xl font-semibold">{!! $content['data']['title'] !!}</h3>
                                     <audio controls>
                                         <source src="/storage/{!!$content['data']['audio']!!}" type="audio/mpeg">
                                     </audio>
+                                </div>
                                 @elseif($content['type'] == 'image')
-                                    {!! $content['data']['image_description'] !!}
-                                    <img src=" /storage/{!! $content['data']['image'] !!}" >
+                                <div class="mb-3">
+                                    <h3 class="mb-1 text-xl font-semibold">{!! $content['data']['image_description'] !!}</h3>
+                                    <img class="rounded-md" src=" /storage/{!! $content['data']['image'] !!}" >
+                                </div>
                                 @endif
                             @endforeach
                         @endif
                     </div>
                     <div class="flex flex-row flex-wrap">
                         @foreach($post->tags as $tag)
-                        <div class="mr-1 mt-1 hover:text-gray-700 pb-4">
-                            <a href="{{route('tag.showAllPosts', $tag)}}">{{$tag->title}}</a>
+                        <div class="mr-1 mt-1 hover:underline">
+                            <a class="" href="{{route('tag.showAllPosts', $tag)}}">#{{$tag->title}}</a>
                         </div>
                         @endforeach
                     </div>
