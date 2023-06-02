@@ -8,6 +8,7 @@ use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class MainController extends Controller
 {
@@ -16,21 +17,27 @@ class MainController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $latestPost = Post::query()
+        $latestPost = Cache::remember('latestPost', now()->addMinutes(5), function(){
+            return Post::query()
                         ->where('active', '=', true)
                         ->where('published_at', '<=', Carbon::now())
                         ->latest('published_at')
                         ->limit(1)
                         ->first();
+        });
+        
 
-        $popularPosts = Post::query()
+        $popularPosts = Cache::remember('popularPosts', now()->addMinutes(15), function(){
+            return Post::query()
                         ->where('active', '=', true)
                         ->where('published_at', '<=', Carbon::now())
                         ->orderBy('view_count', 'desc')
                         ->limit(5)
-                        ->get();
+                        ->get(); 
+        });
         
-        $popularCategories = Category::query()
+        $popularCategories = Cache::remember('popularCategories', now()->addMinutes(15), function(){
+            return Category::query()
                         ->with(['posts'])
                         ->whereHas('posts', function (Builder $query) {
                             $query
@@ -50,6 +57,8 @@ class MainController extends Controller
                         ])
                         ->limit(3)
                         ->get();
+        });
+        
 
         return view('main.main', compact('latestPost', 'popularPosts', 'popularCategories'));
     }
