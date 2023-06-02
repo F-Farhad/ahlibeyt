@@ -27,6 +27,7 @@ class TagResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(2048)
+                    ->unique(ignoreRecord: true)
                     ->reactive()
                     ->afterStateUpdated(function (Closure $set, $state) {
                         $set('slug', \Illuminate\Support\Str::slug($state));

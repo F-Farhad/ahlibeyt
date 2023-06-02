@@ -30,6 +30,7 @@ class CategoryResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(2048)
+                    ->unique(ignoreRecord: true)
                     ->reactive()
                     ->label(__('filament.title'))
                     ->afterStateUpdated(function (Closure $set, $state) {
