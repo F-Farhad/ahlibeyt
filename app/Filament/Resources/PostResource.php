@@ -138,7 +138,7 @@ class PostResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
-                    ->words(8)
+                    ->words(3)
                     ->searchable()
                     ->label(__('filament.title')),
                 Tables\Columns\ImageColumn::make('thumbnail')

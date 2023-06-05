@@ -111,7 +111,10 @@ class PostsRelationManager extends RelationManager
                             ->relationship('tags', 'title')
                             ->label(__('filament.tags')),
                         DateTimePicker::make('published_at')
-                            ->label(__('filament.published_at')),
+                        ->unique(ignoreRecord: true)
+                        ->minutesStep(15)
+                        ->secondsStep(10)
+                        ->label(__('filament.published_at')),
                     ]),
                     Toggle::make('active')
                             ->label(__('filament.active')),
@@ -126,6 +129,7 @@ class PostsRelationManager extends RelationManager
         return $table
         ->columns([
             Tables\Columns\TextColumn::make('title')
+                ->words(3)
                 ->searchable()
                 ->label(__('filament.title')),
             Tables\Columns\ImageColumn::make('thumbnail')

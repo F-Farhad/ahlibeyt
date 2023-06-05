@@ -65,15 +65,11 @@ class Post extends Model
      * returns paragraph with mark text
      * now is not working
      */
-    public static function getMarkedParagraph($text, $searchExpressive){
-        $searchExpressive = preg_replace('#\s+#', ' ', $searchExpressive);                //removing whitespace, tabulation
-        $positionExpressive = mb_stripos($text, $searchExpressive);                      //search begin position
-        $resultExpressive =  mb_substr($text, $positionExpressive);                  //get paragraph included search expressive
-        
-        
-        $resultExpressive = self::getMarkedText($resultExpressive, $searchExpressive);
+    public static function getMarkedParagraph($text, $searchExpression){
+        $searchExpression = preg_replace('#\s+#', ' ', $searchExpression);                //removing whitespace, tabulation
+        $resultExpression = self::getMarkedText($text, $searchExpression);
 
-        return $resultExpressive;
+        return $resultExpression;
     }
 
 
@@ -81,16 +77,19 @@ class Post extends Model
      * the first argument takes a string, the second a substring to marked the text
      * '<span class="bg-[#4ade80] rounded">' - при поиске английских слов находит эту строку
      */
-    public static function getMarkedText($text, $searchExpressive){
-        $searchExpressive = preg_replace('#\s+#', ' ', $searchExpressive);                //removing whitespace, tabulation
+    public static function getMarkedText($text, $searchExpression){
+        $searchExpression = preg_replace('#\s+#', ' ', $searchExpression);                //removing whitespace, tabulation
 
-        $words = explode(' ', $searchExpressive);
+        $words = explode(' ', $searchExpression);
 
         //remove all single letter
         //If the callback function returns true, the current value from array is returned into the result array.
         $words = array_filter($words, function ($v){
-            return \Illuminate\Support\Str::length($v) > 1;
+            return \Illuminate\Support\Str::length($v) > 2;
         });
+
+        //added full expression in array
+        $words[] = $searchExpression;
 
         //create marked words
         foreach($words as $key => $value){
@@ -102,9 +101,9 @@ class Post extends Model
             $words[$key] = "#$word#iu";
         }
 
-        $resultExpressive = preg_replace($words, $marked_words, $text);
+        $resultExpression = preg_replace($words, $marked_words, $text);
 
-        return $resultExpressive;
+        return $resultExpression;
     }
 
 
