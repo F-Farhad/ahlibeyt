@@ -10,6 +10,8 @@ class Tag extends Model
 {
     use HasFactory;
 
+    protected $with = ['posts'];
+
     protected $fillable = [
         'title',
         'slug'

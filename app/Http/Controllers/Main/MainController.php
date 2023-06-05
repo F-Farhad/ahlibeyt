@@ -27,7 +27,7 @@ class MainController extends Controller
         });
         
 
-        $popularPosts = Cache::remember('popularPosts', now()->addMinutes(15), function(){
+        $popularPosts = Cache::remember('popularPosts', now()->addMinutes(60), function(){
             return Post::query()
                         ->where('active', '=', true)
                         ->where('published_at', '<=', Carbon::now())
@@ -36,9 +36,8 @@ class MainController extends Controller
                         ->get(); 
         });
         
-        $popularCategories = Cache::remember('popularCategories', now()->addMinutes(15), function(){
+        $popularCategories = Cache::remember('popularCategories', now()->addMinutes(60), function(){
             return Category::query()
-                        ->with(['posts'])
                         ->whereHas('posts', function (Builder $query) {
                             $query
                                 ->where('active', '=', true)

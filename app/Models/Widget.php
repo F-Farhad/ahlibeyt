@@ -21,7 +21,6 @@ class Widget extends Model
 
     public static function getTitle(string $key): string{
         $widget = Cache::remember('widget-' . $key, now()->addMinutes(1), function() use($key){
-            echo 'запрос';
             return Widget::where('key', '=', $key)
                         ->where('active', '=', 1)
                         ->first();

@@ -11,6 +11,11 @@ class Category extends Model
 {
     use HasFactory;
 
+    /**
+     * adding lazy loader
+     **/
+    protected $with = ['posts'];        
+
     protected $fillable = [
         'title',
         'slug',

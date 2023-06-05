@@ -12,6 +12,8 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $with = ['category', 'tags'];
+
     protected $casts = [
         'content' => 'array',
         'published_at' => 'datetime',
