@@ -13,7 +13,7 @@
                 @endif
             </div>
 
-            <!--About us, Popular 3 post -->
+            <!--About us, Popular 5 post -->
             <div>
                 <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pl-2 pb-1 border-b-2 border-blue-500 mb-3">
                     {!! \App\Models\Widget::getTitle('short-about-us') !!}
@@ -56,7 +56,7 @@
             </div>
         </div>
 
-        <!-- Latest Categories -->
+        <!-- Latest posts in a categories -->
 
         @foreach($popularCategories as $category)
             <div>
