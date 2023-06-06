@@ -6,6 +6,7 @@ return [
     'about-us' => 'О нас',
     'get_to_known_us' => 'Познакомимся поближе',
     'all_category' => 'Категории',
+    'all_tags' => 'Теги',
 
     'all-posts' => 'Посты',
     'main' => 'Главная',

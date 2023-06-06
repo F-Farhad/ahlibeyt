@@ -53,7 +53,7 @@
                                 <i class="fas fa-arrow-left pr-1"></i> 
                                 Предыдущий
                             </div>
-                            <div class="pt-2">{{\Illuminate\Support\Str::words($prev->title, 2) }}</div>
+                            <div class="pt-2">{{\Illuminate\Support\Str::words($prev->title, 1) }}</div>
                         </a>
                     @endif
                 </div>
@@ -64,13 +64,12 @@
                                 Следующий 
                                 <i class="fas fa-arrow-right pl-1"></i>
                             </div>
-                            <div class="pt-2">{{\Illuminate\Support\Str::words($next->title, 2) }}</div>
+                            <div class="pt-2">{{\Illuminate\Support\Str::words($next->title, 1) }}</div>
                         </a>
                     @endif
                 </div>
             </div>
-            
         </section>
 
-        <x-side-bar />
+        <x-tag-side-bar />
     </x-app-layouts>
