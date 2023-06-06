@@ -90,8 +90,8 @@
         
     </div>
 
-    <footer class="w-full border-t bg-white">
-        <div class="w-full container mx-auto flex flex-col items-center text-xs">
+    <footer class="w-full border-t bg-white py-4">
+        <div class="w-full container mx-auto flex flex-col items-center text-sm">
             <div class="flex flex-col md:flex-row text-center md:text-left md:justify-between py-2">
                 <a href="{{route('about-us')}}" class="uppercase px-3">{{__('ahlibeyt.about-us')}}</a>
                 <a href="#" class="uppercase px-3">Contact Us</a>
