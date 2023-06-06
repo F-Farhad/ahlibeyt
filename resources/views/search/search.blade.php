@@ -1,11 +1,11 @@
 <x-app-layouts meta-title="Найденные посты" meta-description="Поиск по сайту">
-    <!-- Posts Section -->
-    <section class="w-full md:w-2/3 flex flex-col px-3">
+
+    <section class="container max-w-5xl mx-auto px-3">
 
         @foreach ($posts as $post)
-            <div>
+            <div class="my-5">
                 <a href="{{route('post.show', $post)}}">
-                    <h2 class="text-blue-500 font-bold text-lg sm:text-xl mb-2">
+                    <h2 class="text-blue-500 font-bold text-2xl mb-2">
                     {!! \App\Models\Post::getMarkedText($post->title, request()->get('search_expression'))   !!}
                     </h2>
                 </a>
@@ -13,13 +13,11 @@
                     {!! \App\Models\Post::getMarkedParagraph($post->short_content . $post->getContent(), request()->get('search_expression')) !!}
                 </div>
             </div>
-            <hr class="my-4">
+            <hr class="my-4 shadow">
         @endforeach
 
         {{$posts->onEachSide(1)->links()}}
 
     </section>
-
-    <x-side-bar />
 
 </x-app-layouts>
