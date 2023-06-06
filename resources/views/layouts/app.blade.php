@@ -6,23 +6,6 @@
     <title>{{$metaTitle ?: 'Ahlibeyt'}}</title>
     <meta name="author" content="">
     <meta name="description" content="{{$metaDescription}}">
-    
-    {{-- <style>
-        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
-
-        .font-family-karla {
-            font-family: karla;
-        }
-    </style> --}}
-
-    {{-- <link href="https://allfont.ru/allfont.css?fonts=ds-arabic" rel="stylesheet" type="text/css" />
-    <style>
-      blockquote {
-        font-family: 'DS Arabic', arial;
-        font-size: 48px;
-        text-shadow: 4px 4px 4px #aaa;
-      }
-    </style> --}}
 
     <!-- AlpineJS -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
@@ -107,15 +90,13 @@
         
     </div>
 
-    <footer class="w-full border-t bg-white pb-12">
-        <div class="w-full container mx-auto flex flex-col items-center">
-            <div class="flex flex-col md:flex-row text-center md:text-left md:justify-between py-6">
-                <a href="#" class="uppercase px-3">About Us</a>
-                <a href="#" class="uppercase px-3">Privacy Policy</a>
-                <a href="#" class="uppercase px-3">Terms & Conditions</a>
+    <footer class="w-full border-t bg-white">
+        <div class="w-full container mx-auto flex flex-col items-center text-xs">
+            <div class="flex flex-col md:flex-row text-center md:text-left md:justify-between py-2">
+                <a href="{{route('about-us')}}" class="uppercase px-3">{{__('ahlibeyt.about-us')}}</a>
                 <a href="#" class="uppercase px-3">Contact Us</a>
             </div>
-            <div class="uppercase pb-6">&copy; myblog.com</div>
+            <div class="uppercase pb-3">&copy; ahlibeyt.by</div>
         </div>
     </footer>
 

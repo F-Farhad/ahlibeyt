@@ -58,7 +58,7 @@
 
         <!-- Latest posts in a categories -->
 
-        @foreach($popularCategories as $category)
+        @foreach($latestPostInCategories as $category)
             <div>
                 <a href="{{route('category.showAllPosts', $category)}}">
                     <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pb-1 border-b-2 border-blue-500 mb-3">
@@ -70,7 +70,7 @@
                 <div class="mb-6">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                         @foreach($category->publishedPosts($latestPost)->limit(3)->get() as $post)
-                            <x-post-item :post="$post" />
+                            <x-category-post-item :post="$post" :category="$category" />
                         @endforeach
                     </div>
                 </div>
