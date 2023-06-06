@@ -36,7 +36,7 @@ class MainController extends Controller
                         ->get(); 
         });
         
-        $latestPostInCategories = Cache::remember('popularCategories', now()->addMinutes(60), function(){
+        $latestPostInCategories = Cache::remember('latestPostsInCategory', now()->addMinutes(60), function(){
             return Category::query()
                         ->whereHas('posts', function (Builder $query) {
                             $query

@@ -5,7 +5,7 @@ return [
     //sidebar
     'about-us' => 'О нас',
     'get_to_known_us' => 'Познакомимся поближе',
-    'all_category' => 'Все категории',
+    'all_category' => 'Категории',
 
     'all-posts' => 'Посты',
     'main' => 'Главная',

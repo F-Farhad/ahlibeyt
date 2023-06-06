@@ -69,7 +69,7 @@
 
                 <div class="mb-6">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                        @foreach($category->publishedPosts($latestPost)->limit(3)->get() as $post)
+                        @foreach($category->publishedPosts($latestPost->id)->limit(3)->get() as $post)
                             <x-category-post-item :post="$post" :category="$category" />
                         @endforeach
                     </div>

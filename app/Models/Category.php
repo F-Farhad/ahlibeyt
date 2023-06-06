@@ -25,9 +25,9 @@ class Category extends Model
         return $this->hasMany(Post::class);
     }
 
-    public function publishedPosts($latestPost):HasMany{
+    public function publishedPosts(int $latestPostId = 0):HasMany{
         return $this->hasMany(Post::class)
-                    ->where('id', '<>', $latestPost->id)
+                    ->where('id', '<>', $latestPostId)
                     ->where('active', '=', 1)
                     ->whereDate('published_at', '<=', Carbon::now())
                     ->latest('published_at');

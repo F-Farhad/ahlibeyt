@@ -35,6 +35,7 @@ Route::namespace('App\Http\Controllers\Post')->prefix('post')->group(function(){
 });
 
 Route::namespace('App\Http\Controllers\Category')->prefix('category')->group(function(){
+    Route::get('/', IndexController::class)->name('category.index');
     Route::get('{category:slug}', ShowAllPostsCategoryController::class)->name('category.showAllPosts');
     Route::get('{category:slug}/{post:slug}', ShowPostCategoryController::class)->name('category.showPost');
 });
