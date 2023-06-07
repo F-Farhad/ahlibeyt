@@ -29,7 +29,7 @@ class GlobalSearchController extends Controller
         $search_words = null;
                                 
         foreach($words as $word){                               //removing all single letter
-            if(\Illuminate\Support\Str::length($word) > 1){
+            if(\Illuminate\Support\Str::length($word) > 2){
                 $search_words[] = $word;
             }
         }

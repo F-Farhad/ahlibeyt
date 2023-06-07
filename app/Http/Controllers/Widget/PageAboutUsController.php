@@ -23,6 +23,6 @@ class PageAboutUsController extends Controller
             throw new NotFoundHttpException();
         }
 
-        return view('widget.about', compact('pageAboutUs'));
+        return view('widget.aboutUs', compact('pageAboutUs'));
     }
 }
