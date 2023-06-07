@@ -3,10 +3,8 @@
 namespace App\Filament\Resources\CategoryResource\RelationManagers;
 
 use Closure;
-use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -16,8 +14,7 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Actions\EditAction;
-use Illuminate\Database\Eloquent\Model;
-use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
+
 
 class PostsRelationManager extends RelationManager
 {
@@ -34,100 +31,39 @@ class PostsRelationManager extends RelationManager
                     Grid::make()
                     ->schema([
                         TextInput::make('title')
-                        ->required()
-                        ->maxLength(2048)
-                        ->reactive()
-                        ->afterStateUpdated(function (Closure $set, $state) {
-                            $set('slug', \Illuminate\Support\Str::slug($state));
+                            ->required()
+                            ->maxLength(2048)
+                            ->reactive()
+                            ->afterStateUpdated(function (Closure $set, $state) {
+                                $set('slug', \Illuminate\Support\Str::slug($state));
                         })
                         ->label(__('filament.title')),
                         TextInput::make('slug')
-                        ->required()
-                        ->unique(ignoreRecord: true)
-                        ->maxLength(2048)
-                        ->label(__('filament.slug')),
+                            ->required()
+                            ->unique(ignoreRecord: true)
+                            ->maxLength(2048)
+                            ->label(__('filament.slug')),
                     ]),
                 ]),
-
-                Card::make()
-                ->schema([
-                    FileUpload::make('thumbnail')
-                        ->directory('content\thumbnail')
-                        ->image()
-                        ->label(__('filament.thumbnail')),
-                    TinyEditor::make('short_content')
-                    ->simple()
-                    ->required()
-                    ->label(__('filament.short_content')),
-                ]),
-
-                Card::make()
-                ->schema([
-                    Builder::make('block')
-                    ->blocks([
-                        Builder\Block::make('content')
-                        ->icon('heroicon-o-document-text')
-                        ->schema([
-                            TinyEditor::make('content')
-                                ->profile('ahlibeyt')
-                                ->fileAttachmentsDirectory('content\imagesContent')
-                                ->label(__('filament.content'))
-                        ])->label(__('filament.content')),
-
-                        Builder\Block::make('audio')
-                        ->icon('heroicon-o-microphone')
-                        ->schema([
-                            TextInput::make('title')
-                                ->label(__('filament.title_block_description')),
-                            FileUpload::make('audio')
-                                ->directory('content\audioFiles')
-                                ->acceptedFileTypes(['audio/*'])
-                                ->label(__('filament.audio')),
-                        ])->label(__('filament.audio')),
-                        
-                        Builder\Block::make('image')
-                            ->icon('heroicon-o-photograph')
-                            ->schema([
-                            TextInput::make('image_description')
-                                ->label(__('filament.image_block_description')),
-                            FileUpload::make('image')
-                                ->directory('content\imageContent')
-                                ->image()
-                                ->required()
-                                ->label(__('filament.thumbnail')),
-                        ])->label(__('filament.thumbnail')),
-                    ])
-                    ->collapsible()
-                    ->label(__('filament.block'))
-                ]),
-
                 Card::make()
                 ->schema([
                     Grid::make()
                     ->schema([
-                        Select::make('tags')
-                            ->multiple()
-                            ->preload()
-                            ->relationship('tags', 'title')
-                            ->label(__('filament.tags')),
                         DateTimePicker::make('published_at')
-                        ->unique(ignoreRecord: true)
-                        ->minutesStep(15)
-                        ->secondsStep(10)
-                        ->label(__('filament.published_at')), 
+                            ->unique(ignoreRecord: true)
+                            ->minutesStep(15)
+                            ->secondsStep(10)
+                            ->label(__('filament.published_at')), 
                         Select::make('category_id')
-                                ->relationship('category', 'title')
-                                ->searchable()
-                                ->preload()
-                                ->required()
-                                ->label(__('filament.category')),    
-                        ]),
+                            ->relationship('category', 'title')
+                            ->required()
+                            ->label(__('filament.category')),    
+                    ]),
                         Toggle::make('active')
                             ->label(__('filament.active')),
                 ])
             ]);
     }
-
 
 
     public static function table(Table $table): Table
@@ -157,27 +93,8 @@ class PostsRelationManager extends RelationManager
             ->filters([
                 //
             ])
-            ->headerActions([
-                Tables\Actions\CreateAction::make()
-                ->mutateFormDataUsing(function (array $data): array {           //before creating
-                    $data['content'] = json_encode($data['block'], JSON_UNESCAPED_UNICODE);
-                    return $data;
-                }),
-            ])
             ->actions([
                 EditAction::make()
-                ->mutateRecordDataUsing(function (array $data): array {         //before filling
-                    $data['block'] = json_decode($data['content'], true);
-                    return $data;
-                })
-                ->mutateFormDataUsing(function (array $data): array {           //before saving
-                    $data['content'] = json_encode($data['block'], JSON_UNESCAPED_UNICODE);
-                    return $data;
-                })
-                // Tables\Actions\DeleteAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
             ]);
     } 
 }

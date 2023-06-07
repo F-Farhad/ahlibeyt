@@ -6,7 +6,7 @@
             <div class="my-5">
                 <a href="{{route('post.show', $post)}}">
                     <h2 class="text-blue-500 font-bold text-2xl mb-2">
-                    {!! \App\Models\Post::getMarkedText($post->title, request()->get('search_expression'))   !!}
+                    {!! \App\Models\Post::getMarkedText($post->title, request()->get('search_expression'))   !!}                    {{-- mark bg-green-400 --}}
                     </h2>
                 </a>
                 <div>

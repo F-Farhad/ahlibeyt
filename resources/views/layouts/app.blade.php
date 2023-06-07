@@ -62,7 +62,6 @@
         <div class="block sm:hidden">
             <a
                 href="#"
-                {{-- bg-green-400 --}}
                 class=" md:hidden text-base font-bold uppercase text-center flex justify-center items-center"
                 @click="open = !open"
             >
