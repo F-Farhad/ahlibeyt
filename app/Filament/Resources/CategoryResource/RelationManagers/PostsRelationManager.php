@@ -114,9 +114,15 @@ class PostsRelationManager extends RelationManager
                         ->unique(ignoreRecord: true)
                         ->minutesStep(15)
                         ->secondsStep(10)
-                        ->label(__('filament.published_at')),
-                    ]),
-                    Toggle::make('active')
+                        ->label(__('filament.published_at')), 
+                        Select::make('category_id')
+                                ->relationship('category', 'title')
+                                ->searchable()
+                                ->preload()
+                                ->required()
+                                ->label(__('filament.category')),    
+                        ]),
+                        Toggle::make('active')
                             ->label(__('filament.active')),
                 ])
             ]);
