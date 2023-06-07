@@ -21,7 +21,7 @@ return new class extends Migration
             $table->json('content')->nullable();
             $table->boolean('active')->default(false);
             $table->datetime('published_at')->nullable();
-            $table->foreignIdFor(Category::class, 'category_id');
+            $table->foreignIdFor(Category::class, 'category_id')->constrained();
             $table->timestamps();
         });
     }
