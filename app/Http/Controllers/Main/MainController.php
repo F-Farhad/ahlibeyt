@@ -36,12 +36,13 @@ class MainController extends Controller
                         ->get(); 
         });
         
-        $latestPostInCategories = Cache::remember('latestPostsInCategory', now()->addMinutes(60), function(){
+        $latestPostInCategories = Cache::remember('latestPostsInCategory', now()->addMinutes(60), function() use($latestPost){
             return Category::query()
-                        ->whereHas('posts', function (Builder $query) {
+                        ->whereHas('posts', function (Builder $query) use($latestPost){
                             $query
                                 ->where('active', '=', true)
-                                ->where('published_at', '<=', Carbon::now());
+                                ->where('published_at', '<=', Carbon::now())
+                                ->where('id', '<>', $latestPost->id);
                         })
                         ->select('categories.*')
                         ->selectRaw('MAX(posts.published_at) as max_date')
@@ -58,7 +59,6 @@ class MainController extends Controller
                         ->get();
         });
         
-
         return view('main.main', compact('latestPost', 'popularPosts', 'latestPostInCategories'));
     }
 }
