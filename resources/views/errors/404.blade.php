@@ -1,7 +1,7 @@
 <x-app-layouts meta-title="Ahlibeyt" meta-description="">
 
 
-<section class="flex items-center bg-gray-50 dark:bg-gray-700 mx-auto py-8">
+<section class="flex items-center bg-white mx-auto py-8">
     <div class="container flex flex-col items-center ">
         <div class="flex flex-col gap-6 max-w-md text-center">
             <h2 class="font-extrabold text-9xl text-gray-600">
