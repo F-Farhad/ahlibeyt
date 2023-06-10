@@ -41,8 +41,8 @@ class MainController extends Controller
                         ->whereHas('posts', function (Builder $query) use($latestPost){
                             $query
                                 ->where('active', '=', true)
-                                ->where('published_at', '<=', Carbon::now())
-                                ->where('id', '<>', $latestPost->id);
+                                ->where('published_at', '<=', Carbon::now());
+                                // ->where('id', '<>', $latestPost->id);
                         })
                         ->select('categories.*')
                         ->selectRaw('MAX(posts.published_at) as max_date')
