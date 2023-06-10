@@ -15,13 +15,13 @@ class IndexController extends Controller
      */
     public function __invoke(): View
     {
-        $posts = Cache::remember('posts', now()->addMinutes(5), function(){ 
-            return Post::query()
+        // $posts = Cache::remember('posts', now()->addMinutes(5), function(){ 
+            $posts = Post::query()
                         ->where('active', '=', 1)
                         ->whereDate('published_at', '<=', Carbon::now())
                         ->orderBy('published_at', 'desc')
                         ->paginate(10);
-        });
+        // });
         
         return view('post.index', compact('posts'));
     }

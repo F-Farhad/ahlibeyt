@@ -17,8 +17,8 @@ class IndexController extends Controller
      */
     public function __invoke(): View
     {
-        $categories = Cache::remember('allPostsInCategory', now()->addMinutes(5), function(){ 
-            return Category::query()
+        // $categories = Cache::remember('allPostsInCategory', now()->addMinutes(5), function(){ 
+            $categories =  Category::query()
                         ->whereHas('posts', function (Builder $query) {
                             $query
                                 ->where('active', '=', true)
@@ -36,7 +36,7 @@ class IndexController extends Controller
                             'categories.updated_at',
                         ])
                         ->get();
-        });
+        // });
         return view('category.index', compact('categories'));
     }
 }

@@ -26,7 +26,7 @@ class SideBar extends Component
      */
     public function render(): View|Closure|string
     {
-        $categories = Cache::remember('sidebarCategory', now()->addMinutes(5), function(){ 
+        // $categories = Cache::remember('sidebarCategory', now()->addMinutes(5), function(){ 
             return Category::query()
                         ->join('posts', function(JoinClause $join){             //for hard query use JoinClause
                             $join->on('categories.id', '=', 'posts.category_id')
@@ -36,7 +36,7 @@ class SideBar extends Component
                         ->select('categories.title', 'categories.slug') //, DB::raw('count(*) as total') //do it need to count?
                         ->groupBy('categories.id')
                         ->get();
-        });
+        // });
         return view('components.side-bar', compact('categories'));
     }
 }

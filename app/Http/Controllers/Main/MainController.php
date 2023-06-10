@@ -17,27 +17,28 @@ class MainController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $latestPost = Cache::remember('latestPost', now()->addMinutes(5), function(){
-            return Post::query()
+        // $latestPost = Cache::remember('latestPost', now()->addMinutes(5), function(){
+            $latestPost = Post::query()
                         ->where('active', '=', true)
                         ->where('published_at', '<=', Carbon::now())
                         ->latest('published_at')
                         ->limit(1)
                         ->first();
-        });
+        // });
         
 
-        $popularPosts = Cache::remember('popularPosts', now()->addMinutes(60), function(){
-            return Post::query()
+        // $popularPosts = Cache::remember('popularPosts', now()->addMinutes(60), function(){
+            // return Post::query()
+            $popularPosts = Post::query()
                         ->where('active', '=', true)
                         ->where('published_at', '<=', Carbon::now())
                         ->orderBy('view_count', 'desc')
                         ->limit(5)
                         ->get(); 
-        });
+        // });
         
-        $latestPostInCategories = Cache::remember('latestPostsInCategory', now()->addMinutes(60), function() use($latestPost){
-            return Category::query()
+        // $latestPostInCategories = Cache::remember('latestPostsInCategory', now()->addMinutes(60), function() use($latestPost){
+            $latestPostInCategories = Category::query()
                         ->whereHas('posts', function (Builder $query) use($latestPost){
                             $query
                                 ->where('active', '=', true)
@@ -57,7 +58,7 @@ class MainController extends Controller
                         ])
                         ->limit(3)
                         ->get();
-        });
+        // });
         
         return view('main.main', compact('latestPost', 'popularPosts', 'latestPostInCategories'));
     }
