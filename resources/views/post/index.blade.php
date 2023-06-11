@@ -1,6 +1,6 @@
 <x-app-layouts meta-title="Посты" meta-description="Все посты блога">
     <!-- Posts Section -->
-    <section class="container max-w-5xl mx-auto px-3">
+    <section class="container max-w-4xl mx-auto px-3">
 
         @foreach ($posts as $post)
             <x-post-item :post="$post" />
