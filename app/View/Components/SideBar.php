@@ -27,7 +27,7 @@ class SideBar extends Component
     public function render(): View|Closure|string
     {
         // $categories = Cache::remember('sidebarCategory', now()->addMinutes(5), function(){ 
-            return Category::query()
+            $categories = Category::query()
                         ->join('posts', function(JoinClause $join){             //for hard query use JoinClause
                             $join->on('categories.id', '=', 'posts.category_id')
                             ->where('posts.active', '=', true)
