@@ -86,7 +86,7 @@ ul li:hover {background: #E9E4E0;}
 
 /* Blockquote */
 /* https://html5book.ru/krasivoe-oformlenie-citat-na-sayte/ */
-blockquote {
+div blockquote {
 
     background: linear-gradient(135deg, #F6EEDB 50%, #F4FEF9 50%);
     text-align: center;
@@ -94,11 +94,11 @@ blockquote {
     color: #49152C;
     @apply rounded-md p-5 m-3;
     }
-blockquote p {
+div blockquote p {
     font-family: 'Caveat', cursive;
     @apply text-[18px] mt-[30px] m-3;
 }
-    blockquote p:before {
+div blockquote p:before {
     content: "\201C";
     font-size: 70px;
     color: #EA6844;
@@ -108,7 +108,7 @@ blockquote p {
     left: 30px;
     transform: translateX(-50%);
 }
-blockquote p:after {
+div blockquote p:after {
         content: "\201D";
         font-size: 70px;
         color: #EA6844;
