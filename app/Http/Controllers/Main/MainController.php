@@ -37,13 +37,14 @@ class MainController extends Controller
                         ->get(); 
         // });
         
+        $idLatestPost = $latestPost->id ?? -1;      //if category have 1 post, which is last added on site, hide it, because it post will show how latest post
         // $latestPostInCategories = Cache::remember('latestPostsInCategory', now()->addMinutes(60), function() use($latestPost){
             $latestPostInCategories = Category::query()
-                        ->whereHas('posts', function (Builder $query) use($latestPost){
+                        ->whereHas('posts', function (Builder $query) use($idLatestPost){
                             $query
                                 ->where('active', '=', true)
-                                ->where('published_at', '<=', Carbon::now());
-                                // ->where('id', '<>', $latestPost->id);
+                                ->where('published_at', '<=', Carbon::now())
+                                ->where('id', '<>', $idLatestPost);
                         })
                         ->select('categories.*')
                         ->selectRaw('MAX(posts.published_at) as max_date')
