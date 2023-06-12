@@ -57,13 +57,17 @@ class PostResource extends Resource
                 Card::make()
                 ->schema([
                     Forms\Components\FileUpload::make('thumbnail')
-                    ->directory('content\thumbnail')
-                    ->image()
-                    ->label(__('filament.thumbnail')),
+                        ->directory('content\thumbnail')
+                        ->image()
+                        ->imageResizeMode('cover')
+                        ->imageCropAspectRatio('16:9')
+                        ->imageResizeTargetWidth('1920')
+                        ->imageResizeTargetHeight('1080')
+                        ->label(__('filament.thumbnail')),
                     TinyEditor::make('short_content')
-                    ->simple()
-                    ->required()
-                    ->label(__('filament.short_content')),
+                        ->simple()
+                        ->required()
+                        ->label(__('filament.short_content')),
                 ]),
 
                 Card::make()
@@ -98,6 +102,10 @@ class PostResource extends Resource
                             FileUpload::make('image')
                                 ->directory('content\imageContent')
                                 ->image()
+                                ->imageResizeMode('cover')
+                                ->imageCropAspectRatio('16:9')
+                                ->imageResizeTargetWidth('1920')
+                                ->imageResizeTargetHeight('1080')
                                 ->required()
                                 ->label(__('filament.thumbnail')),
                         ])->label(__('filament.thumbnail')),
