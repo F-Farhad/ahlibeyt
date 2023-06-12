@@ -14,7 +14,7 @@ return [
 
         'default' => [
             'plugins' => 'advlist autoresize codesample directionality emoticons fullscreen hr image link lists media table wordcount',
-            'toolbar' => 'undo redo removeformat | formatselect fontsizeselect | bold italic | rtl ltr | alignjustify alignright aligncenter alignleft | numlist bullist | forecolor backcolor | blockquote table toc hr | image link media codesample emoticons | wordcount fullscreen',
+            'toolbar' => 'undo redo removeformat | formatselect fontsizeselect | bold italic | rtl ltr | alignjustify alignright aligncenter alignleft | numlist bullist | forecolor backcolor | blockquote table hr | image link media codesample emoticons | wordcount fullscreen',
             'upload_directory' => null,
         ],
 
@@ -32,7 +32,7 @@ return [
 
         'ahlibeyt' => [
             'plugins' => 'advlist autoresize directionality emoticons fullscreen hr link lists media table wordcount',
-            'toolbar' => 'undo redo removeformat | formatselect fontsizeselect | bold italic | rtl ltr | alignjustify alignright aligncenter alignleft | numlist bullist | forecolor backcolor | blockquote table toc hr | link media codesample emoticons | wordcount fullscreen',
+            'toolbar' => 'undo redo removeformat | formatselect fontsizeselect | bold italic | rtl ltr | alignjustify alignright aligncenter alignleft | numlist bullist | forecolor backcolor | blockquote table hr | link media codesample emoticons | wordcount fullscreen',
             'upload_directory' => null,
         ],
         /*
@@ -47,8 +47,8 @@ return [
 
         /*
           'default' => [
-            'plugins' => 'advlist autoresize codesample directionality emoticons fullscreen hr image imagetools link lists media table toc wordcount',
-            'toolbar' => 'undo redo removeformat | formatselect fontsizeselect | bold italic | rtl ltr | alignjustify alignright aligncenter alignleft | numlist bullist | forecolor backcolor | blockquote table toc hr | image link media codesample emoticons | wordcount fullscreen',
+            'plugins' => 'advlist autoresize codesample directionality emoticons fullscreen hr image link lists media table wordcount',
+            'toolbar' => 'undo redo removeformat | formatselect fontsizeselect | bold italic | rtl ltr | alignjustify alignright aligncenter alignleft | numlist bullist | forecolor backcolor | blockquote table hr | image link media codesample emoticons | wordcount fullscreen',
             'custom_configs' => [
                 'allow_html_in_named_anchor' => true,
                 'link_default_target' => '_blank',
