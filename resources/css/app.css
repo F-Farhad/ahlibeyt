@@ -197,25 +197,25 @@ div table tbody tr th {
 	background: #d8d8d8;
 	/* border-left: 1px solid #ddd;
 	border-right: 1px solid #ddd; */
-
-    
 }
-div table tbody tr td {
+/* div table tbody tr td {
 	text-align: left;
-	/* border-left: 1px solid #ddd;
-	border-right: 1px solid #ddd; */
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
 	vertical-align: top;
 
-}
-div table thead tr th:first-child, table tbody tr td:first-child {
+} */
+/* div table thead tr th:first-child, table tbody tr td:first-child {
 	border-left: none;
 }
 div table thead tr th:last-child, table tbody tr td:last-child {
 	border-right: none;
-}
-div table tbody tr:nth-child(even){
+} */
+/* div table tbody tr:nth-child(even){
 	background: #f6eedb;
-} 
+}  */
+
+
 /* End table
 
 
