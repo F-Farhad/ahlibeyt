@@ -1,6 +1,6 @@
 <x-app-layouts meta-title="" meta-description="">
     
-    <section onload="initGeolocation();" class="container max-w-5xl mx-auto px-3">
+    <section class="container max-w-5xl mx-auto px-3">
         <article class="w-full shadow my-4">
             
             <script type="text/javascript" src="{{asset('js/PrayTimes.js')}}"></script>
@@ -82,7 +82,7 @@
             
                 // display monthly timetable
                 function displayMonth(offset) {
-                    onload=initGeolocation();
+                    initGeolocation();
                     var lat = $('latitude').value;
                     var lng = $('longitude').value;
                     var timeZone = $('timezone').value;
