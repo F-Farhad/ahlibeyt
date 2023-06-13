@@ -181,7 +181,7 @@ p>a:hover, ol li>a:hover, ul li>a:hover{
 /* End Link */
 
 /* Pray page */
-/* .header {background:#eef; border-bottom: 1px solid #ddd; text-align: center; padding: 7px;}
+.header {background:#eef; border-bottom: 1px solid #ddd; text-align: center; padding: 7px;}
 .caption {font-size: 20px; color: #d95722; text-align: center; width: 10em;}
 .arrow {font-weight: bold; text-decoration: none; color: #3D3D3D; }
 .arrow:hover {text-decoration: underline;}
@@ -190,6 +190,6 @@ p>a:hover, ol li>a:hover, ul li>a:hover{
 .timetable {border-width: 1px; border-style: outset; border-collapse: collapse; border-color: gray; margin: 0 auto;}
 .timetable td {border-width: 1px; border-spacing: 1px; padding: 1px; border-style: inset; border-color: #CCCCCC;}
 .head-row {color: black; background-color: #eef;}
-.today-row {background-color: #f6eedb; color: black} */
+.today-row {background-color: #f6eedb; color: black}
 
 /*end Pray page */
