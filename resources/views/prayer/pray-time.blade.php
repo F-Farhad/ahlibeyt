@@ -3,6 +3,8 @@
     <section class="container max-w-5xl mx-auto px-3">
         <article class="w-full shadow my-4">
             
+            <script type="text/javascript" src="{{asset('js/PrayTimes.js')}}"></script>
+
             <div class="header">
                 <form class="form" action="javascript:update();">
                     <span class="inline-block pr-1">Широта: <input class="border-y" type="text" value="43" id="latitude" size="5" onchange="update();" /></span>
@@ -171,7 +173,6 @@
             
             </script>
         </article>
-        <script type="text/javascript" src="{{asset('js/PrayTimes.js')}}"></script>
     </section>
 </x-app-layouts>
     {{-- </html> --}}
