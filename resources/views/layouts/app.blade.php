@@ -100,5 +100,7 @@
             <div class="uppercase pb-3">&copy; ahlibeyt.by</div>
         </div>
     </footer>
+
+    @livewireScripts
 </body>
 </html>

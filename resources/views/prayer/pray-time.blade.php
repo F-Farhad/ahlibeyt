@@ -2,8 +2,6 @@
     
     <section class="container max-w-5xl mx-auto px-3">
         <article class="w-full shadow my-4">
-    
-            <script type="text/javascript" src="{{asset('js/PrayTimes.js')}}"></script>
             
             <div class="header">
                 <form class="form" action="javascript:update();">
@@ -173,6 +171,7 @@
             
             </script>
         </article>
+        <script type="text/javascript" src="{{asset('js/PrayTimes.js')}}"></script>
     </section>
 </x-app-layouts>
     {{-- </html> --}}
