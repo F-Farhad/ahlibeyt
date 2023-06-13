@@ -183,9 +183,9 @@ p>a:hover, ol li>a:hover, ul li>a:hover{
 
 /* Table */
 
-div table {
-	/* width: 100%; */
-	/* border: none; */
+/* div table {
+	width: 100%;
+    border: none;
     @apply my-4;
     
 }
@@ -195,9 +195,9 @@ div table tbody tr th {
 	text-align: left;
 	border: none;
 	background: #d8d8d8;
-	/* border-left: 1px solid #ddd;
-	border-right: 1px solid #ddd; */
-}
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+} */
 /* div table tbody tr td {
 	text-align: left;
 	border-left: 1px solid #ddd;
