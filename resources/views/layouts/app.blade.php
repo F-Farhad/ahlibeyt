@@ -73,6 +73,7 @@
                 <a href="{{route('main')}}" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">{{ __('ahlibeyt.main')}}</a>
                 <a href="{{route('category.index')}}" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">{{ __('ahlibeyt.all_category')}}</a>
                 <a href="{{route('post.index')}}" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">{{ __('ahlibeyt.all-posts')}}</a>
+                <a href="{{route('prayTime')}}" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">{{ __('ahlibeyt.pray_time')}}</a>
                 <a href="{{route('about-us')}}" class="hover:bg-gray-400 rounded py-2 px-4 mx-2 whitespace-nowrap">{{ __('ahlibeyt.about-us')}}</a>
                 <form method="get" action="{{route('search')}}">
                     <input name="search_expression" value="{{request()->get('search_expression')}}"

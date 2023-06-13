@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+Route::view('/pray-time', 'prayer.pray-time')->name('prayTime');
+
 Route::namespace('App\Http\Controllers\Main')->group(function(){
     Route::get('/', MainController::class)->name('main');
 });
