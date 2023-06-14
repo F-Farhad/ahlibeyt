@@ -66,7 +66,23 @@ class Post extends Model
      * now is not working
      */
     public static function getMarkedParagraph($text, $searchExpression){
-        $searchExpression = preg_replace('#\s+#', ' ', $searchExpression);                //removing whitespace, tabulation
+        
+        $arraySearchExpression = self::getArraySearchExpression($searchExpression);
+
+        //create regex array
+        foreach($arraySearchExpression as $key => $word){
+            $arraySearchExpression[$key] = "#<p>.*?$word.*?</p>#iu";
+        }
+
+        //kak tolko budet naydeno vyrazenie ili slovo, vyhodim iz cikla
+        foreach($arraySearchExpression as $reg){
+            preg_match($reg, $text, $arr);
+            if(!empty($arr)){
+                $text = strip_tags($arr[0]);
+                break;
+            }
+        }
+
         $resultExpression = self::getMarkedText($text, $searchExpression);
 
         return $resultExpression;
@@ -78,20 +94,10 @@ class Post extends Model
      * '<span class="bg-[#4ade80] rounded">' - при поиске английских слов находит эту строку
      */
     public static function getMarkedText($text, $searchExpression){
-        $searchExpression = preg_replace('#\s+#', ' ', $searchExpression);                //removing whitespace, tabulation
+        
+        $words = self::getArraySearchExpression($searchExpression);
 
-        $words = explode(' ', $searchExpression);
-
-        //remove all single letter
-        //If the callback function returns true, the current value from array is returned into the result array.
-        $words = array_filter($words, function ($v){
-            return \Illuminate\Support\Str::length($v) > 2;
-        });
-
-        //added full expression in array
-        $words[] = $searchExpression;
-
-        //create marked words
+        //create regular array
         foreach($words as $key => $value){
                 $marked_words[$key] = '<span class="bg-green-400 rounded">' . $value . '</span>';
         }
@@ -104,6 +110,26 @@ class Post extends Model
         $resultExpression = preg_replace($words, $marked_words, $text);
 
         return $resultExpression;
+    }
+
+    /**
+     * This function get string and after returned an array strings
+     */
+    private static function getArraySearchExpression(string $searchExpression):array{
+        $searchExpression = preg_replace('#\s+#', ' ', $searchExpression);              //removing whitespace, tabulation
+
+        $words = explode(' ', $searchExpression);
+
+        //remove all single letter
+        //If the callback function returns true, the current value from array is returned into the result array.
+        $arraySearchExpression = array_filter($words, function ($v){
+            return \Illuminate\Support\Str::length($v) > 2;
+        });
+
+        //added full expression in array
+        array_unshift($arraySearchExpression, $searchExpression);
+
+        return $arraySearchExpression;
     }
 
 

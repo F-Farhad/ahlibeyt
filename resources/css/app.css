@@ -103,9 +103,10 @@ div blockquote p:before {
     color: #EA6844;
     font-family: serif;
     position: absolute;
-    top: 0px;
-    left: 30px;
+     top: 0px;
+    /*left: 30px; */
     transform: translateX(-50%);
+
 }
 div blockquote p:after {
         content: "\201D";
