@@ -27,7 +27,7 @@ class SideBar extends Component
     public function render(): View|Closure|string
     {
         // $categories = Cache::remember('sidebarCategory', now()->addMinutes(5), function(){ 
-            $categories = Category::query()
+            $collections = Category::query()
                         ->join('posts', function(JoinClause $join){             //for hard query use JoinClause
                             $join->on('categories.id', '=', 'posts.category_id')
                             ->where('posts.active', '=', true)
@@ -37,6 +37,9 @@ class SideBar extends Component
                         ->groupBy('categories.id')
                         ->get();
         // });
-        return view('components.side-bar', compact('categories'));
+        $header = trans('ahlibeyt.all_category');
+        $route = 'category.showAllPosts';
+        $req = 'category';
+        return view('components.side-bar', compact('collections', 'header', 'route', 'req'));
     }
 }

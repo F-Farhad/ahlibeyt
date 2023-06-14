@@ -9,7 +9,6 @@
                 @endforeach
             </div>
                 {{$posts->onEachSide(1)->links()}}
-
         </section>
 
         <x-side-bar />

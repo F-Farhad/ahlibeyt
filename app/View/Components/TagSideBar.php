@@ -24,7 +24,7 @@ class TagSideBar extends Component
      */
     public function render(): View|Closure|string
     {
-           $tags = Tag::query()
+        $collections = Tag::query()
                         ->join('post_tag', 'post_tag.tag_id', '=', 'tags.id')
                         ->join('posts', function(JoinClause $join){             //for hard query use JoinClause
                             $join->on('post_tag.post_id', '=', 'posts.id')
@@ -34,6 +34,10 @@ class TagSideBar extends Component
                         ->select('tags.title', 'tags.slug') //, DB::raw('count(*) as total') //do it need to count?
                         ->groupBy('tags.id')
                         ->get();
-        return view('components.tag-side-bar', compact('tags'));
+
+        $header = trans('ahlibeyt.all_tags');
+        $route = 'tag.showAllPosts';
+        $req = 'tag';
+        return view('components.side-bar', compact('collections', 'header', 'route', 'req'));
     }
 }
