@@ -66,12 +66,12 @@ class Post extends Model
      * now is not working
      */
     public static function getMarkedParagraph($text, $searchExpression){
-        
+
         $arraySearchExpression = self::getArraySearchExpression($searchExpression);
 
         //create regex array
         foreach($arraySearchExpression as $key => $word){
-            $arraySearchExpression[$key] = "#<p>.*?$word.*?</p>#iu";
+            $arraySearchExpression[$key] = "#(<p>.*?$word.*?</p>)|(<pre>.*?$word.*?</pre>)|(<h1>.*?$word.*?</h1>)|(<h2>.*?$word.*?</h2>)|(<h3>.*?$word.*?</h3>)|(<h4>.*?$word.*?</h4>)|(<h5>.*?$word.*?</h5>)|(<h6>.*?$word.*?</h6>)#iu";
         }
 
         //kak tolko budet naydeno vyrazenie ili slovo, vyhodim iz cikla
@@ -94,7 +94,7 @@ class Post extends Model
      * '<span class="bg-[#4ade80] rounded">' - при поиске английских слов находит эту строку
      */
     public static function getMarkedText($text, $searchExpression){
-        
+
         $words = self::getArraySearchExpression($searchExpression);
 
         //create regular array
