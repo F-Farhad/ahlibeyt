@@ -4,9 +4,11 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 bg-white shadow">
             <!-- Latest Post -->
             <div class="col-span-2">
-                <h2 class="text-lg sm:text-xl font-bold text-[#416471] uppercase pl-2 pb-1 border-b-2 border-[#416471] mb-3">
-                    {{__('ahlibeyt.latestPost')}}
-                </h2>
+                <a href="{{route('post.show', $latestPost)}}">
+                    <h2 class="text-lg sm:text-xl font-bold text-primary uppercase pl-2 pb-1 border-b-2 border-primary mb-3">
+                        {{__('ahlibeyt.latestPost')}}<i class="fas fa-arrow-right"></i>
+                    </h2>
+                </a>
 
                 @if ($latestPost)
                     <x-post-item :post="$latestPost" />
@@ -15,18 +17,18 @@
 
             <!--About us, Popular 5 post -->
             <div>
-                <h2 class="text-lg sm:text-xl font-bold text-[#416471] uppercase pl-2 pb-1 border-b-2 border-[#416471] mb-3">
+                <h2 class="text-lg sm:text-xl font-bold text-primary uppercase pl-2 pb-1 border-b-2 border-primary mb-3">
                     {!! \App\Models\Widget::getTitle('short-about-us') !!}
                 </h2>
                 <div class="pl-2 pr-2">
                     {!! \App\Models\Widget::getContent('short-about-us') !!}
                 </div>
-                <a href="{{route('about-us')}}" class="w-full bg-[#416471] text-white font-bold text-sm uppercase rounded hover:bg-[#416471] flex items-center justify-center px-2 py-3 mt-4 mb-3">
+                <a href="{{route('about-us')}}" class="w-full bg-primary text-light font-bold text-sm uppercase rounded flex items-center justify-center px-2 py-3 mt-4 mb-3">
                     {{__('ahlibeyt.get_to_known_us')}}
                 </a>
 
                 
-                <h2 class="text-lg sm:text-xl font-bold text-[#416471] uppercase pl-2 pb-1 border-b-2 border-[#416471] mb-3">
+                <h2 class="text-lg sm:text-xl font-bold text-primary uppercase pl-2 pb-1 border-b-2 border-primary mb-3">
                     {{__('ahlibeyt.popularPosts')}}
                 </h2>
                 <div class="p-1">
@@ -40,7 +42,7 @@
                                     <h3 class="text-sm uppercase whitespace-nowrap truncate">{{$post->title}}</h3>
                                 </a>
                                 <div class="flex gap-4 mb-2">
-                                        <a href="{{route('category.showAllPosts', $post->category)}}" class="bg-[#416471] text-white p-1 rounded text-xs font-bold uppercase">
+                                        <a href="{{route('category.showAllPosts', $post->category)}}" class="bg-primary text-light p-1 rounded text-xs font-bold uppercase">
                                             {{$post->category->title}}
                                         </a>
                                 </div>
@@ -61,7 +63,7 @@
         @foreach($latestPostInCategories as $category)
             <div>
                 <a href="{{route('category.showAllPosts', $category)}}">
-                    <h2 class="text-lg sm:text-xl font-bold text-[#416471] uppercase pb-1 border-b-2 border-[#416471] mb-3">
+                    <h2 class="text-lg sm:text-xl font-bold text-primary uppercase pb-1 border-b-2 border-primary mb-3">
                         {{__('ahlibeyt.category')}} "{{$category->title}}"
                             <i class="fas fa-arrow-right"></i>
                     </h2>

@@ -6,7 +6,7 @@
                 <!-- Article Image -->
                     <img src="{{$post->getThumbnail()}}">
                 <div class="bg-white flex flex-col justify-start p-6">
-                    <a href="{{route('category.showAllPosts', $post->category)}}" class="text-blue-700 text-sm font-bold uppercase pb-4">{{$post->category->title}}</a>
+                    <a href="{{route('category.showAllPosts', $post->category)}}" class="text-primary text-sm font-bold uppercase pb-4">{{$post->category->title}}</a>
                     <h1 class="text-3xl font-bold">{{$post->title}}</h1>
                     <div class="text-sm pb-4 ">
                         Опубликовано {{$post->getFormattedDate()->day .' '. $post->getFormattedDate()->getTranslatedMonthName('Do MMMM') . ' ' . $post->getFormattedDate()->year;}}
@@ -49,7 +49,7 @@
                 <div class="w-1/2">
                     @if($prev)
                         <a href="{{route('post.show', $prev)}}" class="block w-full bg-white shadow hover:shadow-md text-left p-6">
-                            <div class="text-lg text-blue-800 font-bold flex items-center">
+                            <div class="text-lg text-primary font-bold flex items-center">
                                 <i class="fas fa-arrow-left pr-1"></i> 
                                 Предыдущий
                             </div>
@@ -60,7 +60,7 @@
                 <div class="w-1/2">
                     @if($next)
                         <a href="{{route('post.show', $next)}}" class="block w-full bg-white shadow hover:shadow-md text-right p-6">
-                            <div class="text-lg text-blue-800 font-bold flex items-center justify-end">
+                            <div class="text-lg text-primary font-bold flex items-center justify-end">
                                 Следующий 
                                 <i class="fas fa-arrow-right pl-1"></i>
                             </div>

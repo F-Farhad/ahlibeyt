@@ -17,7 +17,7 @@
 <body>
 
     <!-- Top Bar Nav -->
-    <nav class="w-full py-4 bg-[#416471] shadow">
+    <nav class="w-full py-4 bg-primary text-light shadow">
         <div class="w-full container mx-auto flex flex-wrap items-center justify-between">
 
             <nav>
@@ -58,11 +58,11 @@
     </header>
 
     <!-- Topic Nav -->
-    <nav class="w-full py-4 border-t border-b bg-[#476C5E]" x-data="{ open: false }">
+    <nav class="w-full py-4 border-t border-b bg-primary" x-data="{ open: false }">
         <div class="block sm:hidden">
             <a
                 href="#"
-                class=" md:hidden text-base font-bold uppercase text-center text-[#F3F6EE] flex justify-center items-center"
+                class=" md:hidden text-base font-bold uppercase text-center text-light flex justify-center items-center"
                 @click="open = !open"
             >
                 Меню <i :class="open ? 'fa-chevron-down': 'fa-chevron-up'" class="fas ml-2"></i>
@@ -70,14 +70,14 @@
         </div>
         <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
             <div class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
-                <a href="{{route('main')}}" class="hover:bg-gray-400 rounded  text-[#F3F6EE] py-2 px-4 mx-2">{{ __('ahlibeyt.main')}}</a>
-                <a href="{{route('category.index')}}" class="hover:bg-gray-400 text-[#F3F6EE] rounded py-2 px-4 mx-2">{{ __('ahlibeyt.all_category')}}</a>
-                <a href="{{route('post.index')}}" class="hover:bg-gray-400 text-[#F3F6EE] rounded py-2 px-4 mx-2">{{ __('ahlibeyt.all-posts')}}</a>
-                <a href="{{route('prayTime')}}" class="hover:bg-gray-400 text-[#F3F6EE] rounded py-2 px-4 mx-2">{{ __('ahlibeyt.pray_time')}}</a>
-                <a href="{{route('about-us')}}" class="hover:bg-gray-400 text-[#F3F6EE] rounded py-2 px-4 mx-2 whitespace-nowrap">{{ __('ahlibeyt.about-us')}}</a>
+                <a href="{{route('main')}}" class="hover:text-black text-light py-2 px-4 mx-2">{{ __('ahlibeyt.main')}}</a>
+                <a href="{{route('category.index')}}" class="hover:text-black text-light py-2 px-4 mx-2">{{ __('ahlibeyt.all_category')}}</a>
+                <a href="{{route('post.index')}}" class="hover:text-black text-light py-2 px-4 mx-2">{{ __('ahlibeyt.all-posts')}}</a>
+                <a href="{{route('prayTime')}}" class="hover:text-black text-light py-2 px-4 mx-2">{{ __('ahlibeyt.pray_time')}}</a>
+                <a href="{{route('about-us')}}" class="hover:text-black text-light py-2 px-4 mx-2 whitespace-nowrap">{{ __('ahlibeyt.about-us')}}</a>
                 <form method="get" action="{{route('search')}}">
                     <input name="search_expression" value="{{request()->get('search_expression')}}"
-                           class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 text-center focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 font-medium"
+                           class="block w-full rounded-md border-0 px-3.5 py-2 text-primary shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-primary text-center focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 font-medium"
                            placeholder="Поиск по сайту"/>
                 </form>
             </div>
@@ -91,13 +91,13 @@
         
     </div>
 
-    <footer class="w-full border-t bg-white py-4">
+    <footer class="w-full border-t bg-white py-4 bg-primary ">
         <div class="w-full container mx-auto flex flex-col items-center text-sm">
             <div class="flex flex-col md:flex-row text-center md:text-left md:justify-between py-2">
-                <a href="{{route('about-us')}}" class="uppercase px-3">{{__('ahlibeyt.about-us')}}</a>
-                <a href="#" class="uppercase px-3">Contact Us</a>
+                <a href="{{route('about-us')}}" class="uppercase px-3 text-light hover:text-black">{{__('ahlibeyt.about-us')}}</a>
+                <a href="#" class="uppercase px-3 text-light hover:text-black">Contact Us</a>
             </div>
-            <div class="uppercase pb-3">&copy; ahlibeyt.by</div>
+            <div class="uppercase pb-3 text-light">&copy; ahlibeyt.by</div>
         </div>
     </footer>
 

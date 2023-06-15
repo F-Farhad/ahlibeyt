@@ -5,7 +5,7 @@
     </a>
 
     <div class="bg-white flex flex-col justify-start p-6">
-        <a href="{{route('category.showPost', [$category, $post])}}" class="text-3xl font-bold hover:text-gray-700">
+        <a href="{{route('category.showPost', [$category, $post])}}" class="text-3xl font-bold hover:text-primary">
             {{$post->title}}
         </a>
         <div class="text-sm pb-4">
@@ -14,6 +14,6 @@
         <a href="{{route('category.showPost', [$category, $post])}}" class="pb-6">
             {!! $post->short_content !!}
         </a>
-        {{-- <a href="{{route('post.show', $post)}}" class="uppercase text-gray-800 hover:text-black">Продолжить чтение<i class="fas fa-arrow-right"></i></a> --}}
     </div>
+
 </article>

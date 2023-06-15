@@ -99,7 +99,7 @@ class Post extends Model
 
         //create regular array
         foreach($words as $key => $value){
-                $marked_words[$key] = '<span class="bg-green-400 rounded">' . $value . '</span>';
+                $marked_words[$key] = '<span class="bg-hoverGreen rounded">' . $value . '</span>';
         }
 
         //create regex array
