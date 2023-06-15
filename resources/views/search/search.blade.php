@@ -4,7 +4,7 @@
 
         @foreach ($posts as $post)
             <div class="my-5">
-                <a href="{{route('post.show', $post)}}">
+                <a href="{{route('search.show', [$post, request()->get('search_expression'), ])}}">
                     <h2 class="text-blue-500 font-bold text-2xl mb-2">
                     {!! \App\Models\Post::getMarkedText($post->title, request()->get('search_expression'))   !!}                    {{-- mark bg-green-400 --}}
                     </h2>

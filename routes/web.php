@@ -25,6 +25,7 @@ Route::namespace('App\Http\Controllers\Main')->group(function(){
 
 Route::namespace('App\Http\Controllers\Search')->group(function(){
     Route::get('/search', GlobalSearchController::class)->name('search');
+    Route::get('/search/{post:slug}/{searchexpression}', ShowController::class)->name('search.show');
 });
 
 Route::namespace('App\Http\Controllers\Widget')->group(function(){
