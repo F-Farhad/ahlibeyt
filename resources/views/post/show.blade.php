@@ -4,7 +4,7 @@
     
             <article class="flex flex-col shadow my-4">
                 <!-- Article Image -->
-                    <img src="{{$post->getThumbnail()}}">
+                    <img src="{{$post->getThumbnail()}}" alt="{{$post->title}}" class="aspect-[16/9] object-contain">
                 <div class="bg-white flex flex-col justify-start p-6">
                     <a href="{{route('category.showAllPosts', $post->category)}}" class="text-primary text-sm font-bold uppercase pb-4">{{$post->category->title}}</a>
                     <h1 class="text-3xl font-bold">{{$post->title}}</h1>
@@ -29,7 +29,7 @@
                                 @elseif($content['type'] == 'image')
                                 <div class="mb-3">
                                     <h3 class="mb-1 text-xl font-semibold">{!! $content['data']['image_description'] !!}</h3>
-                                    <img class="rounded-md" src=" /storage/{!! $content['data']['image'] !!}" >
+                                    <img class="aspect-[16/9] object-contain" src=" /storage/{!! $content['data']['image'] !!}" alt="{!! $content['data']['image_description'] !!}">
                                 </div>
                                 @endif
                             @endforeach

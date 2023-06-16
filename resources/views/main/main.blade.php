@@ -35,7 +35,7 @@
                     @foreach($popularPosts as $post)
                         <div class="grid grid-cols-4 gap-2 mb-4 ">
                             <a href="{{route('post.show', $post)}}" class="pt-1">
-                                <img src="{{$post->getThumbnail()}}" alt="{{$post->title}}"/>
+                                <img src="{{$post->getThumbnail()}}" alt="{{$post->title}}" class="aspect-[16/9] object-contain"/>
                             </a>
                             <div class="col-span-3">
                                 <a href="{{route('post.show', $post)}}">

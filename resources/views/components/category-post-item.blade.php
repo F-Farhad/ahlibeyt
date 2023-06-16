@@ -1,7 +1,7 @@
 <article class="bg-white flex flex-col shadow my-4">
     <!-- Article Image -->
     <a href="{{route('category.showPost', [$category, $post])}}" class="hover:opacity-75">
-        <img src="{{$post->getThumbnail()}}">
+        <img src="{{$post->getThumbnail()}}" alt="{{$post->title}}" class="aspect-[16/9] object-contain">
     </a>
 
     <div class="bg-white flex flex-col justify-start p-6">

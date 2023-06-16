@@ -11,13 +11,11 @@ use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
-
 use Filament\Forms\Components\Select;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
@@ -59,10 +57,6 @@ class PostResource extends Resource
                     Forms\Components\FileUpload::make('thumbnail')
                         ->directory('content\thumbnail')
                         ->image()
-                        ->imageResizeMode('cover')
-                        ->imageCropAspectRatio('16:9')
-                        ->imageResizeTargetWidth('1920')
-                        ->imageResizeTargetHeight('1080')
                         ->label(__('filament.thumbnail')),
                     TinyEditor::make('short_content')
                         ->simple()
@@ -102,10 +96,6 @@ class PostResource extends Resource
                             FileUpload::make('image')
                                 ->directory('content\imageContent')
                                 ->image()
-                                ->imageResizeMode('cover')
-                                ->imageCropAspectRatio('16:9')
-                                ->imageResizeTargetWidth('1920')
-                                ->imageResizeTargetHeight('1080')
                                 ->required()
                                 ->label(__('filament.thumbnail')),
                         ])->label(__('filament.thumbnail')),
