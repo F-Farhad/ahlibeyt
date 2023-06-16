@@ -40,7 +40,7 @@ class Widget extends Model
                         ->first();
         }); 
 
-        if(!is_null($widget == null)){
+        if(!is_null($widget == null || trim($widget) == '')){
             return $widget->content;
         }
 
