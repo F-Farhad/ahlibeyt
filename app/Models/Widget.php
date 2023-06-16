@@ -52,7 +52,11 @@ class Widget extends Model
             $widget=  Widget::where('key', '=', $key)
                         ->where('active', '=', 1)
                         ->first();
-            return $widget->thumbnail; 
+            if($widget){
+                return $widget->thumbnail;
+            }
+    
+            return '';
         // }); 
 
         // if($widget){
