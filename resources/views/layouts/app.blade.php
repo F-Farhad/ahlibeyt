@@ -10,7 +10,8 @@
     <!-- AlpineJS -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <!-- Font Awesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+
     @vite('resources/css/app.css')
     @livewireStyles
 </head>
@@ -22,23 +23,23 @@
 
             <nav>
                 <div class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">
-                    <div><a class="hover:text-gray-200 hover:underline px-4" href="#">Shop</a></div>
-                    <div><a class="hover:text-gray-200 hover:underline px-4" href="#">About</a></div>
+                    {{-- <div><a class="hover:text-gray-200 hover:underline px-4" href="#">Shop</a></div>
+                    <div><a class="hover:text-gray-200 hover:underline px-4" href="#">About</a></div> --}}
                 </div>
             </nav>
 
             <div class="flex items-center text-lg no-underline text-white pr-6">
-                <a class="" href="#">
-                    <i class="fab fa-facebook"></i>
+                <a href="https://t.me/ahlibeyt_belarus" class="hover:text-black" target="blank">
+                    <i class="fa-brands fa-telegram"></i>
                 </a>
-                <a class="pl-6" href="#">
-                    <i class="fab fa-instagram"></i>
+                <a class="pl-6 hover:text-black" href="https://instagram.com/islam.belarus?igshid=NTdlMDg3MTY" target="blank">
+                    <i class="fa-brands fa-instagram"></i>
                 </a>
-                <a class="pl-6" href="#">
-                    <i class="fab fa-twitter"></i>
+                <a class="pl-6 hover:text-black" href="https://www.tiktok.com/@ahlibeyt.by" target="blank">
+                    <i class="fa-brands fa-tiktok"></i>
                 </a>
-                <a class="pl-6" href="#">
-                    <i class="fab fa-linkedin"></i>
+                <a class="pl-6 hover:text-black" href="mailto:" target="blank">
+                    <i class="fa-regular fa-envelope"></i>
                 </a>
             </div>
         </div>
@@ -65,7 +66,7 @@
                 class=" md:hidden text-base font-bold uppercase text-center text-light flex justify-center items-center"
                 @click="open = !open"
             >
-                Меню <i :class="open ? 'fa-chevron-down': 'fa-chevron-up'" class="fas ml-2"></i>
+                Меню <i :class="open ? 'fa-solid fa-caret-down': 'fa-solid fa-caret-up'" class="fas ml-2"></i>
             </a>
         </div>
         <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
@@ -94,8 +95,7 @@
     <footer class="w-full border-t bg-white py-4 bg-primary ">
         <div class="w-full container mx-auto flex flex-col items-center text-sm">
             <div class="flex flex-col md:flex-row text-center md:text-left md:justify-between py-2">
-                <a href="{{route('about-us')}}" class="uppercase px-3 text-light hover:text-black">{{__('ahlibeyt.about-us')}}</a>
-                <a href="#" class="uppercase px-3 text-light hover:text-black">Contact Us</a>
+                {{-- <a href="{{route('about-us')}}" class="uppercase px-3 text-light hover:text-black">{{__('ahlibeyt.about-us')}}</a> --}}
             </div>
             <div class="uppercase pb-3 text-light">&copy; ahlibeyt.by</div>
         </div>
