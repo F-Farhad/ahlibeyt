@@ -38,7 +38,7 @@
                 <a class="pl-6 hover:text-black" href="https://www.tiktok.com/@ahlibeyt.by" target="blank">
                     <i class="fa-brands fa-tiktok"></i>
                 </a>
-                <a class="pl-6 hover:text-black" href="mailto:" target="blank">
+                <a class="pl-6 hover:text-black" href="mailto:Idhama313@gmail.com" target="blank">
                     <i class="fa-regular fa-envelope"></i>
                 </a>
             </div>
@@ -50,10 +50,10 @@
     <header class="w-full container mx-auto">
         <div class="flex flex-col items-center py-12">
             <a class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl" href="{{route('main')}}">
-                Minimal Blog
+                <img src="/storage/{{\App\Models\Widget::getThumbnail('logo')}}" title="{{\App\Models\Widget::getTitle('logo')}}">
             </a>
-            <div class="text-lg text-gray-600">
-                Lorem Ipsum Dolor Sit Amet
+            <div class="text-lg text-gray400">
+                {!! \App\Models\Widget::getContent('logo') !!}
             </div>
         </div>
     </header>
@@ -70,17 +70,20 @@
             </a>
         </div>
         <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
-            <div class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
-                <a href="{{route('main')}}" class="hover:text-black text-light py-2 px-4 mx-2">{{ __('ahlibeyt.main')}}</a>
-                <a href="{{route('category.index')}}" class="hover:text-black text-light py-2 px-4 mx-2">{{ __('ahlibeyt.all_category')}}</a>
-                <a href="{{route('post.index')}}" class="hover:text-black text-light py-2 px-4 mx-2">{{ __('ahlibeyt.all-posts')}}</a>
-                <a href="{{route('prayTime')}}" class="hover:text-black text-light py-2 px-4 mx-2">{{ __('ahlibeyt.pray_time')}}</a>
-                <a href="{{route('about-us')}}" class="hover:text-black text-light py-2 px-4 mx-2 whitespace-nowrap">{{ __('ahlibeyt.about-us')}}</a>
-                <form method="get" action="{{route('search')}}">
-                    <input name="search_expression" value="{{request()->get('search_expression')}}"
-                           class="block w-full rounded-md border-0 px-3.5 py-2 text-primary shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-primary text-center focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 font-medium"
-                           placeholder="Поиск по сайту"/>
-                </form>
+            
+            <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
+                <div class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
+                    <a href="{{route('main')}}" class="hover:text-black text-light py-2 px-4 mx-2">{{ __('ahlibeyt.main')}}</a>
+                    <a href="{{route('category.index')}}" class="hover:text-black text-light py-2 px-4 mx-2">{{ __('ahlibeyt.all_category')}}</a>
+                    <a href="{{route('post.index')}}" class="hover:text-black text-light py-2 px-4 mx-2">{{ __('ahlibeyt.all-posts')}}</a>
+                    <a href="{{route('prayTime')}}" class="hover:text-black text-light py-2 px-4 mx-2">{{ __('ahlibeyt.pray_time')}}</a>
+                    <a href="{{route('about-us')}}" class="hover:text-black text-light py-2 px-4 mx-2 whitespace-nowrap">{{ __('ahlibeyt.about-us')}}</a>
+                    <form method="get" action="{{route('search')}}">
+                        <input name="search_expression" value="{{request()->get('search_expression')}}"
+                               class="block w-full rounded-md border-0 px-3.5 py-2 p-1 text-primary shadow-sm ring-1 ring-inset ring-gray400 placeholder:text-primary text-center focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 font-medium"
+                               placeholder="Поиск по сайту"/>
+                    </form>
+                </div>
             </div>
         </div>
     </nav>

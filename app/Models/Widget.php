@@ -47,5 +47,20 @@ class Widget extends Model
         return '';
     }
 
+    public static function getThumbnail(string $key): string{
+        // $widget = Cache::remember('widget-' . $key, now()->addMinutes(1), function() use($key){
+            $widget=  Widget::where('key', '=', $key)
+                        ->where('active', '=', 1)
+                        ->first();
+            return $widget->thumbnail; 
+        // }); 
+
+        // if($widget){
+        //     return $widget->content;
+        // }
+
+        // return '';
+    }
+
 
 }

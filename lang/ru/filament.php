@@ -31,6 +31,7 @@ return [
     'widgets' => 'Виджеты',
     'short-about-us' => 'Коротко \'О нас \' ',
     'page-about-us' => 'Страница \'О нас \' ',
+    'logo' => 'Логотип',
 
 
     'navigationGroupContent' => 'Контент',

@@ -29,6 +29,7 @@ class WidgetResource extends Resource
                         ->options([
                             'short-about-us' => __('filament.short-about-us'),
                             'page-about-us' => __('filament.page-about-us'),
+                            'logo' => __('filament.logo'),
                         ])
                         ->required()
                         ->unique(ignoreRecord: true)
