@@ -29,7 +29,7 @@ Route::namespace('App\Http\Controllers\Search')->group(function(){
 });
 
 Route::namespace('App\Http\Controllers\Widget')->group(function(){
-    Route::get('/about-us', PageAboutUsController::class)->name('about-us');
+    Route::view('/about-us', 'widget.aboutUs')->name('about-us');
 });
 
 Route::namespace('App\Http\Controllers\Post')->prefix('post')->group(function(){

@@ -50,7 +50,7 @@
     <header class="w-full container mx-auto">
         <div class="flex flex-col items-center py-12">
             <a class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl" href="{{route('main')}}">
-                <img src="/storage/{{\App\Models\Widget::getWidget('logo', 'thumbnail')}}" title="{{\App\Models\Widget::getWidget('logo', 'title')}}">
+                <img src="/storage/{{\App\Models\Widget::getWidget('logo', 'thumbnail')}}" alt="{{\App\Models\Widget::getWidget('logo', 'title')}}">
             </a>
             <div class="text-lg text-gray400">
                 {!! \App\Models\Widget::getWidget('logo', 'content') !!}
