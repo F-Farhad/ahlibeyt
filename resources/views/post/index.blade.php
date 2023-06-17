@@ -3,7 +3,7 @@
     <section class="container max-w-4xl mx-auto px-3">
 
         @foreach ($posts as $post)
-            <x-post-item :post="$post" />
+            <x-post-item :post="$post" :parametrs="$post" routeName="post.show"/>
         @endforeach
 
         {{$posts->onEachSide(1)->links()}}

@@ -5,7 +5,7 @@
         <section class="w-full md:w-2/3  px-3">
             <div class=" flex flex-col items-center">
                 @foreach ($posts as $post)
-                    <x-category-post-item :post="$post" :category="$category" />
+                    <x-post-item :post="$post" :parametrs="[$category, $post]" routeName="category.showPost"/>
                 @endforeach
             </div>
                 {{$posts->onEachSide(1)->links()}}

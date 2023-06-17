@@ -11,7 +11,7 @@
                 </a>
 
                 @if ($latestPost)
-                    <x-post-item :post="$latestPost" />
+                    <x-post-item :post="$latestPost" :parametrs="$latestPost" routeName="post.show" />
                 @endif
             </div>
 
@@ -72,7 +72,7 @@
                 <div class="mb-6">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                         @foreach($category->publishedPosts($latestPost->id)->limit(3)->get() as $post)
-                            <x-category-post-item :post="$post" :category="$category" />
+                            <x-post-item :post="$post" :parametrs="[$category, $post]" routeName="category.showPost"/>
                         @endforeach
                     </div>
                 </div>
