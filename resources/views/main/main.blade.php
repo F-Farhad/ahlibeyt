@@ -18,10 +18,10 @@
             <!--About us, Popular 5 post -->
             <div>
                 <h2 class="text-lg sm:text-xl font-bold text-primary uppercase pl-2 pb-1 border-b-2 border-primary mb-3">
-                    {!! \App\Models\Widget::getTitle('short-about-us') !!}
+                    {!! \App\Models\Widget::getWidget('short-about-us', 'title') !!}
                 </h2>
                 <div class="pl-2 pr-2">
-                    {!! \App\Models\Widget::getContent('short-about-us') !!}
+                    {!! \App\Models\Widget::getWidget('short-about-us', 'content') !!}
                 </div>
                 <a href="{{route('about-us')}}" class="w-full bg-primary text-light font-bold text-sm uppercase rounded flex items-center justify-center px-2 py-3 mt-4 mb-3">
                     {{__('ahlibeyt.get_to_known_us')}}

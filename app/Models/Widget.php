@@ -19,53 +19,22 @@ class Widget extends Model
         'active',
     ];
 
-    public static function getTitle(string $key): string{
+    /**
+     * @var string $key - uniq key a widget
+     * @var string $field - field from the table widgets
+     * 
+     */
+    public static function getWidget(string $key, string $field) {
         // $widget = Cache::remember('widget-' . $key, now()->addMinutes(1), function() use($key){
-            $widget = Widget::where('key', '=', $key)
+        $widget = Widget::where('key', '=', $key)
                         ->where('active', '=', 1)
                         ->first();
-        // }); 
+        // });
 
-        if(!is_null($widget->title) && !is_null($widget)){
-            return $widget->title;
+        if(isset($widget, $widget->$field)){
+            return $widget->$field;
         }
 
         return '';
     }
-
-    public static function getContent(string $key): string{
-        // $widget = Cache::remember('widget-' . $key, now()->addMinutes(1), function() use($key){
-            $widget = Widget::where('key', '=', $key)
-                        ->where('active', '=', 1)
-                        ->first();
-        // }); 
-
-        if(!is_null($widget->content) && !is_null($widget)){
-            return $widget->content;
-        }
-
-        return '';
-    }
-
-    public static function getThumbnail(string $key): string{
-        // $widget = Cache::remember('widget-' . $key, now()->addMinutes(1), function() use($key){
-        $widget=  Widget::where('key', '=', $key)
-                    ->where('active', '=', 1)
-                    ->first();
-        
-        if(!is_null($widget->thumbnail) && !is_null($widget)){
-            return $widget->thumbnail;
-        }
-
-        return '';
-        // }); 
-
-        // if($widget){
-        //     return $widget->content;
-        // }
-
-        // return '';
-    }
-
-
 }
