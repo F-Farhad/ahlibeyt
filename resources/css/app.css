@@ -142,7 +142,7 @@ p>iframe{
 pre{ 
     font-family: 'Caveat', cursive;
     white-space: pre-wrap;
-    @apply bg-[#f6eedb] p-3 rounded-md m-3;
+    @apply bg-hover p-3 rounded-md m-3;
 }
 /* end pre */
 
