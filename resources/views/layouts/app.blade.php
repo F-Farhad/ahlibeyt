@@ -52,7 +52,7 @@
             <a class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl" href="{{route('main')}}">
                 <img src="/storage/{{\App\Models\Widget::getWidget('logo', 'thumbnail')}}" alt="{{\App\Models\Widget::getWidget('logo', 'title')}}">
             </a>
-            <div class="text-lg text-gray400">
+            <div class="text-lg text-black">
                 {!! \App\Models\Widget::getWidget('logo', 'content') !!}
             </div>
         </div>
@@ -79,7 +79,7 @@
                     <a href="{{route('about-us')}}" class="hover:text-black text-light py-2 px-4 mx-2 whitespace-nowrap">{{ __('ahlibeyt.about-us')}}</a>
                     <form method="get" action="{{route('search')}}">
                         <input name="search_expression" value="{{request()->get('search_expression')}}"
-                               class="block w-full rounded-md border-0 px-3.5 py-2 p-1 text-primary shadow-sm ring-1 ring-inset ring-gray400 placeholder:text-primary text-center focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 font-medium"
+                               class="block w-full rounded-md border-0 px-3.5 py-2 p-1 text-black shadow-sm ring-1 ring-inset ring-primary placeholder:text-black text-center focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 font-medium"
                                placeholder="Поиск по сайту"/>
                     </form>
                 </div>

@@ -2,7 +2,7 @@
 
     <img src="{{$post->getThumbnail()}}" alt="{{$post->title}}" class="aspect-[16/9] object-contain">    
     <div class="bg-white flex flex-col justify-start p-6">
-        <a href="{{route('category.showAllPosts', $post->category)}}" class="text-primary text-sm font-bold uppercase pb-4">{{$post->category->title}}</a>
+        <a href="{{route('category.showAllPosts', $post->category)}}" class="text-link text-sm font-bold uppercase pb-4">{{$post->category->title}}</a>
         
         <h1 class="text-3xl font-bold">{{$post->title}}</h1>
         
@@ -39,7 +39,7 @@
         <div class="flex flex-row flex-wrap">
             @foreach($post->tags as $tag)
             <div class="mr-1 mt-1 hover:underline">
-                <a class="" href="{{route('tag.showAllPosts', $tag)}}">#{{$tag->title}}</a>
+                <a class="text-link" href="{{route('tag.showAllPosts', $tag)}}">#{{$tag->title}}</a>
             </div>
             @endforeach
         </div>
@@ -50,8 +50,8 @@
 <div class="w-full flex pt-6">
     <div class="w-1/2">
         @if($prev)
-            <a href="{{route($routeName, $parametrsPrev)}}" class="block w-full bg-white shadow hover:shadow-md text-left p-6">
-                <div class="text-lg text-primary font-bold flex items-center">
+            <a href="{{route($routeName, $parametrsPrev)}}" class="block w-full text-link bg-white shadow hover:shadow-md text-left p-6">
+                <div class="text-lg text-black font-bold flex items-center">
                     <i class="fas fa-arrow-left pr-1"></i> 
                     Предыдущий
                 </div>
@@ -61,8 +61,8 @@
     </div>
     <div class="w-1/2">
         @if($next)
-            <a href="{{route($routeName, $parametrsNext)}}" class="block w-full bg-white shadow hover:shadow-md text-right p-6">
-                <div class="text-lg text-primary font-bold flex items-center justify-end">
+            <a href="{{route($routeName, $parametrsNext)}}" class="block w-full text-link bg-white shadow hover:shadow-md text-right p-6">
+                <div class="text-lg text-black font-bold flex items-center justify-end">
                     Следующий 
                     <i class="fas fa-arrow-right pl-1"></i>
                 </div>

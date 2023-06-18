@@ -5,7 +5,7 @@
         @foreach($categories as $category)
             <div>
                 <a href="{{route('category.showAllPosts', $category)}}">
-                    <h2 class="text-lg sm:text-xl font-bold text-primary uppercase pb-1 border-b-2 border-primary mb-3">
+                    <h2 class="text-lg sm:text-xl font-bold text-black hover:text-link uppercase pb-1 border-b-2 border-primary mb-3">
                         {{__('ahlibeyt.category')}} "{{$category->title}}"
                             <i class="fas fa-arrow-right"></i>
                     </h2>

@@ -8,7 +8,7 @@
                 <span class="sr-only">Error</span>404
             </h2>
             <p class="text-2xl md:text-3xl dark:text-primary">Страница не найдена</p>
-            <a href="{{route('main')}}" class="px-8 py-4 text-xl font-semibold rounded text-primary">Вернуться на главную</a>
+            <a href="{{route('main')}}" class="px-8 py-4 text-xl font-semibold rounded text-link">Вернуться на главную</a>
         </div>
     </div>
 </section>

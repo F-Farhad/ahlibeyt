@@ -5,10 +5,10 @@
     </a>
 
     <div class="bg-white flex flex-col justify-start p-6">
-        <a href="{{route('category.showAllPosts', $post->category)}}" class="text-primary text-sm font-bold uppercase pb-4">
+        <a href="{{route('category.showAllPosts', $post->category)}}" class="text-link text-sm font-bold uppercase pb-4">
             {{$post->category->title}}
         </a>
-        <a href="{{route($routeName, $parametrs)}}" class="text-3xl font-bold hover:text-primary">
+        <a href="{{route($routeName, $parametrs)}}" class="text-3xl font-bold hover:text-link">
             {{$post->title}}
         </a>
         <div class="text-sm pb-4">
