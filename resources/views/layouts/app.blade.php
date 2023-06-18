@@ -61,13 +61,12 @@
     <!-- Topic Nav -->
     <nav class="w-full py-4 border-t border-b bg-primary" x-data="{ open: false }">
         <div class="block sm:hidden">
-            <a
-                href="#"
+            <span     
                 class=" md:hidden text-base font-bold uppercase text-center text-light flex justify-center items-center"
                 @click="open = !open"
             >
                 Меню <i :class="open ? 'fa-solid fa-caret-down': 'fa-solid fa-caret-up'" class="fas ml-2"></i>
-            </a>
+            </span>
         </div>
         <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
             
