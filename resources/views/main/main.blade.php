@@ -64,7 +64,7 @@
             <div>
                 <a href="{{route('category.showAllPosts', $category)}}">
                     <h2 class="text-lg sm:text-xl font-bold text-black hover:text-link uppercase pb-1 border-b-2 border-primary mb-3">
-                        {{__('ahlibeyt.category')}} "{{$category->title}}"
+                        {{__('ahlibeyt.category')}} &laquo;{{$category->title}}&raquo;
                             <i class="fas fa-arrow-right"></i>
                     </h2>
                 </a>
