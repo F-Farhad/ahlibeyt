@@ -7,7 +7,7 @@
                     <img src="{{$post->getThumbnail()}}" alt="{{$post->title}}" class="aspect-[16/9] object-contain">
                 <div class="bg-white flex flex-col justify-start p-6">
                     <a href="{{route('category.showAllPosts', $post->category)}}" class="text-primary text-sm font-bold uppercase pb-4">{{$post->category->title}}</a>
-                    <h1 class="text-3xl font-bold"> {{ \App\Models\Post::getMarkedText($post->title, $searchExpression)}} </h1>
+                    <h1 class="text-3xl font-bold"> {!! \App\Models\Post::getMarkedText($post->title, $searchExpression) !!} </h1>
                     <div class="text-sm pb-4 ">
                         Опубликовано {{$post->getFormattedDate()->day .' '. $post->getFormattedDate()->getTranslatedMonthName('Do MMMM') . ' ' . $post->getFormattedDate()->year;}}
                     </div>
