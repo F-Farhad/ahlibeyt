@@ -19,10 +19,10 @@ class GlobalSearchController extends Controller
     public function __invoke(Request $request)
     {
         $data = $request->validate([
-            'search_expression' => 'regex:#^[а-яёА-ЯЁ 0-9]+$#u'                                 //restrict count words?
+            'search_expression' => 'required|regex:#^[а-яёА-ЯЁ 0-9]+$#u'                                 //restrict count words?
         ]);
 
-        $data['search_expression'] = preg_replace('/\s+/', ' ', $data['search_expression']);    //removing whitespace & tabulation
+        $data['search_expression'] = preg_replace('/\s+/', ' ', $data['search_expression']);            //removing whitespace & tabulation
 
         $words = explode(' ', $data['search_expression']);
 
