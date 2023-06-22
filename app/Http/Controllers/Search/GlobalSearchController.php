@@ -33,9 +33,9 @@ class GlobalSearchController extends Controller
                 $search_words[] = $word;
             }
         }
-
+        $posts = collect();
         if(empty($search_words)){
-            return redirect()->route('main');
+            return view('search.search', compact('posts'));
         }
 
 
@@ -46,13 +46,13 @@ class GlobalSearchController extends Controller
                     ->where(function($query) use ($search_words) {
                         foreach ($search_words as $key => $value) {
                             if($key == 0){
-                                $query->where('title', 'like', "%".$value."%")
-                                ->orWhere('short_content', 'like', "%".$value."%")
-                                ->orWhere("content", 'like',  "%".$value."%");
+                                $query->where('title', 'like', "%{$value}%")
+                                ->orWhere('short_content', 'like', "%{$value}%")
+                                ->orWhere("content", 'like',  "%{$value}%");
                             }else{
-                                $query->orWhere('title', 'like', "%".$value."%")
-                                ->orWhere('short_content', 'like', "%".$value."%")
-                                ->orWhere("content", 'like',  "%".$value."%");
+                                $query->orWhere('title', 'like', "%{$value}%")
+                                ->orWhere('short_content', 'like', "%{$value}%")
+                                ->orWhere("content", 'like',  "%{$value}%");
                             }
      
                         }

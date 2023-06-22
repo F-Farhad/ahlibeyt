@@ -6,7 +6,7 @@
             @foreach ($collections as $item)
             <div class="inline-block">
                 <a href="{{route($route, $item)}}" 
-                    class="font-semibold block py-2 px-3 rounded hover:bg-primary hover:text-light
+                    class="font-semibold block py-2 px-3 rounded hover:bg-primary hover:text-light uppercase text-xs
                         {{request($req)?->slug == $item->slug ? 'bg-primary text-light' : ''}} "> 
                     {{$item->title}} 
                 </a>

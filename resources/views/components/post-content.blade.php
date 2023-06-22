@@ -39,7 +39,7 @@
         <div class="flex flex-row flex-wrap">
             @foreach($post->tags as $tag)
             <div class="mr-1 mt-1 hover:underline">
-                <a class="text-link" href="{{route('tag.showAllPosts', $tag)}}">#{{$tag->title}}</a>
+                <a class="text-link uppercase text-xs" href="{{route('tag.showAllPosts', $tag)}}">#{{$tag->title}}</a>
             </div>
             @endforeach
         </div>
