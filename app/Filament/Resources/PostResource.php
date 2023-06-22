@@ -83,6 +83,7 @@ class PostResource extends Resource
                             Forms\Components\TextInput::make('title')
                                 ->label(__('filament.title_block_description')),
                             FileUpload::make('audio')
+                                ->required()
                                 ->directory('content\audioFiles')
                                 ->acceptedFileTypes(['audio/*'])
                                 ->label(__('filament.audio')),
@@ -94,9 +95,9 @@ class PostResource extends Resource
                             Forms\Components\TextInput::make('image_description')
                                 ->label(__('filament.image_block_description')),
                             FileUpload::make('image')
+                                ->required()
                                 ->directory('content\imageContent')
                                 ->image()
-                                ->required()
                                 ->label(__('filament.thumbnail')),
                         ])->label(__('filament.thumbnail')),
                     ])
