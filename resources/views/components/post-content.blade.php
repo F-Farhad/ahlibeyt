@@ -55,7 +55,7 @@
                     <i class="fas fa-arrow-left pr-1"></i> 
                     Предыдущий
                 </div>
-                <div class="pt-2">{{\Illuminate\Support\Str::words($prev->title, 2) }}</div>
+                <div class="pt-2 whitespace-nowrap">{{\Illuminate\Support\Str::limit($prev->title, 15) }}</div>
             </a>
         @endif
     </div>
@@ -66,7 +66,7 @@
                     Следующий 
                     <i class="fas fa-arrow-right pl-1"></i>
                 </div>
-                <div class="pt-2">{{\Illuminate\Support\Str::words($next->title, 2) }}</div>
+                <div class="pt-2 whitespace-nowrap">{{\Illuminate\Support\Str::limit($next->title, 15) }}</div>
             </a>
         @endif
     </div>
