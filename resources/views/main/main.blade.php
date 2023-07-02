@@ -3,17 +3,17 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 bg-white shadow">
             <!-- Latest Post -->
-            <div class="col-span-2">
-                <a href="{{route('post.show', $latestPost)}}">
-                    <h2 class="text-lg sm:text-xl font-bold text-black uppercase pl-2 pb-1 border-b-2 border-black hover:text-link mb-3">
-                        {{__('ahlibeyt.latestPost')}}<i class="fas fa-arrow-right"></i>
-                    </h2>
-                </a>
+            @if ($latestPost)
+                <div class="col-span-2">
+                    <a href="{{route('post.show', $latestPost)}}">
+                        <h2 class="text-lg sm:text-xl font-bold text-black uppercase pl-2 pb-1 border-b-2 border-black hover:text-link mb-3">
+                            {{__('ahlibeyt.latestPost')}}<i class="fas fa-arrow-right"></i>
+                        </h2>
+                    </a>
 
-                @if ($latestPost)
                     <x-post-item :post="$latestPost" :parametrs="$latestPost" routeName="post.show" />
-                @endif
-            </div>
+                </div>
+            @endif
 
             <!--About us, Popular 5 post -->
             <div>
