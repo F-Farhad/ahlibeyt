@@ -12,7 +12,6 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class WidgetResource extends Resource
 {
