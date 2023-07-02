@@ -20,8 +20,6 @@ use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 
-use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
-
 class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
