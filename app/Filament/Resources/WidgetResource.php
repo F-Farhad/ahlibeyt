@@ -11,6 +11,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class WidgetResource extends Resource
 {
@@ -41,7 +42,7 @@ class WidgetResource extends Resource
                         ->directory('content\widgetImage')
                         ->image()
                         ->label(__('filament.thumbnail')),
-                    \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('content')
+                    TinyEditor::make('content')
                         ->profile('ahlibeyt')
                         ->label(__('filament.content')),
                     Forms\Components\Toggle::make('active'),
