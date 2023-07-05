@@ -34,7 +34,11 @@ class SideBar extends Component
                             ->where('posts.published_at', '<=', Carbon::now());
                         })
                         ->select('categories.title', 'categories.slug') //, DB::raw('count(*) as total') //do it need to count?
-                        ->groupBy('categories.id')
+                        ->groupBy([
+                            'categories.id',
+                            'categories.title',
+                            'categories.slug'
+                        ])
                         ->get();
         // });
         $header = trans('ahlibeyt.all_category');
