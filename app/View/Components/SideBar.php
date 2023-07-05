@@ -37,7 +37,9 @@ class SideBar extends Component
                         ->groupBy([
                             'categories.id',
                             'categories.title',
-                            'categories.slug'
+                            'categories.slug',
+                            'categories.created_at',
+                            'categories.updated_at',
                         ])
                         ->get();
         // });

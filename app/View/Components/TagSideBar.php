@@ -32,7 +32,13 @@ class TagSideBar extends Component
                             ->where('posts.published_at', '<=', Carbon::now());
                         })
                         ->select('tags.title', 'tags.slug') //, DB::raw('count(*) as total') //do it need to count?
-                        ->groupBy('tags.id')
+                        ->groupBy([
+                            'tags.id',
+                            'tags.title',
+                            'tags.slug',
+                            'tags.created_at',
+                            'tags.updated_at',
+                        ])
                         ->get();
 
         $header = trans('ahlibeyt.all_tags');
