@@ -63,7 +63,6 @@ class Post extends Model
 
     /**
      * returns paragraph with mark text
-     * now is not working
      */
     public static function getMarkedParagraph($text, $searchExpression){
 
