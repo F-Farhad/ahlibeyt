@@ -19,7 +19,8 @@ class EditPost extends EditRecord
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
-        $data['content'] = json_encode(mb_convert_encoding($data['block'], 'UTF-8', 'auto'), JSON_UNESCAPED_UNICODE);
+        header('Content-Type: text/json; charset=utf-8'); 
+        $data['content'] = json_encode($data['block'], JSON_UNESCAPED_UNICODE);
         return $data;
     }
 
