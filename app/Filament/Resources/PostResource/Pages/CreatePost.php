@@ -11,8 +11,7 @@ class CreatePost extends CreateRecord
     protected static string $resource = PostResource::class;
 
     protected function mutateFormDataBeforeCreate(array $data): array
-    {
-        header('Content-Type: text/json; charset=utf-8'); 
+    { 
         $data['content'] = json_encode($data['block'], JSON_UNESCAPED_UNICODE);
         
         return $data;
