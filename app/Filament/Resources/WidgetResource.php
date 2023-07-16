@@ -6,6 +6,7 @@ use App\Filament\Resources\WidgetResource\Pages;
 use App\Models\Widget;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -42,8 +43,10 @@ class WidgetResource extends Resource
                         ->directory('content\widgetImage')
                         ->image()
                         ->label(__('filament.thumbnail')),
-                    TinyEditor::make('content')
-                        ->profile('ahlibeyt')
+                    RichEditor::make('content')
+                        ->disableToolbarButtons([
+                            'attachFiles',
+                        ])
                         ->label(__('filament.content')),
                     Forms\Components\Toggle::make('active'),
                 ])
