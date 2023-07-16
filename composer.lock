@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c85eb18acc4bf9f1c2a113870762b4b1",
+    "content-hash": "494022390eb83ba8c230c380c60e46c8",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -2570,6 +2570,7 @@
             "time": "2023-04-26T07:27:39+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "mohamedsabil83/filament-forms-tinyeditor",
             "version": "v1.7.4",
             "source": {
@@ -2652,6 +2653,8 @@
             "time": "2023-06-09T10:02:17+00:00"
         },
         {
+=======
+>>>>>>> dev
             "name": "monolog/monolog",
             "version": "3.4.0",
             "source": {

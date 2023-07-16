@@ -11,6 +11,7 @@ use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -18,6 +19,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
+
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class PostResource extends Resource
@@ -58,12 +60,10 @@ class PostResource extends Resource
                         ->directory('content\thumbnail')
                         ->image()
                         ->label(__('filament.thumbnail')),
-                    TinyEditor::make('short_content')
-                        ->simple()
+                    RichEditor::make('short_content')
                         ->required()
                         ->label(__('filament.short_content')),
                 ]),
-
                 Card::make()
                 ->schema([
                     Builder::make('block')
@@ -71,9 +71,10 @@ class PostResource extends Resource
                         Builder\Block::make('content')
                         ->icon('heroicon-o-document-text')
                         ->schema([
-                            TinyEditor::make('content')
-                                ->profile('ahlibeyt')
-                                ->fileAttachmentsDirectory('content\imagesContent')
+                            RichEditor::make('content')
+                                ->disableToolbarButtons([
+                                    'attachFiles',
+                                ])
                                 ->label(__('filament.content'))
                         ])->label(__('filament.content')),
 
