@@ -59,6 +59,9 @@ class PostResource extends Resource
                         ->image()
                         ->label(__('filament.thumbnail')),
                     RichEditor::make('short_content')
+                        ->disableToolbarButtons([
+                            'attachFiles',
+                        ])
                         ->required()
                         ->label(__('filament.short_content')),
                 ]),
