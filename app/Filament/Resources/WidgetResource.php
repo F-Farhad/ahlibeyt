@@ -36,7 +36,7 @@ class WidgetResource extends Resource
                         ->label(__('filament.key')),
                     Forms\Components\TextInput::make('title')
                         ->required()
-                        ->maxLength(255)
+                        ->maxLength(191)
                         ->label(__('filament.title')),
                     Forms\Components\FileUpload::make('thumbnail')
                         ->directory('content\widgetImage')

@@ -38,7 +38,7 @@ class PostResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('title')
                         ->required()
-                        ->maxLength(255)
+                        ->maxLength(191)
                         ->reactive()
                         ->afterStateUpdated(function (Closure $set, $state) {
                             $set('slug', \Illuminate\Support\Str::slug($state));
@@ -47,7 +47,7 @@ class PostResource extends Resource
                         Forms\Components\TextInput::make('slug')
                         ->required()
                         ->unique(ignoreRecord: true)
-                        ->maxLength(255)
+                        ->maxLength(191)
                         ->label(__('filament.slug')),
                     ]),
                 ]),

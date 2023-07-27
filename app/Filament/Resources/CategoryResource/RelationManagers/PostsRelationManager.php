@@ -32,7 +32,7 @@ class PostsRelationManager extends RelationManager
                     ->schema([
                         TextInput::make('title')
                             ->required()
-                            ->maxLength(255)
+                            ->maxLength(191)
                             ->reactive()
                             ->afterStateUpdated(function (Closure $set, $state) {
                                 $set('slug', \Illuminate\Support\Str::slug($state));
@@ -41,7 +41,7 @@ class PostsRelationManager extends RelationManager
                         TextInput::make('slug')
                             ->required()
                             ->unique(ignoreRecord: true)
-                            ->maxLength(255)
+                            ->maxLength(191)
                             ->label(__('filament.slug')),
                     ]),
                 ]),
