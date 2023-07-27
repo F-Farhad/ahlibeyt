@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('widgets', function (Blueprint $table) {
             $table->id();
-            $table->string('key')->unique();
-            $table->string('title', 2048);
-            $table->string('thumbnail', 2048)->nullable();
+            $table->string('key')->unique('widgets_key_unique');
+            $table->string('title', 255);
+            $table->string('thumbnail', 255)->nullable();
             $table->longText('content')->nullable();
             $table->boolean('active')->default(false);
             $table->timestamps();

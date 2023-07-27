@@ -23,7 +23,7 @@ class TagsRelationManager extends RelationManager
             ->schema([
                 Forms\Components\TextInput::make('title')
                     ->required()
-                    ->maxLength(2048)
+                    ->maxLength(255)
                     ->unique(ignoreRecord: true)
                     ->reactive()
                     ->afterStateUpdated(function (Closure $set, $state) {
@@ -33,7 +33,7 @@ class TagsRelationManager extends RelationManager
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->unique(ignoreRecord: true)
-                    ->maxLength(2048)
+                    ->maxLength(255)
                     ->label(__('filament.slug')),
             ]);
     }

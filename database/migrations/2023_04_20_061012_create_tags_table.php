@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 2048);
-            $table->string('slug', 2048);
+            $table->string('title', 255);
+            $table->string('slug', 255)->unique('tags_slug_unique');
             $table->timestamps();
         });
     }
