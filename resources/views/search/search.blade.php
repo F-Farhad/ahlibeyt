@@ -20,7 +20,7 @@
                     </a>
                     <div>
                         <a class="hover:text-link" href="{{route('search.show', [$post, request()->get('search_expression'), ])}}">
-                            {!! \App\Models\Post::getMarkedParagraph($post->short_content . $post->getContent(), request()->get('search_expression')) !!}
+                            {!! \App\Models\Post::getMarkedParagraph(strip_tags($post->short_content . $post->getContent()), request()->get('search_expression')) !!}
                         </a>
                     </div>
                 </div>

@@ -64,22 +64,28 @@ class Post extends Model
     /**
      * returns paragraph with mark text
      */
-    public static function getMarkedParagraph($text, $searchExpression){
+    public static function getMarkedParagraph($text, $searchExpression):string{
 
         $arraySearchExpression = self::getArraySearchExpression($searchExpression);
 
         //create regex array
         foreach($arraySearchExpression as $key => $word){
-            $arraySearchExpression[$key] = "#(<p>.*?$word.*?</p>)|(<pre>.*?$word.*?</pre>)|(<h1>.*?$word.*?</h1>)|(<h2>.*?$word.*?</h2>)|(<h3>.*?$word.*?</h3>)|(<h4>.*?$word.*?</h4>)|(<h5>.*?$word.*?</h5>)|(<h6>.*?$word.*?</h6>)#iu";
+            $arraySearchExpression[$key] = "#\.?[^\.]*?($word)+.*?(?=\.)#iu";       //ищем до первой точки, пропуская все что не является точкой,искомое слово,пропускаю все слова после искомого, до первой точки
         }
 
         //kak tolko budet naydeno vyrazenie ili slovo, vyhodim iz cikla
         foreach($arraySearchExpression as $reg){
             preg_match($reg, $text, $arr);
+
             if(!empty($arr)){
-                $text = strip_tags($arr[0]);
+                $text = str_replace('.', '', $arr[0] );     //удаляю точку в начале найденой подстроки
                 break;
             }
+        }
+
+        //if arr empty return empty line, else will output all text from the post
+        if (empty($arr)){
+            return '';
         }
 
         $resultExpression = self::getMarkedText($text, $searchExpression);
@@ -92,7 +98,7 @@ class Post extends Model
      * the first argument takes a string, the second a substring to marked the text
      * '<span class="bg-[#4ade80] rounded">' - при поиске английских слов находит эту строку
      */
-    public static function getMarkedText($text, $searchExpression){
+    public static function getMarkedText($text, $searchExpression):string{
 
         $words = self::getArraySearchExpression($searchExpression);
 

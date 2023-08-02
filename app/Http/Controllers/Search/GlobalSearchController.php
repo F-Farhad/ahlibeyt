@@ -6,33 +6,25 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class GlobalSearchController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     * don't work: 
-     * 1. with single letter
-     * 2. with english alphabet 
-     */
     public function __invoke(Request $request)
     {
         $data = $request->validate([
-            'search_expression' => 'required|regex:#^[а-яёА-ЯЁ 0-9]+$#u'                                 //restrict count words?
+            'search_expression' => 'required|regex:#^[а-яёА-ЯЁ 0-9 \-".:,\'_]+$#u'
         ]);
 
-        $data['search_expression'] = preg_replace('/\s+/', ' ', $data['search_expression']);            //removing whitespace & tabulation
+        $search_expression = preg_replace('/\s+/', ' ', $data['search_expression']);                                //deleting whitespace & tabulation
+        
+        $data['search_expression'] = preg_replace("#[^а-яёА-ЯЁ 0-9]#u", '', $data['search_expression']);            //deleting all characters except letters
 
         $words = explode(' ', $data['search_expression']);
 
         $search_words = null;
-                                
-        foreach($words as $word){                               //removing all single letter
-            if(\Illuminate\Support\Str::length($word) > 2){
-                $search_words[] = $word;
-            }
-        }
+
+        $search_words = array_filter($words, fn($n)=>\Illuminate\Support\Str::length($n) > 2);                       //deleting all letter < 2
+
         $posts = collect();
         if(empty($search_words)){
             return view('search.search', compact('posts'));
