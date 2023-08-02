@@ -17,8 +17,9 @@ class GlobalSearchController extends Controller
 
         $search_expression = preg_replace('#\s+#u', ' ', $data['search_expression']);                                //deleting whitespace & tabulation
         
-        $search_expression = preg_replace("#[^а-яёА-ЯЁ 0-9]#u", '', $search_expression);                            //deleting all characters except letters
-        $words = explode(' ', $search_expression);
+        $search_expression = preg_replace("#[^а-яёА-ЯЁ 0-9]#u", '', $search_expression);  
+                                  //deleting all characters except letters
+        $words = explode(' ', mb_strtolower($search_expression));
 
         $search_words = null;
 

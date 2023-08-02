@@ -121,7 +121,7 @@ class Post extends Model
      * This function get string and after returned an array strings
      */
     private static function getArraySearchExpression(string $searchExpression):array{
-        $searchExpression = preg_replace('#\s+#u', ' ', $searchExpression);                                          //removing whitespace, tabulation
+        $searchExpression = preg_replace('#\s+#u', ' ', mb_strtolower($searchExpression));                                          //removing whitespace, tabulation
         $searchExpression = preg_replace("#[^а-яёА-ЯЁ 0-9]#u", '', $searchExpression);                            //deleting all characters except letters
 
         $words = explode(' ', $searchExpression);
