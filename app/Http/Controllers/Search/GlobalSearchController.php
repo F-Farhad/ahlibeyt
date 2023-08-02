@@ -12,14 +12,13 @@ class GlobalSearchController extends Controller
     public function __invoke(Request $request)
     {
         $data = $request->validate([
-            'search_expression' => 'required|regex:#^[а-яёА-ЯЁ 0-9 \-".:,\'_]+$#u'
+            'search_expression' => 'required|regex:#^[а-яёА-ЯЁ 0-9 \s\-".:,\'_]+$#u'
         ]);
 
-        $search_expression = preg_replace('/\s+/', ' ', $data['search_expression']);                                //deleting whitespace & tabulation
+        $search_expression = preg_replace('#\s+#u', ' ', $data['search_expression']);                                //deleting whitespace & tabulation
         
-        $data['search_expression'] = preg_replace("#[^а-яёА-ЯЁ 0-9]#u", '', $data['search_expression']);            //deleting all characters except letters
-
-        $words = explode(' ', $data['search_expression']);
+        $search_expression = preg_replace("#[^а-яёА-ЯЁ 0-9]#u", '', $search_expression);                            //deleting all characters except letters
+        $words = explode(' ', $search_expression);
 
         $search_words = null;
 
