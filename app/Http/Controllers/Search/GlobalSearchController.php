@@ -49,7 +49,7 @@ class GlobalSearchController extends Controller
      
                         }
                     })
-                ->paginate(10);
+                ->get();
 
         return view('search.search', compact('posts'));
     }

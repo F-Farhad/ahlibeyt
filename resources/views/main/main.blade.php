@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="text-sm">
                                     <a href="{{route('post.show', $post)}}">
-                                        {{ strip_tags( Str::words($post->short_content, 10)) }}
+                                        {!! strip_tags( Str::words($post->short_content, 10)) !!}
                                     </a>
                                 </div>
                             </div>

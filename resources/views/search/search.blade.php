@@ -27,7 +27,6 @@
                 <hr class="my-4 shadow">
             @endforeach
 
-            {{$posts->onEachSide(1)->links()}}
 
         @endif
 
