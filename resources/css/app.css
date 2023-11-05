@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 @tailwind base;
@@ -10,7 +11,7 @@
 }
 
 p {
-    margin: 3px 0px 3px 0px;
+    margin: 3px 0 3px 0;
 }
 
 h2 {
@@ -31,11 +32,11 @@ h6 {
 
 /* Num list */
 ol {
-    counter-reset: li; 
-    list-style: none; 
+    counter-reset: li;
+    list-style: none;
     padding: 0;
     text-shadow: 0 1px 0 rgba(255,255,255,.5);
-    
+
 }
 ol li {
     position: relative;
@@ -91,11 +92,11 @@ blockquote {
     text-align: center;
     position: relative;
     color: #49152C;
-    @apply rounded-md p-5 m-3;
+    font-family: 'Caveat', cursive;
+    @apply rounded-md p-5 m-3 text-[20px] mt-[30px];
     }
 div blockquote p {
-    font-family: 'Caveat', cursive;
-    @apply text-[18px] mt-[30px] m-3;
+
 }
 div blockquote p:before {
     content: "\201C";
@@ -103,7 +104,7 @@ div blockquote p:before {
     color: #EA6844;
     font-family: serif;
     position: absolute;
-     top: 0px;
+     top: 0;
     /*left: 30px; */
     transform: translateX(-50%);
 
@@ -139,9 +140,10 @@ p>iframe{
 /* End iframe */
 
 /* pre */
-pre{ 
+pre{
     font-family: 'Caveat', cursive;
     white-space: pre-wrap;
+    font-size: 20px;
     @apply bg-hover p-3 rounded-md m-3;
 }
 /* end pre */

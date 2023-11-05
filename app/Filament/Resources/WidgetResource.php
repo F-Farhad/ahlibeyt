@@ -57,6 +57,11 @@ class WidgetResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('key')
+                    ->enum([
+                        'short-about-us' => __('filament.short-about-us'),
+                        'page-about-us' => __('filament.page-about-us'),
+                        'logo' => __('filament.logo'),
+                    ])
                     ->label(__('filament.key')),
                 Tables\Columns\TextColumn::make('title')
                     ->label(__('filament.title')),
@@ -79,14 +84,14 @@ class WidgetResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -94,8 +99,8 @@ class WidgetResource extends Resource
             'create' => Pages\CreateWidget::route('/create'),
             'edit' => Pages\EditWidget::route('/{record}/edit'),
         ];
-    }  
-    
+    }
+
     /**
      * adding in navigation group
      */

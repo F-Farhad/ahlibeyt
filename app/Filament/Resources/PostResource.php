@@ -90,7 +90,7 @@ class PostResource extends Resource
                                 ->acceptedFileTypes(['audio/*'])
                                 ->label(__('filament.audio')),
                         ])->label(__('filament.audio')),
-                        
+
                         Builder\Block::make('image')
                             ->icon('heroicon-o-photograph')
                             ->schema([
@@ -147,6 +147,9 @@ class PostResource extends Resource
                 Tables\Columns\IconColumn::make('active')
                     ->boolean()
                     ->label(__('filament.active')),
+                Tables\Columns\TextColumn::make('view_count')
+                    ->sortable()
+                    ->label(__('filament.view_count')),
                 Tables\Columns\TextColumn::make('published_at')
                     ->sortable()
                     ->dateTime('d-m-Y')
@@ -172,7 +175,7 @@ class PostResource extends Resource
                     ->label(__('filament.tag'))
             ])
             ->actions([
-                
+
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -180,14 +183,14 @@ class PostResource extends Resource
     }
 
 
-    
+
     public static function getRelations(): array
     {
         return [
             RelationManagers\TagsRelationManager::class
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -213,7 +216,7 @@ class PostResource extends Resource
     {
         return __('filament.posts');
     }
-    
+
     /**
      * adding in navigation group
      */

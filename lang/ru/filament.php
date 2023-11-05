@@ -24,13 +24,14 @@ return [
     'title_block_description' => 'Заголовок',
     'audio' => 'Аудио',
     'image_block_description' => 'Описание картинки',
+    'view_count' => 'Просмотрено',
 
     // Widget
     'key' => 'Ключ',
     'create_widget' => 'Виджет',
     'widgets' => 'Виджеты',
     'short-about-us' => 'Коротко \'О нас \' ',
-    'page-about-us' => 'Страница \'О нас \' ',
+    'page-about-us' => 'Подробнее',
     'logo' => 'Логотип',
 
 
@@ -38,7 +39,6 @@ return [
     'slug' => 'Уникальный идентификатор',
     'published_at' => 'Опубликовать',
     'published' => 'Опубликован',
-    'updated_at' => 'Обновлено',
     'UnPublished' => 'Не опубликован'
 
 
