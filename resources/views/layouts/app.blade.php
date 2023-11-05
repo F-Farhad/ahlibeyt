@@ -15,7 +15,7 @@
     <!-- AlpineJS -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     @vite('resources/css/app.css')
     @livewireStyles
@@ -66,7 +66,7 @@
     <!-- Topic Nav -->
     <nav class="w-full py-4 border-t border-b bg-primary" x-data="{ open: false }">
         <div class="block sm:hidden">
-            <span     
+            <span
                 class=" md:hidden text-base font-bold uppercase text-center text-light flex justify-center items-center"
                 @click="open = !open"
             >
@@ -74,7 +74,7 @@
             </span>
         </div>
         <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
-            
+
             <div :class="open ? 'block': 'hidden'" class="w-full max-lg:flex-col flex-grow sm:flex sm:items-center sm:w-auto">
                 <div class="w-full container mx-auto flex flex-row max-sm:flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 py-2">
                     <a href="{{route('main')}}" class="hover:text-black text-light py-2 px-4 mx-2">{{ __('ahlibeyt.main')}}</a>
@@ -82,12 +82,12 @@
                     <a href="{{route('post.index')}}" class="hover:text-black text-light py-2 px-4 mx-2">{{ __('ahlibeyt.all-posts')}}</a>
                     <a href="{{route('prayTime')}}" class="hover:text-black text-light py-2 px-4 mx-2 whitespace-nowrap">{{ __('ahlibeyt.pray_time')}}</a>
                     <a href="{{route('about-us')}}" class="hover:text-black text-light py-2 px-4 mx-2 whitespace-nowrap">{{ __('ahlibeyt.about-us')}}</a>
-                   
+
                 </div>
 
                 <form class="pr-6 max-lg:w-full min-w-[320px] max-sm:pr-0 max-sm:justify-center flex justify-center" method="get" action="{{route('search')}}">
                     <input name="search_expression" value="{{empty($errors->first('search_expression'))?request()->get('search_expression') : ''}}"
-                            class="block w-full max-w-xs rounded-md border-0 px-3.5 py-2 p-1 text-black shadow-sm ring-1 ring-inset ring-primary placeholder:text-black text-center focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 font-medium 
+                            class="block w-full max-w-xs rounded-md border-0 px-3.5 py-2 p-1 text-black shadow-sm ring-1 ring-inset ring-primary placeholder:text-black text-center focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 font-medium
                                 {{empty($errors->first('search_expression'))?'':'bg-error'}}"
                             placeholder="{{empty($errors->first('search_expression'))?'Поиск по сайту':$errors->first('search_expression')}}"/>
                 </form>
@@ -100,7 +100,7 @@
     <div class="container mx-auto flex flex-wrap py-6">
 
     {{ $slot }}
-        
+
     </div>
 
     <footer class="w-full border-t bg-white py-4 bg-primary ">
@@ -108,7 +108,7 @@
             <div class="flex flex-col md:flex-row text-center md:text-left md:justify-between py-2">
                 {{-- <a href="{{route('about-us')}}" class="uppercase px-3 text-light hover:text-black">{{__('ahlibeyt.about-us')}}</a> --}}
             </div>
-            <div class="uppercase pb-3 text-light">&copy; ahlibeyt.by</div>
+            <div class="uppercase pb-3 text-light">&copy;ahlibeyt.by</div>
         </div>
     </footer>
 
